@@ -22,6 +22,7 @@ public class PublisherListPage extends BaseClass{
     String advertiserCategoryXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/parent::div/following::div[1]/a/button[contains(text(),'ad Category')]";
     String creativeIdXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/parent::div/following::div[1]/a/button[contains(text(),'Creative id')]";
     String selectOptionXpath="//*[text()='text1']";
+    String preferenceXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/following::div[1]/a";
 
     @FindBy(xpath = "//button[contains(text(),'Add New Publisher')]")
     public WebElement addNewPublisher;
@@ -165,6 +166,18 @@ public class PublisherListPage extends BaseClass{
         return flag;
     }
 
+    /**
+     * to click on the preference link on publisher list page
+     * @param pubId
+     */
+
+    public void clickOnPreference(String pubId)
+    {
+        String preferenceLinkXpath=preferenceXpath.replace("idValue", pubId);
+        WebElement element = driver.findElement(By.xpath(preferenceLinkXpath));
+        explicitWait(element,3000);
+        element.click();
+    }
 
 
 }

@@ -230,10 +230,20 @@ public class PublisherPrefPage extends BaseClass{
      */
     public void clickOnAdCategoryTab()
     {
-        explicitWait(advDomainTab,2000);
-        advDomainTab.click();
+        explicitWait(adCategoryTab,2000);
+        adCategoryTab.click();
     }
 
+
+
+    /**
+     * To click on creative id menu tab
+     */
+    public void clickOnCreativeIdTab()
+    {
+        explicitWait(creativeIdTab,2000);
+        creativeIdTab.click();
+    }
     /**
      * To click on ad category button under ad category tab
      */
@@ -359,5 +369,6 @@ public class PublisherPrefPage extends BaseClass{
         explicitWait(element,2000);
         element.click();
     }
+
 
 }

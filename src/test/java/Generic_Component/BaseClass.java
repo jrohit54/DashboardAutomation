@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseClass {
 
-    public  static String baseUrl="http://10.6.33.131:8088/publishers";
+    public  static String baseUrl="http://10.6.33.131:8088/publisher/list";
     public static String baserUri="http://10.6.33.131:8088/api";
     public static WebDriver driver;
     public static ExtentReports extentreport;

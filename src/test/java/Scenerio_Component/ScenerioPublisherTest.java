@@ -58,7 +58,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add advertiser domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC2" + " add advertiser domain");
         PublisherListPage plp = new PublisherListPage(driver);
-        plp.clickOnAdvertiserDomain("12345");
+        plp.clickOnPreference("12345");
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
@@ -81,20 +81,21 @@ public class ScenerioPublisherTest extends BaseClass {
 
     }
 
-    @Test(priority =3,timeOut = 10000,alwaysRun =true)
+    @Test(priority =3,alwaysRun =true)
     public void testAddAdCategory() throws InterruptedException, IOException {
         driver.navigate().to(baseUrl);
         log.info("Excuting the add category test case");
         extenttest = extentreport.startTest("add ad category");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC3" + " add ad category");
         PublisherListPage plp = new PublisherListPage(driver);
-        plp.clickOnAdCategory("12345");
+        plp.clickOnPreference("12345");
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
         Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
         Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
         Assert.assertTrue(prefPage.isAttributeTabDisplayed());
+        prefPage.clickOnAdCategoryTab();
         Thread.sleep(1000);
         prefPage.clickOnAddCategoryButton();
         prefPage.clickOnSelectProvider();
@@ -120,13 +121,14 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add creative id");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC4" + " add creative id");
         PublisherListPage plp = new PublisherListPage(driver);
-        plp.clickOnCreativeId("12345");
+        plp.clickOnPreference("12345");
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
         Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
         Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
         Assert.assertTrue(prefPage.isAttributeTabDisplayed());
+        prefPage.clickOnCreativeIdTab();
         Thread.sleep(1000);
         prefPage.clickOnAddCreativeIdButton();
         prefPage.clickOnSelectProvider();
@@ -149,7 +151,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("delete advertiser domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC5" + " delete advertiser domain");
         PublisherListPage plp = new PublisherListPage(driver);
-        plp.clickOnAdvertiserDomain("12345");
+        plp.clickOnPreference("12345");
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("http://maps.google.com");
@@ -178,8 +180,10 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("delete ad category");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC6" + " delete ad category");
         PublisherListPage plp = new PublisherListPage(driver);
-        plp.clickOnAdCategory("12345");
+        plp.clickOnPreference("12345");
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnAdCategoryTab();
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("IAB1");
         prefPage.clickOnDeleteButtonInConfirmPopup();
@@ -203,8 +207,10 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("delete creative id");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC7" + " delete creative id");
         PublisherListPage plp = new PublisherListPage(driver);
-        plp.clickOnCreativeId("12345");
+        plp.clickOnPreference("12345");
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnCreativeIdTab();
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("6322312");
         prefPage.clickOnDeleteButtonInConfirmPopup();
