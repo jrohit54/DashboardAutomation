@@ -55,8 +55,8 @@ public class BaseClass {
 
         TakesScreenshot screenshot=(TakesScreenshot) driver;
         File screenshotAs = screenshot.getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshotAs, new File(path+"reports/screenshot/"+TC_ID+"-"+Order_Set+"-"+str));
-        return path+"\\screenshot\\"+TC_ID+"-"+Order_Set+"-"+str;
+        FileUtils.copyFile(screenshotAs, new File(path+"/reports/screenshot/"+TC_ID+"-"+Order_Set+"-"+str));
+        return path+"/reports/screenshot/"+TC_ID+"-"+Order_Set+"-"+str;
     }
 
     /**

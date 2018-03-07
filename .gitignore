@@ -1,6 +1,9 @@
 .idea*
 Admin_Dashboard.iml
 target*
+automation*
+reports*
+velocity*
 
 # User-specific stuff:
 .idea/workspace.xml
