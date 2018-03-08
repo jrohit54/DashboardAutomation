@@ -9,7 +9,7 @@ public class DataProviderClass {
 
     @DataProvider(name = "PublisherDetails")
     public static Object[][] pubDetails() {
-        Object[][] data = new Object[1][8];
+        Object[][] data = new Object[2][8];
 
         //1st row
         data[0][0] = "12345";
@@ -22,14 +22,14 @@ public class DataProviderClass {
         data[0][7] = "category1 , category 2";
 
         //2nd row
-      /*  data[1][0] = "poiuy";
+        data[1][0] = "poiuy";
         data[1][1] = "testEmail@gmail.com";
         data[1][2] = "testName2";
         data[1][3] = "testComanyName2";
         data[1][4] = "testFirstName2";
         data[1][5] = "testLastName2";
         data[1][6] = "maps.google.com";
-        data[1][7] = "category1 , category 2";*/
+        data[1][7] = "category1 , category 2";
         return data;
     }
 
