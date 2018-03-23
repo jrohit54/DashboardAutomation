@@ -2,6 +2,7 @@ package Scenerio_Component;
 
 import Generic_Component.BaseClass;
 import PageObject_Component.AddPublisherPage;
+import PageObject_Component.BidderListPage;
 import PageObject_Component.PublisherListPage;
 import PageObject_Component.PublisherPrefPage;
 import org.openqa.selenium.Alert;
@@ -26,7 +27,6 @@ public class ScenerioPublisherTest extends BaseClass {
         Response response = deletePublisherApi(pubId);
         Assert.assertEquals(response.statusCode(),200);
         driver.navigate().to(baseUrl);
-        Thread.sleep(2000);
         log.info("Excuting the add publisher test case");
         extenttest = extentreport.startTest("add publisher");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC1" + " add publisher");
@@ -229,7 +229,6 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testAddPublisherWithNoPubId(String pubId) throws InterruptedException, IOException
     {
         driver.navigate().to(baseUrl);
-        Thread.sleep(2000);
         log.info("Excuting the add publisher without pubid test case");
         extenttest = extentreport.startTest("add publisher without pubid");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC8" + " add publisher");
@@ -250,7 +249,6 @@ public class ScenerioPublisherTest extends BaseClass {
     {
 
         driver.navigate().to(baseUrl);
-        Thread.sleep(2000);
         log.info("Excuting the add publisher with with invalid email");
         extenttest = extentreport.startTest("add publisher with  invalid email");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC9" + " add publisher");
@@ -269,7 +267,6 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testInvalidEmailIdServerValidation(String email)throws InterruptedException, IOException
     {
         driver.navigate().to(baseUrl);
-        Thread.sleep(2000);
         log.info("Excuting the add publisher with with invalid email");
         extenttest = extentreport.startTest("add publisher with invalid email");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC10" + " add publisher");
@@ -290,10 +287,9 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testDomainFieldValidation(String domain)  throws InterruptedException, IOException
     {
         driver.navigate().to(baseUrl);
-        Thread.sleep(2000);
         log.info("Excuting the add publisher with with invalid domain");
         extenttest = extentreport.startTest("add publisher with invalid domain");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC10" + " add publisher");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC11" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
@@ -307,6 +303,62 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertTrue(message.contains("Some validations are failing"));
         extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc11", "order_set11")));
     }
+
+    @Test(priority = 12,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "BidderDetails")
+    public void testAddValidBidder(String bidderId )  throws InterruptedException, IOException
+    {
+        Response response = deleteBidderApi(bidderId);
+        log.info("Excuting the add valid bidder");
+        extenttest = extentreport.startTest("Excuting the add valid bidder");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC12" + " add bidder");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnAddNewBidderButton();
+        Assert.assertEquals(blp.getHeaderText(), "Add New Bidder");
+        blp.enterBidderId(bidderId);
+        blp.enterBidderName("testBidderName");
+        blp.clickOnAdFormatSelectOption();
+        blp.selectOption("VAST","BANNER","NATIVE");
+        blp.clickOnSupportedClientSelectOption();
+        blp.selectOption("HB","STREAM","HB_POST_ENCODED","CM");
+        blp.clickOnDataCenterSelectOption();
+        blp.selectOption("EAST");
+        blp.enterEndPoint("http://10.6.33.130/bidder5");
+        blp.clickOnShowParam();
+        Assert.assertTrue(blp.isPlusIconDisplayed());
+        blp.enterQueryParamField("cc=");
+        blp.enterMacroField("MNET_COUNTRY2");
+        blp.clickOnSaveButton();
+        Thread.sleep(2000);
+        Assert.assertTrue(blp.isBidderIdDisplayed(bidderId),"bidder id not displayed in list");
+        Assert.assertTrue(blp.isAdFormatDisplayedForBidder(bidderId,"VAST"));
+        Assert.assertTrue(blp.isAdFormatDisplayedForBidder(bidderId,"BANNER"));
+        Assert.assertTrue(blp.isAdFormatDisplayedForBidder(bidderId,"NATIVE"));
+        Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"CM"));
+        Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"HB"));
+        Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"STREAM"));
+        Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"HB_POST_ENCODED"));
+        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc12", "order_set12")));
+    }
+
+    @Test(dependsOnMethods = "testAddValidBidder",dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "BidderDetails")
+    public void testEditBidder(String bidderId ) throws InterruptedException, IOException
+    {
+        log.info("Excuting the edit  bidder");
+        extenttest = extentreport.startTest("Excuting the edit bidder");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC13" + " edit bidder");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnBidderEditIcon(bidderId);
+        blp.clickOnShowParam();
+        blp.clickOnDeleteParamIcon();
+        blp.clickOnSaveButton();
+    }
+
+
+
 
 
 }

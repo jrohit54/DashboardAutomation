@@ -98,14 +98,23 @@ public class DataProviderClass {
     public static Object[][] getInvalidDomain()
     {
         Object[][] data = new Object[3][1];
-
         //1st row
         data[0][0] = "asdfgh";
         //2nd row
         data[1][0] = "adc@snapdeal.com";
         data[2][0] = ".com";
+        return data;
+    }
+
+    @DataProvider(name="BidderDetails")
+    public static Object[][] getBidderDetails()
+    {
+        Object[][] data = new Object[1][1];
+        //1st row
+        data[0][0] = "1";
 
         return data;
     }
+
 
 }

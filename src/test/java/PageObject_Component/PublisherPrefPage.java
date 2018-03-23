@@ -261,7 +261,7 @@ public class PublisherPrefPage extends BaseClass{
     public boolean isCategoryDisplayed(String category)
     {
         boolean flag=false;
-        explicitWait(listDomains.get(1),3000);
+        explicitWait(listDomains.get(0),3000);
         for (WebElement element:listDomains) {
 
             String text = element.getText();

@@ -33,10 +33,12 @@ public class BaseClass {
 
     public  static String baseUrl="http://10.6.33.131:8088/publisher/list";
     public static String baserUri="http://10.6.33.131:8088/api";
+    public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
     public static WebDriver driver;
     public static ExtentReports extentreport;
     public static ExtentTest extenttest;
     public static Logger log = Logger.getLogger(BaseClass.class);
+
 
     /**
      * to take sacreenshot in selenium
@@ -86,6 +88,7 @@ public class BaseClass {
         driver.get(baseUrl);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
 
     }
@@ -117,5 +120,20 @@ public class BaseClass {
         return response;
     }
 
+    /**
+     * to delete an bidder using the delete api
+     * @param bidderId
+     * @return
+     */
+    public Response deleteBidderApi(String bidderId)
+    {
+        RestAssured.baseURI=baserUri;
+        Response response = RestAssured.given()
+                .when()
+                .contentType((ContentType.JSON))
+                .delete("/bidders/" + bidderId);
+
+        return response;
+    }
 
 }
