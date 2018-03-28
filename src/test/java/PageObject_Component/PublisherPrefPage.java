@@ -155,12 +155,14 @@ public class PublisherPrefPage extends BaseClass{
      * to select the bidder from the list
      * @param name
      */
-    public void selectProviderOption(String name)
+    public void selectOption(String ...name)
     {
-        String selectOption=selectOptionXpath.replace("text1", name);
-        WebElement element = driver.findElement(By.xpath(selectOption));
-        explicitWait(element,3000);
-        element.click();
+        for (String name1: name) {
+            String selectOption = selectOptionXpath.replace("text1", name1);
+            WebElement element = driver.findElement(By.xpath(selectOption));
+            explicitWait(element, 3000);
+            element.click();
+        }
     }
     /**
      * to click on click on preference select option

@@ -63,6 +63,10 @@ public class BidderListPage extends BaseClass {
     @FindBy(xpath="//span[@class='delete-row-icon']")
     public WebElement deleteParamIcon;
 
+
+    @FindBy(xpath="//div[contains(text(),'Changes were successfully done!')]")
+    public  List<WebElement> sucessfullEditMessage;
+
     public BidderListPage(WebDriver driver)
     {
         PageFactory.initElements(driver,this);
@@ -85,7 +89,7 @@ public class BidderListPage extends BaseClass {
     }
 
     /**
-     *
+     * to enter bidder id
      * @param bidderId
      */
     public void enterBidderId(String bidderId)
@@ -95,7 +99,7 @@ public class BidderListPage extends BaseClass {
     }
 
     /**
-     *
+     * to enter bidder name
      * @param bidderName
      */
     public void enterBidderName(String bidderName)
@@ -104,13 +108,19 @@ public class BidderListPage extends BaseClass {
         bidderNameElement.sendKeys(bidderName);
     }
 
+    /**
+     * to click on ad format select option
+     */
     public void clickOnAdFormatSelectOption()
     {
         explicitWait(adFormatElement,3000);
         adFormatElement.click();
     }
 
-
+    /**
+     * to select available option in select fields
+     * @param name
+     */
     public void selectOption(String ...name)
     {
         for (String name1: name) {
@@ -121,12 +131,18 @@ public class BidderListPage extends BaseClass {
         }
     }
 
+    /**
+     * to click on support client select option
+     */
     public void clickOnSupportedClientSelectOption()
     {
         explicitWait(supportedClientElement,3000);
         supportedClientElement.click();
     }
 
+    /**
+     * to click on save button in add bidder page
+     */
     public void clickOnSaveButton()
     {
         Actions action=new Actions(driver);
@@ -135,6 +151,11 @@ public class BidderListPage extends BaseClass {
 
     }
 
+    /**
+     * to find if bidder id is diplayed in bidder list page
+     * @param bidderId
+     * @return
+     */
     public boolean isBidderIdDisplayed(String bidderId)
     {
         boolean flag=false;
@@ -150,6 +171,12 @@ public class BidderListPage extends BaseClass {
         return flag;
     }
 
+    /**
+     * to find if adformats are displayed in the bidder list page
+     * @param bidderId
+     * @param adFormatName
+     * @return
+     */
     public boolean isAdFormatDisplayedForBidder(String bidderId, String adFormatName)
     {
         boolean flag=false;
@@ -166,6 +193,12 @@ public class BidderListPage extends BaseClass {
         return flag;
     }
 
+    /**
+     * to find if supported client displayed in the bidder list page
+     * @param bidderId
+     * @param adFormatName
+     * @return
+     */
     public boolean isSupportedClientDisplayedForBidder(String bidderId, String adFormatName)
     {
         boolean flag=false;
@@ -182,24 +215,38 @@ public class BidderListPage extends BaseClass {
         return flag;
     }
 
+    /**
+     * to click on the data center select option
+     */
     public void clickOnDataCenterSelectOption()
     {
         moveToElement(dataCenterElement);
         dataCenterElement.click();
     }
 
+    /**
+     * to enter the url in the endpoint field
+     * @param endPoint
+     */
     public void enterEndPoint(String endPoint)
     {
         moveToElement(endPointElement);
         endPointElement.sendKeys(endPoint);
     }
 
+    /**
+     * to click on show param button
+     */
     public void clickOnShowParam()
     {
        moveToElement(showParamElement);
         showParamElement.click();
     }
 
+    /**
+     * to find if plus icon is getting displayed
+     * @return
+     */
     public boolean isPlusIconDisplayed()
     {
         if(driver.findElements(By.xpath(plusIconXpath)).size() !=0)
@@ -212,6 +259,10 @@ public class BidderListPage extends BaseClass {
         }
     }
 
+    /**
+     * to enter the data in the query param field
+     * @param param
+     */
     public void enterQueryParamField(String param)
     {
         moveToElement(queryParamFieldElement);
@@ -219,6 +270,10 @@ public class BidderListPage extends BaseClass {
 
     }
 
+    /**
+     * to enter the data in the macro field
+     * @param value
+     */
     public void enterMacroField(String value)
     {
         moveToElement(macroFieldElement);
@@ -226,12 +281,21 @@ public class BidderListPage extends BaseClass {
 
     }
 
+    /**
+     * to click on the bidder edit icon
+     * @param bidderId
+     */
     public void clickOnBidderEditIcon(String bidderId)
     {
         String newXpath = editIconXpath.replace("bidderId", bidderId);
         WebElement element = driver.findElement(By.xpath(newXpath));
         element.click();
     }
+
+    /**
+     * to move to element on the page using Actions
+     * @param element
+     */
     public void moveToElement(WebElement element)
     {
         Actions action=new Actions(driver);
@@ -239,9 +303,23 @@ public class BidderListPage extends BaseClass {
 
     }
 
+    /**
+     * to click on delete param icon
+     */
     public void clickOnDeleteParamIcon()
     {
         moveToElement(deleteParamIcon);
         deleteParamIcon.click();
     }
+
+    /**
+     * will check if sucessfull message displayed after edit bidder
+     * @return
+     */
+    public boolean isSucessfullMessageDisplayed()
+    {
+        int size = sucessfullEditMessage.size();
+        return size==1;
+    }
+
 }

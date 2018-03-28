@@ -31,7 +31,7 @@ public class PublisherListPage extends BaseClass{
     public WebElement selectNumberOfPublisherRecords;
 
 
-    @FindBy(xpath="//div[contains(text(),'Entry was successfully entered!')]")
+    @FindBy(xpath="//div[contains(text(),'Entry made successfully')]")
     public  List<WebElement> sucessfullAddedMessage;
 
     @FindBy(xpath="//div[@class='list-item']//span[@class='pub-id']")
@@ -76,20 +76,6 @@ public class PublisherListPage extends BaseClass{
         return size==1;
     }
 
-    /**
-     * will check if sucessfull message displayed after delete publisher
-     * @param pubId
-     * @return
-     */
-    public boolean isPublisherDeleted_SucessfullMessageDisplayed(String pubId)
-    {
-        String deleteMessage="Successfully deleted publisher "+pubId;
-        String newXpath = deleteMessageXpath.replace("text1", pubId);
-        WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element,2000);
-        return element.isDisplayed();
-
-    }
 
     /**
      * will click on advertiser domain button corresponding to publisher id

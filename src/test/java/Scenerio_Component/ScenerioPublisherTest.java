@@ -70,8 +70,7 @@ public class ScenerioPublisherTest extends BaseClass {
         prefPage.clickOnAddDomainMapping();
         Assert.assertEquals(prefPage.getPublisherNameInSelectOption(), "testName (12345)");
         prefPage.clickOnSelectProvider();
-        prefPage.selectProviderOption("DummyBidder");
-        prefPage.selectProviderOption("Appnexus*");
+        prefPage.selectOption("Appnexus*","YBNCA (A)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField(advDomain);
@@ -101,8 +100,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Thread.sleep(2000);
         prefPage.clickOnAddCategoryButton();
         prefPage.clickOnSelectProvider();
-        prefPage.selectProviderOption("DummyBidder");
-        prefPage.selectProviderOption("Appnexus*");
+        prefPage.selectOption("Appnexus*","YBNCA (A)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField("IAB1,IAB2,IAB3");
@@ -134,8 +132,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Thread.sleep(1000);
         prefPage.clickOnAddCreativeIdButton();
         prefPage.clickOnSelectProvider();
-        prefPage.selectProviderOption("DummyBidder");
-        prefPage.selectProviderOption("Appnexus*");
+        prefPage.selectOption("Appnexus*","YBNCA (A)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField("6112312,6322312");
@@ -163,7 +160,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertTrue(prefPage.isAdvDomainDeleteMessageDisplayed("http://maps.google.com"));
         Assert.assertFalse(prefPage.isAdvDomainDisplayed("http://maps.google.com"));
         prefPage.clickOnProvidersLink("maps.google.com");
-        prefPage.clickOnDeleteIconWithProviderName("maps.google.com","DummyBidder");
+        prefPage.clickOnDeleteIconWithProviderName("maps.google.com","YBNCA (A)");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         Thread.sleep(1000);
         prefPage.clickOnDeleteIconWithProviderName("maps.google.com","Appnexus");
@@ -339,7 +336,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"HB"));
         Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"STREAM"));
         Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"HB_POST_ENCODED"));
-        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc12", "order_set12")));
+        extenttest.log(LogStatus.PASS, "add valid bidder", extenttest.addScreenCapture(captureScreenshot("tc12", "order_set12")));
     }
 
     @Test(dependsOnMethods = "testAddValidBidder",dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "BidderDetails")
@@ -355,6 +352,9 @@ public class ScenerioPublisherTest extends BaseClass {
         blp.clickOnShowParam();
         blp.clickOnDeleteParamIcon();
         blp.clickOnSaveButton();
+        Thread.sleep(1000);
+        Assert.assertTrue(blp.isSucessfullMessageDisplayed());
+        extenttest.log(LogStatus.PASS, "edit bidder", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
 
 
