@@ -129,6 +129,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
         Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
         Assert.assertTrue(prefPage.isAttributeTabDisplayed());
+        Thread.sleep(2000);
         prefPage.clickOnCreativeIdTab();
         Thread.sleep(1000);
         prefPage.clickOnAddCreativeIdButton();
