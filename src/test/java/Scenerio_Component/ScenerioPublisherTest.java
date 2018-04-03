@@ -61,6 +61,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC2" + " add advertiser domain");
         PublisherListPage plp = new PublisherListPage(driver);
         plp.clickOnPreference("12345");
+        Thread.sleep(2000);
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
