@@ -232,7 +232,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public void clickOnAdCategoryTab()
     {
-        explicitWait(adCategoryTab,2000);
+        explicitWait(adCategoryTab,5000);
         adCategoryTab.click();
     }
 

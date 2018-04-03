@@ -96,6 +96,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
         Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
         Assert.assertTrue(prefPage.isAttributeTabDisplayed());
+        Thread.sleep(2000);
         prefPage.clickOnAdCategoryTab();
         Thread.sleep(2000);
         prefPage.clickOnAddCategoryButton();
@@ -183,6 +184,7 @@ public class ScenerioPublisherTest extends BaseClass {
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
         Thread.sleep(2000);
         prefPage.clickOnAdCategoryTab();
+        Thread.sleep(2000);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("IAB1");
         prefPage.clickOnDeleteButtonInConfirmPopup();
