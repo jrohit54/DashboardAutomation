@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Dashboard Automation Run">
+<suite name="Dashboard_Automation_Run">
 <listeners>
     <listener class-name="Generic_Component.CustomizeReport"/>
 </listeners>
