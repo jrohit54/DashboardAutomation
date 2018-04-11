@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Dashboard Automation Run">
 <listeners>
-<listener class-name="org.uncommons.reportng.HTMLReporter"/>
- <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    <listener class-name="Generic_Component.CustomizeReport"/>
 </listeners>
     <test name="Regression Testcases">
        <classes>

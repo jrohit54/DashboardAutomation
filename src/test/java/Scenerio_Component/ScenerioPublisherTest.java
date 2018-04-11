@@ -1,12 +1,14 @@
 package Scenerio_Component;
 
 import Generic_Component.BaseClass;
+import Generic_Component.CustomizeReport;
+import Generic_Component.DBConnection;
 import PageObject_Component.AddPublisherPage;
 import PageObject_Component.BidderListPage;
 import PageObject_Component.PublisherListPage;
 import PageObject_Component.PublisherPrefPage;
-import org.openqa.selenium.Alert;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 import java.io.IOException;
@@ -17,6 +19,7 @@ import com.jayway.restassured.response.Response;
 /**
  * Created by rohit on 8/2/18.
  */
+@Listeners(CustomizeReport.class)
 public class ScenerioPublisherTest extends BaseClass {
 
     public static Logger log = Logger.getLogger(ScenerioPublisherTest.class);
@@ -359,6 +362,18 @@ public class ScenerioPublisherTest extends BaseClass {
         Thread.sleep(1000);
         Assert.assertTrue(blp.isSucessfullMessageDisplayed());
         extenttest.log(LogStatus.PASS, "edit bidder", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
+    }
+
+    //@Test
+    public void addFeatureMappingTest()
+    {
+        DBConnection connection=new DBConnection();
+        connection.setUp();
+        connection.deleteQuery("delete from feature_mapping where entity_id=1");
+        connection.tearDown();
+
+
+
     }
 
 

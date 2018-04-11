@@ -77,8 +77,7 @@ public class BaseClass {
      * also initialise the extent report
      */
     @BeforeSuite
-    public static void extentReport()
-    {
+    public static void extentReport() throws IOException {
         Date date= new Date();
         SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
         String str2=df.format(date);
@@ -92,6 +91,7 @@ public class BaseClass {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
+        FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"/reports/"));
 
     }
 
