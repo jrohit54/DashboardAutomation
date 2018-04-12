@@ -126,7 +126,7 @@ public class BidderListPage extends BaseClass {
         for (String name1: name) {
             String selectOption = selectOptionXpath.replace("text1", name1);
             WebElement element = driver.findElement(By.xpath(selectOption));
-            explicitWait(element, 3000);
+            explicitWait(element, 3);
             element.click();
         }
     }
@@ -136,7 +136,7 @@ public class BidderListPage extends BaseClass {
      */
     public void clickOnSupportedClientSelectOption()
     {
-        explicitWait(supportedClientElement,3000);
+        explicitWait(supportedClientElement,3);
         supportedClientElement.click();
     }
 

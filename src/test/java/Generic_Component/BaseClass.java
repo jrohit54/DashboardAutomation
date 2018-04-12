@@ -31,9 +31,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseClass {
 
-    public  static String baseUrl="http://10.6.33.131:8088/publisher/list";
+    public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
     public static String baserUri="http://10.6.33.131:8088/api";
     public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
+    public static String featureMappingUrl="http://10.6.33.131:8088/featuremapping";
     public static WebDriver driver;
     public static ExtentReports extentreport;
     public static ExtentTest extenttest;
@@ -86,7 +87,7 @@ public class BaseClass {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\chromedriver.exe");
         }
         driver=new ChromeDriver();
-        driver.get(baseUrl);
+        driver.get(publisherListUrl);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);

@@ -109,12 +109,21 @@ public class DataProviderClass {
     @DataProvider(name="BidderDetails")
     public static Object[][] getBidderDetails()
     {
-        Object[][] data = new Object[1][1];
+        Object[][] data = new Object[1][2];
         //1st row
         data[0][0] = "1";
+        data[0][1] = "testBidderName";
 
         return data;
     }
 
+    @DataProvider(name="validFeatureMappingDelatils")
+    public static  Object[][] getFeatureDetails()
+    {
+        Object[][] data = new Object[1][2];
+        data[0][0]="EBDA_FULL_URL";
+        data[0][1]="{\"ALL\":10,\"8CUXBGVW2\":90}";
+        return data;
+    }
 
 }

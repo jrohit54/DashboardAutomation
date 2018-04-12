@@ -84,8 +84,8 @@ public class AddPublisherPage extends BaseClass {
      * @param text
      */
     public void enterPubId(String text)  {
-        explicitWait(pubId,6000);
-        explicitWait(categoryLabel,3000);
+        explicitWait(pubId,6);
+        explicitWait(categoryLabel,3);
         pubId.clear();
         pubId.sendKeys(text);
     }
