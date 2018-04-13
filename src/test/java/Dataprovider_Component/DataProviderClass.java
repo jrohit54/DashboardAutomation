@@ -126,4 +126,22 @@ public class DataProviderClass {
         return data;
     }
 
+    @DataProvider(name="invalidFeatureMappingDetails")
+    public static Object[][] getFeature()
+    {
+        Object[][] data = new Object[4][2];
+        data[0][0]="MODIFY_FLOOR_PRICE";
+        data[0][1]="100";
+
+        data[1][0]="MDC_SAMPLING";
+        data[1][1]="101";
+
+        data[2][0]="EBDA_FULL_URL";
+        data[2][1]="snapdeal.com";
+
+        data[3][0]="HB_FULL_URL";
+        data[3][1]="test.com";
+        return data;
+
+    }
 }

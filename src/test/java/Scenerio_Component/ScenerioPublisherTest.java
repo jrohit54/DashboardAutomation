@@ -31,6 +31,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC1" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
+        Thread.sleep(1000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         app.enterPubId(pubId);
@@ -368,10 +369,7 @@ public class ScenerioPublisherTest extends BaseClass {
     @Test(priority = 14,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "validFeatureMappingDelatils")
     public void testAddFeatureMapping(String featureName,String data) throws InterruptedException, IOException {
         //to delete existing entry present in feature mapping for bidder 1
-        DBConnection connection=new DBConnection();
-        connection.setUp();
-        connection.deleteQuery("delete from feature_mapping where entity_id=1");
-        connection.tearDown();
+        deleteFeatureMappingData("1");
         log.info("Excuting the add feature mapping");
         extenttest = extentreport.startTest("Excuting the add feature mapping");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC14" + " add feature mapping");
@@ -409,9 +407,32 @@ public class ScenerioPublisherTest extends BaseClass {
         Thread.sleep(3000);
         Assert.assertTrue(featurePage.isFeatureDataDisplayed("1",editData));
         extenttest.log(LogStatus.PASS, "add feature mapping", extenttest.addScreenCapture(captureScreenshot("tc15", "order_set15")));
-
     }
 
+    @Test(priority=16,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "invalidFeatureMappingDetails")
+    public void testInvalidAddFeatureMapping(String featureName,String data) throws InterruptedException,IOException
+    {
+        log.info("Excuting the add  feature mapping with invalid data");
+        extenttest = extentreport.startTest("Excuting the add feature mapping");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC16" + " add feature mapping");
+        driver.navigate().to(featureMappingUrl);
+        Thread.sleep(1000);
+        FeatureMappingPage featurePage=new FeatureMappingPage(driver);
+        featurePage.clickOnAddFeatureMapping();
+        Assert.assertEquals(featurePage.getHeaderText(),"Add New Feature Mapping");
+        featurePage.clickOnEntitySelectOption();
+        featurePage.selectOption("BIDDER");
+        featurePage.clickOnEntityNameSelectOption();
+        featurePage.selectOption("testBidderName (1)");
+        featurePage.clickOnFeatureNameSelectOption();
+        featurePage.selectOption(featureName);
+        featurePage.enterDataField(data);
+        featurePage.clickOnSaveButton();
+        Thread.sleep(1000);
+        Assert.assertEquals(featurePage.getDataErrorTest(),"Value does not satisfy the feature Validations");
+        extenttest.log(LogStatus.PASS, "add invalid feature mapping", extenttest.addScreenCapture(captureScreenshot("tc16", "order_set16")));
+
+    }
 
 
 }

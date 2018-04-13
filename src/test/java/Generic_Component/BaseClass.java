@@ -139,4 +139,20 @@ public class BaseClass {
         return response;
     }
 
+    /**
+     * to delete an feature mapping data using the delete api
+     * @param bidderId
+     * @return
+     */
+    public Response deleteFeatureMappingData(String bidderId)
+    {
+        RestAssured.baseURI=baserUri;
+        Response response = RestAssured.given()
+                .when()
+                .contentType((ContentType.JSON))
+                .delete("/featuremapping/bidder/" + bidderId);
+
+        return response;
+    }
+
 }

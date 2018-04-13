@@ -47,6 +47,9 @@ public class FeatureMappingPage extends BaseClass{
     @FindBy(id="save")
     public WebElement editSaveButton;
 
+    @FindBy(xpath="//span[2][@class='help-block']")
+    public WebElement dataErrorMessageElement;
+
     public FeatureMappingPage(WebDriver driver)
     {
         PageFactory.initElements(driver,this);
@@ -208,5 +211,14 @@ public class FeatureMappingPage extends BaseClass{
     {
         explicitWait(editSaveButton,3);
         editSaveButton.click();
+    }
+
+    /**
+     *
+     */
+    public String getDataErrorTest()
+    {
+        explicitWait(dataErrorMessageElement,1);
+        return dataErrorMessageElement.getText();
     }
 }
