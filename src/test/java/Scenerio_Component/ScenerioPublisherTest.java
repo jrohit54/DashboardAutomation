@@ -421,8 +421,9 @@ public class ScenerioPublisherTest extends BaseClass {
         featurePage.clickOnAddFeatureMapping();
         Assert.assertEquals(featurePage.getHeaderText(),"Add New Feature Mapping");
         featurePage.clickOnEntitySelectOption();
-        featurePage.selectOption("BIDDER");
         Thread.sleep(500);
+        featurePage.selectOption("BIDDER");
+        Thread.sleep(1000);
         featurePage.clickOnEntityNameSelectOption();
         featurePage.selectOption("testBidderName (1)");
         featurePage.clickOnFeatureNameSelectOption();
