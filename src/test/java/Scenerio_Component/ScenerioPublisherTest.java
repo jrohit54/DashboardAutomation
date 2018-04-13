@@ -423,6 +423,7 @@ public class ScenerioPublisherTest extends BaseClass {
         featurePage.clickOnEntitySelectOption();
         featurePage.selectOption("BIDDER");
         featurePage.clickOnEntityNameSelectOption();
+        Thread.sleep(500);
         featurePage.selectOption("testBidderName (1)");
         featurePage.clickOnFeatureNameSelectOption();
         featurePage.selectOption(featureName);

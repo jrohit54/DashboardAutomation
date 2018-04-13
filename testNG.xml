@@ -5,7 +5,11 @@
 </listeners>
     <test name="Regression Testcases">
        <classes>
-         <class  name="Scenerio_Component.ScenerioPublisherTest" />
+         <class  name="Scenerio_Component.ScenerioPublisherTest">
+         <methods>
+             <include name="testInvalidAddFeatureMapping"></include>
+         </methods>
+         </class>
        </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
