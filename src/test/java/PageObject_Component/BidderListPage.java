@@ -74,7 +74,7 @@ public class BidderListPage extends BaseClass {
 
     public void clickOnAddNewBidderButton()
     {
-        explicitWait(addNewBidder,2000);
+        explicitWait(addNewBidder,2);
         addNewBidder.click();
     }
 
@@ -84,7 +84,7 @@ public class BidderListPage extends BaseClass {
      */
     public String getHeaderText()
     {
-        explicitWait(headerElement,3000);
+        explicitWait(headerElement,3);
         return headerElement.getText();
     }
 
@@ -94,7 +94,7 @@ public class BidderListPage extends BaseClass {
      */
     public void enterBidderId(String bidderId)
     {
-        explicitWait(bidderIdElement,3000);
+        explicitWait(bidderIdElement,3);
         bidderIdElement.sendKeys(bidderId);
     }
 
@@ -104,7 +104,7 @@ public class BidderListPage extends BaseClass {
      */
     public void enterBidderName(String bidderName)
     {
-        explicitWait(bidderNameElement,3000);
+        explicitWait(bidderNameElement,3);
         bidderNameElement.sendKeys(bidderName);
     }
 
@@ -113,7 +113,7 @@ public class BidderListPage extends BaseClass {
      */
     public void clickOnAdFormatSelectOption()
     {
-        explicitWait(adFormatElement,3000);
+        explicitWait(adFormatElement,3);
         adFormatElement.click();
     }
 

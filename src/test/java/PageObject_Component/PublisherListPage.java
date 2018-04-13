@@ -59,12 +59,10 @@ public class PublisherListPage extends BaseClass{
      */
     public void clickOnAddNewPublisher()
     {
-        explicitWait(addNewPublisher,5000);
+        explicitWait(addNewPublisher,5);
         addNewPublisher.click();
 
     }
-
-
 
     /**
      * will check if sucessfull message displayed after add publisher
@@ -76,7 +74,6 @@ public class PublisherListPage extends BaseClass{
         return size==1;
     }
 
-
     /**
      * will click on advertiser domain button corresponding to publisher id
      * @param id
@@ -85,7 +82,7 @@ public class PublisherListPage extends BaseClass{
     {
         String advertiserButtonXpath=advertiserDomainXpath.replace("idValue", id);
         WebElement element = driver.findElement(By.xpath(advertiserButtonXpath));
-        explicitWait(element,3000);
+        explicitWait(element,3);
         element.click();
     }
 
@@ -97,7 +94,7 @@ public class PublisherListPage extends BaseClass{
     {
         String advertiserButtonXpath=advertiserCategoryXpath.replace("idValue", id);
         WebElement element = driver.findElement(By.xpath(advertiserButtonXpath));
-        explicitWait(element,3000);
+        explicitWait(element,3);
         element.click();
     }
 
@@ -109,7 +106,7 @@ public class PublisherListPage extends BaseClass{
     {
         String advertiserButtonXpath=creativeIdXpath.replace("idValue", id);
         WebElement element = driver.findElement(By.xpath(advertiserButtonXpath));
-        explicitWait(element,3000);
+        explicitWait(element,3);
         element.click();
     }
     public void clickOnSelectNumberOfPublisherDisplayed()
@@ -127,7 +124,7 @@ public class PublisherListPage extends BaseClass{
     {
         String selectOption=selectOptionXpath.replace("text1", number);
         WebElement element = driver.findElement(By.xpath(selectOption));
-        explicitWait(element,3000);
+        explicitWait(element,3);
         element.click();
     }
 
@@ -139,7 +136,7 @@ public class PublisherListPage extends BaseClass{
     public boolean isPublisherIdDisplayed(String pubId)
     {
         boolean flag=false;
-        explicitWait(allPublisherList.get(1),3000);
+        explicitWait(allPublisherList.get(1),3);
         for (WebElement element:allPublisherList) {
 
             String text = element.getText().replaceAll("[^A-Za-z0-9]", "");
@@ -161,7 +158,7 @@ public class PublisherListPage extends BaseClass{
     {
         String preferenceLinkXpath=preferenceXpath.replace("idValue", pubId);
         WebElement element = driver.findElement(By.xpath(preferenceLinkXpath));
-        explicitWait(element,3000);
+        explicitWait(element,3);
         element.click();
     }
 

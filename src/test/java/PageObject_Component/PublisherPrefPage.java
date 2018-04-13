@@ -84,7 +84,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public String getHeaderText()
     {
-        explicitWait(headerElement,3000);
+        explicitWait(headerElement,3);
         return headerElement.getText();
     }
 
@@ -129,7 +129,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public  void clickOnAddDomainMapping()
     {
-        explicitWait(addDomainMappingButton,3000);
+        explicitWait(addDomainMappingButton,3);
         addDomainMappingButton.click();
     }
 
@@ -139,7 +139,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public String getPublisherNameInSelectOption()
     {
-        explicitWait(topRightSelectOption,3000);
+        explicitWait(topRightSelectOption,3);
         return topRightSelectOption.getText();
     }
 
@@ -160,7 +160,7 @@ public class PublisherPrefPage extends BaseClass{
         for (String name1: name) {
             String selectOption = selectOptionXpath.replace("text1", name1);
             WebElement element = driver.findElement(By.xpath(selectOption));
-            explicitWait(element, 3000);
+            explicitWait(element, 3);
             element.click();
         }
     }
@@ -170,7 +170,7 @@ public class PublisherPrefPage extends BaseClass{
      * */
     public void clickOnSelectPreference()
     {
-        explicitWait(selectPreference,2000);
+        explicitWait(selectPreference,2);
         selectPreference.click();
     }
 
@@ -182,7 +182,7 @@ public class PublisherPrefPage extends BaseClass{
     {
         String selectOption=selectOptionXpath.replace("text1", name);
         WebElement element = driver.findElement(By.xpath(selectOption));
-        explicitWait(element,3000);
+        explicitWait(element,3);
         element.click();
     }
 
@@ -192,7 +192,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public void enterDomainField(String domain)
     {
-        explicitWait(domainField,3000);
+        explicitWait(domainField,3);
         domainField.sendKeys(domain);
     }
 
@@ -202,7 +202,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public void clickOnSaveButton()
     {
-        explicitWait(saveButton,2000);
+        explicitWait(saveButton,2);
         saveButton.click();
     }
 
@@ -214,7 +214,7 @@ public class PublisherPrefPage extends BaseClass{
     public boolean isAdvDomainDisplayed(String domain)
     {
         boolean flag=false;
-        explicitWait(listDomains.get(0),3000);
+        explicitWait(listDomains.get(0),3);
         for (WebElement element:listDomains) {
 
             String text = element.getText();
@@ -232,7 +232,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public void clickOnAdCategoryTab()
     {
-        explicitWait(adCategoryTab,5000);
+        explicitWait(adCategoryTab,5);
         adCategoryTab.click();
     }
 
@@ -243,7 +243,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public void clickOnCreativeIdTab()
     {
-        explicitWait(creativeIdTab,2000);
+        explicitWait(creativeIdTab,2);
         creativeIdTab.click();
     }
     /**
@@ -251,7 +251,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public void clickOnAddCategoryButton()
     {
-        explicitWait(adCategoryButton,4000);
+        explicitWait(adCategoryButton,4);
         adCategoryButton.click();
 
     }
@@ -263,7 +263,7 @@ public class PublisherPrefPage extends BaseClass{
     public boolean isCategoryDisplayed(String category)
     {
         boolean flag=false;
-        explicitWait(listDomains.get(0),3000);
+        explicitWait(listDomains.get(0),3);
         for (WebElement element:listDomains) {
 
             String text = element.getText();
@@ -281,7 +281,7 @@ public class PublisherPrefPage extends BaseClass{
      */
     public void clickOnAddCreativeIdButton()
     {
-        explicitWait(addCreativeIdButton,4000);
+        explicitWait(addCreativeIdButton,4);
         addCreativeIdButton.click();
 
     }
@@ -293,7 +293,7 @@ public class PublisherPrefPage extends BaseClass{
     public boolean isCreativeIdDisplayed(String crid)
     {
         boolean flag=false;
-        explicitWait(listDomains.get(1),3000);
+        explicitWait(listDomains.get(1),3);
         for (WebElement element:listDomains) {
 
             String text = element.getText();
@@ -315,7 +315,7 @@ public class PublisherPrefPage extends BaseClass{
     {
         String deleteIconXpath=deleteAllProviderXpath.replace("domainName",value);
         WebElement element = driver.findElement(By.xpath(deleteIconXpath));
-        explicitWait(element,3000);
+        explicitWait(element,3);
         element.click();
     }
 
@@ -324,7 +324,7 @@ public class PublisherPrefPage extends BaseClass{
      * */
     public void clickOnDeleteButtonInConfirmPopup()
     {
-        explicitWait(deleteButton,3000);
+        explicitWait(deleteButton,3);
         deleteButton.click();
 
     }
@@ -338,7 +338,7 @@ public class PublisherPrefPage extends BaseClass{
         String deleteMessage="Successfully deleted Domain "+domain;
         String newXpath = deleteMessageXpath.replace("text1", domain);
         WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element,2000);
+        explicitWait(element,2);
         return element.isDisplayed();
 
     }
@@ -353,7 +353,7 @@ public class PublisherPrefPage extends BaseClass{
 
         String newXpath = providerXpath.replace("domainName", domain);
         WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element,2000);
+        explicitWait(element,2);
         element.click();;
     }
 
@@ -368,7 +368,7 @@ public class PublisherPrefPage extends BaseClass{
 
         String newXpath= deleteDomainWithProviderXpath.replace("domainName",domainName).replace("providerName",providerName);
         WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element,2000);
+        explicitWait(element,2);
         element.click();
     }
 

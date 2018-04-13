@@ -234,6 +234,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher without pubid");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC8" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
+        Thread.sleep(1000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
@@ -254,6 +255,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher with  invalid email");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC9" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
+        Thread.sleep(1000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
@@ -272,6 +274,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher with invalid email");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC10" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
+        Thread.sleep(1000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
@@ -292,6 +295,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher with invalid domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC11" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
+        Thread.sleep(1000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(),"New Publisher");

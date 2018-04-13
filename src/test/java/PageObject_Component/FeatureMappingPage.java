@@ -29,7 +29,7 @@ public class FeatureMappingPage extends BaseClass{
     @FindBy(xpath="//div[@class='Select-placeholder' and text()='Select Entity Type']")
     public WebElement entityElement;
 
-    @FindBy(xpath="//div[@class='Select-placeholder' and text()='Select Entity']")
+    @FindBy(xpath="//div[@class='Select-placeholder' and text()='Select Entity Id']")
     public WebElement entityNameElement;
 
     @FindBy(xpath="//div[@class='Select-placeholder' and text()='Select Feature']")
@@ -52,6 +52,9 @@ public class FeatureMappingPage extends BaseClass{
         PageFactory.initElements(driver,this);
     }
 
+    /**
+     * to click on add feature mapping button
+     */
     public void clickOnAddFeatureMapping()
     {
         explicitWait(addFeatureButton,2);
@@ -65,13 +68,15 @@ public class FeatureMappingPage extends BaseClass{
      */
     public String getHeaderText()
     {
-        explicitWait(headerElement,3000);
+        explicitWait(headerElement,3);
         return headerElement.getText();
     }
-
+    /**
+     * to click on entity select option
+     */
     public void clickOnEntitySelectOption()
     {
-        explicitWait(entityElement,3000);
+        explicitWait(entityElement,3);
         entityElement.click();
     }
 
@@ -84,36 +89,55 @@ public class FeatureMappingPage extends BaseClass{
         for (String name1: name) {
             String selectOption = selectOptionXpath.replace("text1", name1);
             WebElement element = driver.findElement(By.xpath(selectOption));
-            explicitWait(element, 3000);
+            explicitWait(element, 3);
             element.click();
         }
     }
 
+    /**
+     * to click on entity id select option
+     */
     public void clickOnEntityNameSelectOption()
     {
-        explicitWait(entityNameElement,3000);
+        explicitWait(entityNameElement,3);
         entityNameElement.click();
     }
 
+    /**
+     * to click on feature name select option
+     */
     public void clickOnFeatureNameSelectOption()
     {
-        explicitWait(selectFeatureElement,3000);
+        explicitWait(selectFeatureElement,3);
         selectFeatureElement.click();
     }
 
+    /**
+     * to enter the value in the data field
+     * @param data
+     */
     public void enterDataField(String data)
     {
-        explicitWait(dataElement,3000);
+        explicitWait(dataElement,3);
         dataElement.sendKeys(data);
 
     }
 
+    /**
+     * to click on save button in add new feature mapping page
+     */
     public void clickOnSaveButton()
     {
-        explicitWait(saveElement,3000);
+        explicitWait(saveElement,3);
         saveElement.click();
     }
 
+    /**
+     * to validate if feature name is displayed
+     * @param bidderId
+     * @param featureName
+     * @return
+     */
     public boolean isFeatureNameDisplayed(String bidderId,String featureName)
     {
         boolean flag=false;
@@ -130,6 +154,12 @@ public class FeatureMappingPage extends BaseClass{
         return flag;
     }
 
+    /**
+     * to validate if data is displayed in feature mapping page
+     * @param bidderId
+     * @param featureData
+     * @return
+     */
     public boolean isFeatureDataDisplayed(String bidderId,String featureData)
     {
         boolean flag=false;
@@ -146,16 +176,24 @@ public class FeatureMappingPage extends BaseClass{
         return flag;
     }
 
+    /**
+     * to click on edit feature mapping entry
+     * @param bidderId
+     */
     public void clickOnEdit(String bidderId)
     {
 
             String newXpath = editIconXpath.replace("bidderId", bidderId);
             WebElement element = driver.findElement(By.xpath(newXpath));
-            explicitWait(element, 3000);
+            explicitWait(element, 3);
             element.click();
 
     }
 
+    /**
+     * to edit an feature mapping data
+     * @param data
+     */
     public void clearAndUpdateData(String data)
     {
         explicitWait(editDataField,3);
@@ -163,6 +201,9 @@ public class FeatureMappingPage extends BaseClass{
         editDataField.sendKeys(data);
     }
 
+    /**
+     * to click on save button in edit scenerio
+     */
     public void clickOnEditSaveButton()
     {
         explicitWait(editSaveButton,3);
