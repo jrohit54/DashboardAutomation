@@ -155,4 +155,20 @@ public class BaseClass {
         return response;
     }
 
+    /**
+     * to delete an pmp deal data using the delete api
+     * @param bidderId
+     * @return
+     */
+    public Response deletePmpDealData(String bidderId)
+    {
+        RestAssured.baseURI=baserUri;
+        Response response = RestAssured.given()
+                .when()
+                .contentType((ContentType.JSON))
+                .delete("/pmpdeal/bidder/" + bidderId);
+
+        return response;
+    }
+
 }

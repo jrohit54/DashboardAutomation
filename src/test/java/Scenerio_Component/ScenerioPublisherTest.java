@@ -4,6 +4,8 @@ import Generic_Component.BaseClass;
 import Generic_Component.CustomizeReport;
 import Generic_Component.DBConnection;
 import PageObject_Component.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -433,6 +435,59 @@ public class ScenerioPublisherTest extends BaseClass {
         Thread.sleep(1000);
         Assert.assertEquals(featurePage.getDataErrorTest(),"Value does not satisfy the feature Validations");
         extenttest.log(LogStatus.PASS, "add invalid feature mapping", extenttest.addScreenCapture(captureScreenshot("tc16", "order_set16")));
+    }
+
+    @Test(priority=17)
+    public void testAddPmpDeal() throws InterruptedException,IOException
+    {    deletePmpDealData("1");
+        log.info("Excuting the add  valid pmp deal");
+        extenttest = extentreport.startTest("Excuting the add valid pmp deal");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC17" + " add pmp deal");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPmpDeal("1");
+        PmpDealPage pmpDeal=new PmpDealPage(driver);
+        Thread.sleep(1000);
+        pmpDeal.clickOnPmpDealButton();
+        pmpDeal.enterDealId("testDeal");
+        pmpDeal.selectRadioOption("Publisher");
+        pmpDeal.clickOnSelectPublisherId();
+        Thread.sleep(500);
+        pmpDeal.selectOption("testName (12345)");
+        pmpDeal.enterBidFloor("1.0");
+        pmpDeal.enterBidFloorCurrency("USD");
+        pmpDeal.selectRadioOption("Open");
+        pmpDeal.selectRadioOption("Active");
+        pmpDeal.clickOnSaveButton();
+        Assert.assertTrue(pmpDeal.isPmpDealDisplayed("testDeal"));
+        extenttest.log(LogStatus.PASS, "add valid pmp deal", extenttest.addScreenCapture(captureScreenshot("tc17", "order_set17")));
+    }
+
+    @Test(priority=18)
+    public void testPmpDealTarget() throws InterruptedException,IOException
+    {
+        log.info("Excuting the add  pmp deal target");
+        extenttest = extentreport.startTest("Excuting the add  pmp deal target");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC18" + " add pmp deal target");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPmpDeal("1");
+        PmpDealPage pmpDeal=new PmpDealPage(driver);
+        pmpDeal.clickOnDownArrowIcon("testDeal");
+        pmpDeal.clickOnAddTargetButton("testDeal");
+        pmpDeal.clickOnSelectTargetOption();
+        pmpDeal.selectOption("IMP_SIZE");
+        pmpDeal.enterTargetValue("10");
+        pmpDeal.clickOnSaveTargetData();
+        Assert.assertEquals(pmpDeal.getValidationMessage(),"Entered value does not satisfy validation");
+        pmpDeal.enterTargetValue("10x20");
+        pmpDeal.clickOnSaveTargetData();
+        Thread.sleep(1000);
+        Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","IMP_SIZE"));
+        Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","10x20"));
+        extenttest.log(LogStatus.PASS, "add pmp deal target", extenttest.addScreenCapture(captureScreenshot("tc18", "order_set18")));
 
     }
 
