@@ -488,8 +488,50 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","IMP_SIZE"));
         Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","10x20"));
         extenttest.log(LogStatus.PASS, "add pmp deal target", extenttest.addScreenCapture(captureScreenshot("tc18", "order_set18")));
+    }
+
+    @Test(priority = 19)
+    public void testAddBidderPreferenceSize() throws InterruptedException,IOException
+    {
+        extenttest = extentreport.startTest("Excuting the add bidder preference size");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC19" + " add bidder preference size");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnAddSize();
+        prefPage.clickOnSelectPublisherSelectOption();
+        prefPage.selectOption("testName");
+        prefPage.clickOnPrefereceSelectOption();
+        prefPage.selectOption("Whitelist");
+        prefPage.selectSize("70x70");
+        prefPage.clickOnSaveButton();
+        Assert.assertTrue(prefPage.isDataDisplayed("70x70"));
+        extenttest.log(LogStatus.PASS, "add bidder preference size", extenttest.addScreenCapture(captureScreenshot("tc19", "order_set19")));
 
     }
+
+    @Test(priority = 20)
+    public void testDeletePreferenceSize() throws InterruptedException,IOException
+    {
+        extenttest = extentreport.startTest("Excuting the delete bidder preference size");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC20" + " delete bidder preference size");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnDeleteIcon("70x70");
+        Assert.assertTrue(prefPage.isMessageDisplayed("Delete Size: 70x70"));
+        prefPage.clickOnDeleteConfirmationButton();
+        Thread.sleep(1000);
+        Assert.assertFalse(prefPage.isDataDisplayed("70x70"));
+        extenttest.log(LogStatus.PASS, "delete bidder preference size", extenttest.addScreenCapture(captureScreenshot("tc20", "order_set20")));
+    }
+
 
 
 }
