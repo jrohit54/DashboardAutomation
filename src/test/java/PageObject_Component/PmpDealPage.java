@@ -59,6 +59,11 @@ public class PmpDealPage extends BaseClass {
 
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
     /**
      * To click on "Add Deal button in pmp deal"
      */

@@ -121,7 +121,7 @@ public class DataProviderClass {
     public static  Object[][] getFeatureDetails()
     {
         Object[][] data = new Object[1][2];
-        data[0][0]="EBDA_FULL_URL";
+        data[0][0]="FULL_URL";
         data[0][1]="{\"ALL\":10,\"8CUXBGVW2\":90}";
         return data;
     }
@@ -136,10 +136,10 @@ public class DataProviderClass {
         data[1][0]="MDC_SAMPLING";
         data[1][1]="101";
 
-        data[2][0]="EBDA_FULL_URL";
+        data[2][0]="FULL_URL";
         data[2][1]="snapdeal.com";
 
-        data[3][0]="HB_FULL_URL";
+        data[3][0]="FULL_URL";
         data[3][1]="test.com";
         return data;
 

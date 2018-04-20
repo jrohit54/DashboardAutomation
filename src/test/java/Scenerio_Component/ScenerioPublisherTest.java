@@ -74,7 +74,7 @@ public class ScenerioPublisherTest extends BaseClass {
         prefPage.clickOnAddDomainMapping();
         Assert.assertEquals(prefPage.getPublisherNameInSelectOption(), "testName (12345)");
         prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus*","YBNCA (A)");
+        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField(advDomain);
@@ -105,7 +105,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Thread.sleep(2000);
         prefPage.clickOnAddCategoryButton();
         prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus*","YBNCA (A)");
+        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField("IAB1,IAB2,IAB3");
@@ -138,7 +138,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Thread.sleep(1000);
         prefPage.clickOnAddCreativeIdButton();
         prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus*","YBNCA (A)");
+        prefPage.selectOption("All Advertisers");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField("6112312,6322312");
@@ -503,7 +503,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Thread.sleep(1000);
         prefPage.clickOnAddSize();
         prefPage.clickOnSelectPublisherSelectOption();
-        prefPage.selectOption("testName");
+        prefPage.selectOption("testName (12345)");
         prefPage.clickOnPrefereceSelectOption();
         prefPage.selectOption("Whitelist");
         prefPage.selectSize("70x70");
@@ -532,6 +532,60 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference size", extenttest.addScreenCapture(captureScreenshot("tc20", "order_set20")));
     }
 
+    @Test(priority = 21)
+    public void testAddBidderPreferencePubliserDomian() throws InterruptedException, IOException {
+        extenttest = extentreport.startTest("Excuting the add bidder preference publisher domain");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC21" + " add bidder preference publisher domain");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnPublisherDomainTab();
+        Thread.sleep(1000);
+        prefPage.clickOnAddDomainMappingButton();
+        prefPage.clickOnSelectPublisherSelectOption();
+        prefPage.selectOption("testName (12345)");
+        prefPage.clickOnPrefereceSelectOption();
+        prefPage.selectOption("Whitelist");
+        prefPage.enterText("http://maps.google.com");
+        prefPage.clickOnSaveButton();
+        Thread.sleep(1000);
+        Assert.assertTrue(prefPage.isDataDisplayed("http://maps.google.com"));
+        extenttest.log(LogStatus.PASS, "add bidder preference publisher domain", extenttest.addScreenCapture(captureScreenshot("tc21", "order_set21")));
+    }
+
+    @Test(priority = 22)
+    public void testDeleteBidderPreferencePublisherDomain() throws InterruptedException, IOException {
+        extenttest = extentreport.startTest("Excuting the delete bidder preference publisher domain");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC22" + " delete bidder preference publisher domain");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnPublisherDomainTab();;
+        prefPage.clickOnDeleteIcon("http://maps.google.com");
+        Assert.assertTrue(prefPage.isMessageDisplayed("Delete Domain: http://maps.google.com"));
+        prefPage.clickOnDeleteConfirmationButton();
+        Thread.sleep(1000);
+        Assert.assertFalse(prefPage.isDataDisplayed("http://maps.google.com"));
+        extenttest.log(LogStatus.PASS, "delete bidder preference publisher domain", extenttest.addScreenCapture(captureScreenshot("tc22", "order_set22")));
+    }
+
+    //@Test(priority = 23)
+    public void testAddBidderPreferenceTagID() throws InterruptedException {
+        extenttest = extentreport.startTest("Excuting the delete bidder preference publisher domain");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC22" + " delete bidder preference publisher domain");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+    }
 
 
 }

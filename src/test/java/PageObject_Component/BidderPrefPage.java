@@ -38,6 +38,16 @@ public class BidderPrefPage extends BaseClass {
     @FindBy(xpath="//button[text()='Delete']")
     public WebElement deleteButtonElement;
 
+    @FindBy(xpath="//div[@class='tab']/span[text()='Publisher Domain']")
+    public WebElement pubDomainElement;
+
+    @FindBy(xpath="//button[text()='Add Domain Mapping']")
+    public WebElement addDomainButtonElement;
+
+    @FindBy(xpath="//textarea[@id='formControlsTextarea']")
+    public WebElement textFieldElement;
+
+
     public BidderPrefPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -158,4 +168,34 @@ public class BidderPrefPage extends BaseClass {
          deleteButtonElement.click();
 
      }
+
+    /**
+     * To click on publisher domain tab in bidder preference
+     */
+    public void clickOnPublisherDomainTab()
+    {
+        explicitWait(pubDomainElement,2);
+        pubDomainElement.click();
+    }
+
+    /**
+     * To click on add domain mapping button
+     */
+    public void clickOnAddDomainMappingButton()
+    {
+        explicitWait(addDomainButtonElement,1);
+        addDomainButtonElement.click();
+    }
+
+    /**
+     * To enter text in textfield
+     */
+    public void enterText(String text)
+    {
+        explicitWait(textFieldElement,2);
+        textFieldElement.sendKeys(text);
+
+    }
+
+
 }
