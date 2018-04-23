@@ -47,6 +47,17 @@ public class BidderPrefPage extends BaseClass {
     @FindBy(xpath="//textarea[@id='formControlsTextarea']")
     public WebElement textFieldElement;
 
+    @FindBy(xpath="//div[@class='tab']/span[text()='Tag ID']")
+    public WebElement tagIdTabElement;
+
+    @FindBy(xpath="//button[text()='Add Tag ID']")
+    public WebElement addTagIdButtonElement;
+
+    @FindBy(xpath="//div[@class='tab']/span[text()='Publisher SLD']")
+    public WebElement pubSLDTabElement;
+
+    @FindBy(xpath="//button[text()='Add Publisher SLD']")
+    public WebElement addPubSLDButtonElement;
 
     public BidderPrefPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -197,5 +208,39 @@ public class BidderPrefPage extends BaseClass {
 
     }
 
+    /**
+     * To click on tag id tab in bidder preference
+     */
+    public void clickOnTagIdTab()
+    {
+        explicitWait(tagIdTabElement,2);
+        tagIdTabElement.click();
+    }
 
+    /**
+     * To click on add tag id button
+     */
+     public void clickOnAddTagIdButton()
+     {
+         explicitWait(addTagIdButtonElement,2);
+         addTagIdButtonElement.click();
+     }
+
+    /**
+     * To click on publisher SLD tab in Bidder Preference
+     */
+     public void clickOnPublisherSLDTab()
+     {
+         explicitWait(pubSLDTabElement,2);
+         pubSLDTabElement.click();
+     }
+    /**
+     * To click on add publisher SLD button
+     */
+     public void clickOnAddPublisherSLDButton()
+     {
+         explicitWait(addPubSLDButtonElement,2);
+         addPubSLDButtonElement.click();
+
+     }
 }
