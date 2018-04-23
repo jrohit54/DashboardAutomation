@@ -169,7 +169,7 @@ public class ScenerioBidderTest extends BaseClass {
     @Test(priority =26)
     public void testDeleteBidderPreferencePubSLD() throws InterruptedException,IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference Publisher SLD");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC24" + " delete bidder preference Publisher SLD");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC26" + " delete bidder preference Publisher SLD");
         driver.navigate().to(bidderListUrl);
         Thread.sleep(1000);
         BidderListPage blp=new BidderListPage(driver);
@@ -186,6 +186,93 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference Publisher SLd", extenttest.addScreenCapture(captureScreenshot("tc26", "order_set26")));
     }
 
+    @Test(priority = 27)
+    public void testAddBidderPreferenceDeviceType() throws InterruptedException, IOException {
+        extenttest = extentreport.startTest("Excuting the add bidder preference Device Type");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC27" + " add bidder preference Device Type");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnDeviceTypeTab();
+        Thread.sleep(1000);
+        prefPage.clickOnAddDeviceTypeButton();
+        prefPage.clickOnSelectPublisherSelectOption();
+        prefPage.selectOption("testName (12345)");
+        prefPage.clickOnPrefereceSelectOption();
+        prefPage.selectOption("Whitelist");
+        prefPage.selectSize("MOBILE_TABLET");
+        prefPage.clickOnSaveButton();
+        Thread.sleep(1000);
+        Assert.assertTrue(prefPage.isDataDisplayed("MOBILE_TABLET"));
+        extenttest.log(LogStatus.PASS, "add bidder preference Device Type", extenttest.addScreenCapture(captureScreenshot("tc26", "order_set27")));
+    }
+
+    @Test(priority =28)
+    public void testDeleteBidderPreferenceDeviceType() throws InterruptedException,IOException {
+        extenttest = extentreport.startTest("Excuting the delete bidder preference Publisher Device Type");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC26" + " delete bidder preference Device Type");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnDeviceTypeTab();
+        Thread.sleep(1000);
+        prefPage.clickOnDeleteIcon("MOBILE_TABLET");
+        Assert.assertTrue(prefPage.isMessageDisplayed("Delete Device Type: MOBILE_TABLET"));
+        prefPage.clickOnDeleteConfirmationButton();
+        Thread.sleep(1000);
+        Assert.assertFalse(prefPage.isDataDisplayed("MOBILE_TABLET"));
+        extenttest.log(LogStatus.PASS, "delete bidder preference Publisher Device Type", extenttest.addScreenCapture(captureScreenshot("tc28", "order_set28")));
+    }
+
+    @Test(priority =29)
+    public void testAddBidderPreferenceCountry() throws InterruptedException, IOException {
+        extenttest = extentreport.startTest("Excuting the add bidder preference Country");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC29" + " add bidder preference Country");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnCountryTab();
+        Thread.sleep(1000);
+        prefPage.clickOnAddCoutryButton();
+        prefPage.clickOnSelectPublisherSelectOption();
+        prefPage.selectOption("testName (12345)");
+        prefPage.clickOnPrefereceSelectOption();
+        prefPage.selectOption("Whitelist");
+        prefPage.selectSize("AX (Aland Islands)");
+        prefPage.clickOnSaveButton();
+        Thread.sleep(1000);
+        Assert.assertTrue(prefPage.isDataDisplayed("AX (Aland Islands)"));
+        extenttest.log(LogStatus.PASS, "add bidder preference  Country", extenttest.addScreenCapture(captureScreenshot("tc29", "order_set29")));
+    }
+
+    @Test(priority =30)
+    public void testDeleteBidderPreferenceCountry() throws InterruptedException,IOException {
+        extenttest = extentreport.startTest("Excuting the delete bidder preference Publisher Country");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC30" + " delete bidder preference Country");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnCountryTab();
+        Thread.sleep(1000);
+        prefPage.clickOnDeleteIcon("AX");
+        Assert.assertTrue(prefPage.isMessageDisplayed("Delete Country: AX"));
+        prefPage.clickOnDeleteConfirmationButton();
+        Thread.sleep(1000);
+        Assert.assertFalse(prefPage.isDataDisplayed("AX (Aland Islands)"));
+        extenttest.log(LogStatus.PASS, "delete bidder preference Country", extenttest.addScreenCapture(captureScreenshot("tc30", "order_set30")));
+    }
 
 
 }

@@ -17,7 +17,7 @@ public class BidderPrefPage extends BaseClass {
 
     String selectOptionXpath = "//*[text()='text1']";
     String sizeElementXpath = "//label[@class='custom-check-inline' and text()='size']/span";
-    String deleteIconXpath="//div[@class='label-wrap ']/label[text()='size']/parent::div/following::div//i[@class='ico-delete1']";
+    String deleteIconXpath="//div[@class='label-wrap ']/label[contains(text(),'size')]/parent::div/following::div//i[@class='ico-delete1']";
     String textXpath="//span[text()='text1']";
 
     @FindBy(xpath = "//button[text()='Add Size']")
@@ -58,6 +58,18 @@ public class BidderPrefPage extends BaseClass {
 
     @FindBy(xpath="//button[text()='Add Publisher SLD']")
     public WebElement addPubSLDButtonElement;
+
+    @FindBy(xpath="//div[@class='tab']/span[text()='Device Type']")
+    public WebElement deviceTypeTabElement;
+
+    @FindBy(xpath = "//button[text()='Add Device Type']")
+    public WebElement addDeviceTypeButtonElement;
+
+    @FindBy(xpath="//div[@class='tab']/span[text()='Country']")
+    public WebElement countryTabElement;
+
+    @FindBy(xpath="//button[text()='Add Country']")
+    public WebElement addCountryButton;
 
     public BidderPrefPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -243,4 +255,40 @@ public class BidderPrefPage extends BaseClass {
          addPubSLDButtonElement.click();
 
      }
+
+    /**
+     * To click on device type tab in Bidder Preference
+     */
+    public void clickOnDeviceTypeTab()
+    {
+        explicitWait(deviceTypeTabElement,2);
+        deviceTypeTabElement.click();
+    }
+
+    /**
+     * To click on add device type button
+     */
+    public void clickOnAddDeviceTypeButton()
+    {
+        explicitWait(addDeviceTypeButtonElement,2);
+        addDeviceTypeButtonElement.click();
+    }
+
+    /**
+     * To click on country tab in bidder preference
+     */
+    public void clickOnCountryTab()
+    {
+        explicitWait(countryTabElement,2);
+        countryTabElement.click();;
+    }
+
+    /**
+     * To click on add country button
+     */
+    public void clickOnAddCoutryButton()
+    {
+        explicitWait(addCountryButton,2);
+        addCountryButton.click();
+    }
 }
