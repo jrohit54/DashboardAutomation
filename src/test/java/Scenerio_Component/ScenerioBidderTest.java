@@ -274,5 +274,96 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference Country", extenttest.addScreenCapture(captureScreenshot("tc30", "order_set30")));
     }
 
+    @Test(priority =31)
+    public void testAddBidderPreferenceOperatingSystem() throws InterruptedException, IOException {
+        extenttest = extentreport.startTest("Excuting the add bidder preference Operating System");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC31" + " add bidder preference Operating System");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnOperatingSystemTab();
+        Thread.sleep(1000);
+        prefPage.clickOnAddOperatingSystemButton();
+        prefPage.clickOnSelectPublisherSelectOption();
+        prefPage.selectOption("testName (12345)");
+        prefPage.clickOnPrefereceSelectOption();
+        prefPage.selectOption("Whitelist");
+        prefPage.selectSize("Android");
+        prefPage.clickOnSaveButton();
+        Thread.sleep(1000);
+        Assert.assertTrue(prefPage.isDataDisplayed("Android"));
+        extenttest.log(LogStatus.PASS, "add bidder preference  Operating System", extenttest.addScreenCapture(captureScreenshot("tc31", "order_set31")));
+    }
+
+    @Test(priority =32)
+    public void testDeleteBidderPreferenceOperatingSystem() throws InterruptedException,IOException {
+        extenttest = extentreport.startTest("Excuting the delete bidder preference  Operating System");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC32" + " delete bidder preference Operating System");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnOperatingSystemTab();
+        Thread.sleep(1000);
+        prefPage.clickOnDeleteIcon("Android");
+        Assert.assertTrue(prefPage.isMessageDisplayed("Delete OS: Android"));
+        prefPage.clickOnDeleteConfirmationButton();
+        Thread.sleep(1000);
+        Assert.assertFalse(prefPage.isDataDisplayed("Android"));
+        extenttest.log(LogStatus.PASS, "delete bidder preference operating system", extenttest.addScreenCapture(captureScreenshot("tc32", "order_set32")));
+    }
+
+    @Test(priority =33)
+    public void testAddBidderPreferenceGender() throws InterruptedException, IOException {
+        extenttest = extentreport.startTest("Excuting the add bidder preference Gender");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC33" + " add bidder preference Gender");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnGenderTab();
+        Thread.sleep(1000);
+        prefPage.clickOnAddGenderButton();
+        prefPage.clickOnSelectPublisherSelectOption();
+        prefPage.selectOption("testName (12345)");
+        prefPage.clickOnPrefereceSelectOption();
+        prefPage.selectOption("Whitelist");
+        prefPage.selectSize("FEMALE");
+        prefPage.clickOnSaveButton();
+        Thread.sleep(1000);
+        Assert.assertTrue(prefPage.isDataDisplayed("FEMALE"));
+        extenttest.log(LogStatus.PASS, "add bidder preference  Gender", extenttest.addScreenCapture(captureScreenshot("tc33", "order_set33")));
+    }
+
+    @Test(priority =34)
+    public void testDeleteBidderPreferenceGender() throws InterruptedException,IOException {
+        extenttest = extentreport.startTest("Excuting the delete bidder preference  Gender");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC34" + " delete bidder preference Gender");
+        driver.navigate().to(bidderListUrl);
+        Thread.sleep(1000);
+        BidderListPage blp=new BidderListPage(driver);
+        blp.clickOnPreference("1");
+        BidderPrefPage prefPage=new BidderPrefPage(driver);
+        Thread.sleep(1000);
+        prefPage.clickOnGenderTab();
+        Thread.sleep(1000);
+        prefPage.clickOnDeleteIcon("FEMALE");
+        Assert.assertTrue(prefPage.isMessageDisplayed("Delete Gender: FEMALE"));
+        prefPage.clickOnDeleteConfirmationButton();
+        Thread.sleep(1000);
+        Assert.assertFalse(prefPage.isDataDisplayed("FEMALE"));
+        extenttest.log(LogStatus.PASS, "delete bidder preference Gender", extenttest.addScreenCapture(captureScreenshot("tc34", "order_set34")));
+    }
+
+
+
+
 
 }

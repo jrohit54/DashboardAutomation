@@ -71,6 +71,18 @@ public class BidderPrefPage extends BaseClass {
     @FindBy(xpath="//button[text()='Add Country']")
     public WebElement addCountryButton;
 
+    @FindBy(xpath="//div[@class='tab']/span[text()='Operating System']")
+    public WebElement operatingSystemTabElement;
+
+    @FindBy(xpath="//button[text()='Add Operating System']")
+    public WebElement addOperatingSystemButton;
+
+    @FindBy(xpath="//div[@class='tab']/span[text()='Gender']")
+    public WebElement genderTabElement;
+
+    @FindBy(xpath="//button[text()='Add Gender']")
+    public WebElement addGenderButtonElement;
+
     public BidderPrefPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -290,5 +302,40 @@ public class BidderPrefPage extends BaseClass {
     {
         explicitWait(addCountryButton,2);
         addCountryButton.click();
+    }
+    /**
+     * To click on Operating System tab in bidder preference
+     */
+    public void clickOnOperatingSystemTab()
+    {
+        explicitWait(operatingSystemTabElement,2);
+        operatingSystemTabElement.click();
+    }
+    /**
+     * To click on add operating system button
+     */
+    public void clickOnAddOperatingSystemButton()
+    {
+        explicitWait(addOperatingSystemButton,2);
+        addOperatingSystemButton.click();
+    }
+
+    /**
+     * To click on Gender Tab in bidder preference
+     */
+    public void clickOnGenderTab()
+    {
+        explicitWait(genderTabElement,2);
+        genderTabElement.click();
+
+    }
+
+    /**
+     * To click on add gender button
+     */
+    public void clickOnAddGenderButton()
+    {
+        explicitWait(addGenderButtonElement,2);
+        addGenderButtonElement.click();
     }
 }
