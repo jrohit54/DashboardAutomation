@@ -344,9 +344,9 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertTrue(blp.isAdFormatDisplayedForBidder(bidderId,"BANNER"));
         Assert.assertTrue(blp.isAdFormatDisplayedForBidder(bidderId,"NATIVE"));
         Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"CM"));
- //       Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"HB"));
+        Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"HB"));
         Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"STREAM"));
-  //      Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"HB_POST_ENCODED"));
+        Assert.assertTrue(blp.isSupportedClientDisplayedForBidder(bidderId,"HB_POST_ENCODED"));
         extenttest.log(LogStatus.PASS, "add valid bidder", extenttest.addScreenCapture(captureScreenshot("tc12", "order_set12")));
     }
 
