@@ -16,8 +16,8 @@ import java.util.List;
 public class BidderListPage extends BaseClass {
 
     String selectOptionXpath="//*[text()='text1']";
-    String bidderAdFormatsXpath="//div[@class='list-item']/div[@class='pub-data']//span[@class='pub-id' and text()='bidderId']/parent::div/following::div[2]//span[@class='label' and text()='AD Format' ]/following::span[1]/span";
-    String bidderSupportedClientXpath="//div[@class='list-item']/div[@class='pub-data']//span[@class='pub-id' and text()='bidderId']/parent::div/following::div[3]//span[@class='label' and text()='Supported Client']/following::span[1]/span";
+    String bidderAdFormatsXpath="//div[@class='list-item']/div[@class='pub-data']//span[@class='pub-id' and text()='bidderId']/parent::div/following::div[2]//span[@class='label' and text()='AD Format' ]/following::span[1]";
+    String bidderSupportedClientXpath="//div[@class='list-item']/div[@class='pub-data']//span[@class='pub-id' and text()='bidderId']/parent::div/following::div[3]//span[@class='label' and text()='Supported Client']/following::span[1]";
     String plusIconXpath="//span[@class='add-row-icon']";
     String editIconXpath="//span[@class='pub-id' and text()='bidderId']/parent::div/parent::div/parent::div/div[2]//a[2]";
     String pmpDealXpath="//span[@class='pub-id' and text()='bidderId']/parent::div/parent::div/parent::div/div[1]//div[@class='bid-links']/a[2]";
@@ -187,7 +187,7 @@ public class BidderListPage extends BaseClass {
         for (WebElement element:elements) {
 
             String text = element.getText();
-            if (text.equals(adFormatName)) {
+            if (text.contains(adFormatName)) {
                 flag = true;
                 return flag;
             }
@@ -209,7 +209,7 @@ public class BidderListPage extends BaseClass {
         for (WebElement element:elements) {
 
             String text = element.getText();
-            if (text.equals(adFormatName)) {
+            if (text.contains(adFormatName)) {
                 flag = true;
                 return flag;
             }
