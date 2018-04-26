@@ -31,10 +31,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseClass {
 
-    public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
-    public static String baserUri="http://10.6.33.131:8088/api";
-    public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
-    public static String featureMappingUrl="http://10.6.33.131:8088/featuremapping";
+    public  static String publisherListUrl="http://localhost:8088/publisher/list";
+    public static String baserUri="http://localhost:8088/api";
+    public static String bidderListUrl="http://localhost:8088/bidder/list";
+    public static String featureMappingUrl="http://localhost:8088/featuremapping";
+    public  static String partnerListUrl="http://localhost:8088/partner/list";
     public static WebDriver driver;
     public static ExtentReports extentreport;
     public static ExtentTest extenttest;
@@ -170,5 +171,21 @@ public class BaseClass {
 
         return response;
     }
+    /**
+     * to delete an partner using the delete api
+     * @param ptrId
+     * @return
+     */
+    public Response deletePartnerApi(String ptrId)
+    {
+        RestAssured.baseURI=baserUri;
+        Response response = RestAssured.given()
+                .when()
+                .contentType((ContentType.JSON))
+                .delete("/partners/" + ptrId);
+
+        return response;
+    }
+
 
 }

@@ -22,7 +22,7 @@ public class DataProviderClass {
         data[0][7] = "category1 , category 2";
 
         //2nd row
-       /* data[1][0] = "poiuy";
+        /*data[1][0] = "poiuy";
         data[1][1] = "testEmail@gmail.com";
         data[1][2] = "testName2";
         data[1][3] = "testComanyName2";
@@ -84,15 +84,15 @@ public class DataProviderClass {
     }
 
     @DataProvider(name="InvalidEmailAddressPart2")
-        public static Object[][] getInvalidEmailData()
-        {
-            Object[][] data = new Object[2][1];
+    public static Object[][] getInvalidEmailData()
+    {
+        Object[][] data = new Object[2][1];
 
-            data[0][0]="あいうえお@domain.com";
-            data[1][0]="email@-domain.com";
+        data[0][0]="あいうえお@domain.com";
+        data[1][0]="email@-domain.com";
 
-            return data;
-        }
+        return data;
+    }
 
     @DataProvider(name="InvalidDomain")
     public static Object[][] getInvalidDomain()
@@ -143,5 +143,23 @@ public class DataProviderClass {
         data[3][1]="test.com";
         return data;
 
+    }
+
+    @DataProvider(name = "PartnerDetails")
+    public static Object[][] ptrDetails() {
+        Object[][] data = new Object[1][8];
+
+        //1st row
+        data[0][0] = "TEST123";
+        data[0][1] = "TESTPARTNER";
+        data[0][2] = "TESTPARENT";
+        data[0][3] = "testemail@gmail.com";
+        //data[0][4] = "Active";
+        data[0][4] = "1";
+        data[0][5] = "testApiKey";
+        data[0][6] = "Testpasword";
+        data[0][7] = "123";
+
+        return data;
     }
 }

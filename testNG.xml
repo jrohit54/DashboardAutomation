@@ -7,7 +7,8 @@
         <classes>
             <class name="Scenerio_Component.ScenerioPublisherTest">
             </class>
-            <class name="Scenerio_Component.ScenerioBidderTest">
+            <class name="Scenerio_Component.ScenerioBidderTest"></class>
+            <class name="Scenerio_Component.ScenerioPartnerTest">
                 <!--<methods>
                     <include name="testAddBidderPreferenceTagID"></include>
                     <include name="testDeleteBidderPreferenceTagId"></include>

@@ -14,7 +14,7 @@ public class DBConnection {
 
 
     public void setUp()  {
-        String databaseURL = "jdbc:mysql://10.6.33.132:3306/mowgli_adminDashboard";
+        String databaseURL = "jdbc:mysql://http://localhost:3306/mowgli";
         String user = "root";
         String password = "videoads";
         connection = null;
@@ -39,7 +39,7 @@ public class DBConnection {
             int rs = statement.executeUpdate(id);
 
 
-                System.out.println(rs);
+            System.out.println(rs);
 
         } catch (SQLException ex) {
             ex.printStackTrace();
