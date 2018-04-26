@@ -124,17 +124,17 @@ public class PartnerListPage extends BaseClass {
 
     /**
      * To verify if publisher id is being  displayed once sucessfully added
-     * @param pubId
+     * @param ptrId
      * @return
      */
-    public boolean isPartnerIdDisplayed(String pubId)
+    public boolean isPartnerIdDisplayed(String ptrId)
     {
         boolean flag=false;
         explicitWait(allPartnerList.get(0),3);
         for (WebElement element:allPartnerList) {
 
             String text = element.getText().replaceAll("[^A-Za-z0-9]", "");
-            if (text.equalsIgnoreCase(pubId)) {
+            if (text.equalsIgnoreCase(ptrId)) {
                 flag = true;
                 return flag;
             }

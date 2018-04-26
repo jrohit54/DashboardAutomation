@@ -17,7 +17,7 @@ public class ScenerioPartnerTest extends BaseClass {
     @Test(priority = 33,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
     public void testAddValidPartner(String ptrId, String name, String parentId, String email, String pymtModeId, String ptrApiKey, String ptrPaswd, String dfltTmpltId) throws InterruptedException, IOException {
 
-        Response response = deletePartnerApi(ptrId);
+        Response response = deletePartnerApi(ptrId);http://tree.mn/rohit.jai/mowX-dashboard-automation/merge_requests/new?merge_request%5Bsource_branch%5D=dashboard_partner
         Assert.assertEquals(response.statusCode(),200);
         driver.navigate().to(partnerListUrl);
         log.info("Excuting the add partner test case");
@@ -46,6 +46,66 @@ public class ScenerioPartnerTest extends BaseClass {
         prtlp.selectNumberOfRecords("50");
         Assert.assertTrue(prtlp.isPartnerIdDisplayed(ptrId));
 
+    }
+
+    @Test(priority = 34,dataProviderClass=Dataprovider_Component.DataProviderClass.class,dataProvider = "AdvDomainDetails")
+    public void testAddAdvertiserDomain(String advDomain) throws InterruptedException, IOException {
+        driver.navigate().to(partnerListUrl);
+        log.info("Excuting the add Advertiser domain test case for partner");
+        extenttest = extentreport.startTest("add advertiser domain for partner");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC34" + " add advertiser domain for partner");
+        PartnerListPage ptrlp = new PartnerListPage(driver);
+        ptrlp.clickOnPreference("TEST123");
+        Thread.sleep(2000);
+        PartnerPrefPage prefPage = new PartnerPrefPage(driver);
+      //  Assert.assertEquals(prefPage.getHeaderText(), "preference");
+        Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
+        Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
+        Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
+        Assert.assertTrue(prefPage.isAttributeTabDisplayed());
+        prefPage.clickOnAddDomainMapping();
+        Assert.assertEquals(prefPage.getPartnerNameInSelectOption(), "TESTPARTNER (TEST123)");
+        prefPage.clickOnSelectProvider();
+        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
+        prefPage.clickOnSelectPreference();
+        prefPage.selectPreference("Blacklist");
+        prefPage.enterDomainField(advDomain);
+        prefPage.clickOnSaveButton();
+        Thread.sleep(2000);
+        extenttest.log(LogStatus.PASS, "add advertiser domain for partner", extenttest.addScreenCapture(captureScreenshot("tc34", "order_set2")));
+        Assert.assertTrue(prefPage.isAdvDomainDisplayed(advDomain));
+        log.info("test case executed");
+
+    }
+
+    @Test(priority =35,alwaysRun =true)
+    public void testAddAdCategory() throws InterruptedException, IOException {
+        driver.navigate().to(partnerListUrl);
+        log.info("Excuting the add category test case for partner");
+        extenttest = extentreport.startTest("add ad category for partner");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC35" + " add ad category for Partner");
+        PartnerListPage ptrlp = new PartnerListPage(driver);
+        ptrlp.clickOnPreference("TEST123");
+        PartnerPrefPage prefPage= new PartnerPrefPage(driver);
+        //Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
+        Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
+        Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
+        Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
+        Assert.assertTrue(prefPage.isAttributeTabDisplayed());
+        Thread.sleep(2000);
+        prefPage.clickOnAdCategoryTab();
+        Thread.sleep(2000);
+        prefPage.clickOnAddCategoryButton();
+        prefPage.clickOnSelectProvider();
+        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
+        prefPage.clickOnSelectPreference();
+        prefPage.selectPreference("Whitelist");
+        prefPage.enterDomainField("IAB1,IAB2,IAB3");
+        prefPage.clickOnSaveButton();
+        Thread.sleep(2000);
+        extenttest.log(LogStatus.PASS, "add ad crative id", extenttest.addScreenCapture(captureScreenshot("tc3", "order_set3")));
+        Assert.assertTrue(prefPage.isCategoryDisplayed("IAB1"));
+        log.info("test case executed");
     }
 
 }
