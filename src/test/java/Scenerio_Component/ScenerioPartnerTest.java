@@ -78,34 +78,5 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority =35,alwaysRun =true)
-    public void testAddAdCategory() throws InterruptedException, IOException {
-        driver.navigate().to(partnerListUrl);
-        log.info("Excuting the add category test case for partner");
-        extenttest = extentreport.startTest("add ad category for partner");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC35" + " add ad category for Partner");
-        PartnerListPage ptrlp = new PartnerListPage(driver);
-        ptrlp.clickOnPreference("TEST123");
-        PartnerPrefPage prefPage= new PartnerPrefPage(driver);
-        //Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
-        Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
-        Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
-        Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
-        Assert.assertTrue(prefPage.isAttributeTabDisplayed());
-        Thread.sleep(2000);
-        prefPage.clickOnAdCategoryTab();
-        Thread.sleep(2000);
-        prefPage.clickOnAddCategoryButton();
-        prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
-        prefPage.clickOnSelectPreference();
-        prefPage.selectPreference("Whitelist");
-        prefPage.enterDomainField("IAB1,IAB2,IAB3");
-        prefPage.clickOnSaveButton();
-        Thread.sleep(2000);
-        extenttest.log(LogStatus.PASS, "add ad crative id", extenttest.addScreenCapture(captureScreenshot("tc3", "order_set3")));
-        Assert.assertTrue(prefPage.isCategoryDisplayed("IAB1"));
-        log.info("test case executed");
-    }
 
 }
