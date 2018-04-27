@@ -133,7 +133,7 @@ public class DataProviderClass {
         data[0][0]="MODIFY_FLOOR_PRICE";
         data[0][1]="100";
 
-        data[1][0]="MDC_SAMPLING";
+        data[1][0]="LOG_SAMPLING";
         data[1][1]="101";
 
         data[2][0]="FULL_URL";
