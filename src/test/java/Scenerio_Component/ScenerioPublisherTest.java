@@ -439,7 +439,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add invalid feature mapping", extenttest.addScreenCapture(captureScreenshot("tc16", "order_set16")));
     }
 
-    @Test(priority=17)
+ /*   @Test(priority=17)
     public void testAddPmpDeal() throws InterruptedException,IOException
     {    deletePmpDealData("1");
         log.info("Excuting the add  valid pmp deal");
@@ -491,7 +491,7 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","10x20"));
         extenttest.log(LogStatus.PASS, "add pmp deal target", extenttest.addScreenCapture(captureScreenshot("tc18", "order_set18")));
     }
-
+*/
 
 
 }
