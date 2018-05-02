@@ -133,7 +133,7 @@ public class DataProviderClass {
         data[0][0]="MODIFY_FLOOR_PRICE";
         data[0][1]="100";
 
-        data[1][0]="MDC_SAMPLING";
+        data[1][0]="LOG_SAMPLING";
         data[1][1]="101";
 
         data[2][0]="FULL_URL";
@@ -162,4 +162,35 @@ public class DataProviderClass {
 
         return data;
     }
+    @DataProvider(name="InvalidPtrId")
+    public static Object[][] getInvalidPtrId()
+    {
+        Object[][] data = new Object[2][1];
+
+        //1st row
+        data[0][0] = "";
+        //2nd row
+        data[1][0] = "!#!@#!@#@!#@!#@!3";
+
+        return data;
+    }
+
+    @DataProvider(name = "ExchangeDetails")
+    public static Object[][] excDetails() {
+        Object[][] data = new Object[1][8];
+
+        //1st row
+        data[0][0] = "12345";
+        data[0][1] = "testemail@gmail.com";
+        data[0][2] = "testName";
+        data[0][3] = "testComanyName";
+        data[0][4] = "testFirstName";
+        data[0][5] = "testLastName";
+        data[0][6] = "maps.google.com";
+        data[0][7] = "category1 , category 2";
+
+        return data;
+    }
+
+
 }

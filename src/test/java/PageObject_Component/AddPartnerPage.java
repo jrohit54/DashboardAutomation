@@ -188,7 +188,7 @@ public class AddPartnerPage extends BaseClass{
          * to get the error message for invalid pubid
          * @return
          */
-        /*public String getErrorMessageForPubId()
+       /* public String getErrorMessageForPtrId()
         {
             return ptrIdErrorMessage.getText();
         }
