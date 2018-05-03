@@ -250,7 +250,7 @@ public class PartnerPrefPage extends BaseClass {
      */
     public void clickOnCreativeIdTab()
     {
-        explicitWait(creativeIdTab,2);
+        explicitWait(creativeIdTab,3);
         creativeIdTab.click();
     }
     /**

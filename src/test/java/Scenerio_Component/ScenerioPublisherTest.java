@@ -178,7 +178,7 @@ public class ScenerioPublisherTest extends BaseClass {
     }
 
     @Test(priority= 6)
-    public void testDeleteAdCategoty() throws InterruptedException, IOException
+    public void testDeleteAdCategory() throws InterruptedException, IOException
     {
         driver.navigate().to(publisherListUrl);
         log.info("Excuting the delete ad category test case");

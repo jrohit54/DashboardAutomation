@@ -124,7 +124,7 @@ public class ScenerioPartnerTest extends BaseClass {
         Assert.assertTrue(prefPage.isAttributeTabDisplayed());
         Thread.sleep(2000);
         prefPage.clickOnCreativeIdTab();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         prefPage.clickOnAddCreativeIdButton();
         prefPage.clickOnSelectProvider();
         prefPage.selectOption("All Advertisers");
@@ -143,8 +143,8 @@ public class ScenerioPartnerTest extends BaseClass {
     public void testAddAttributeId() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add attribute id test case for Partner");
-        extenttest = extentreport.startTest("add creative id for Partner");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC37" + " add creative id for Partner");
+        extenttest = extentreport.startTest("add attribute id for Partner");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC37" + " add attribute id for Partner");
         PartnerListPage ptrlp = new PartnerListPage(driver);
         ptrlp.clickOnPreference("TEST123");
         PartnerPrefPage prefPage = new PartnerPrefPage(driver);
@@ -241,7 +241,7 @@ public class ScenerioPartnerTest extends BaseClass {
         //Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("6322312");
         prefPage.clickOnDeleteButtonInConfirmPopup();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         extenttest.log(LogStatus.PASS, "delete creative id", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7")));
         prefPage.clickOnDeleteIconContainsAllProviders("6112312");
         prefPage.clickOnDeleteButtonInConfirmPopup();
