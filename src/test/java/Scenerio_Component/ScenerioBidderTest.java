@@ -17,7 +17,7 @@ public class ScenerioBidderTest extends BaseClass {
     @Test(priority = 19)
     public void testAddBidderPreferenceSize() throws InterruptedException,IOException
     {
-        extenttest = extentreport.startTest("Excuting the add bidder preference size");
+        extenttest = extentreport.startTest("Executing the add bidder preference size");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC19" + " add bidder preference size");
         driver.navigate().to(bidderListUrl);
         Thread.sleep(1000);

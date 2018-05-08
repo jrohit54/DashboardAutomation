@@ -44,22 +44,24 @@ public class ScenerioPublisherTest extends BaseClass {
         app.enterLastName(lName);
         app.enterDomain(domName);
         app.enterCategory(catName);
+        app.clickOnSelectPartner();
+        Thread.sleep(1000);
+        app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         Thread.sleep(1000);
         extenttest.log(LogStatus.PASS, "add valid publisher", extenttest.addScreenCapture(captureScreenshot("tc1", "order_set1")));
         Assert.assertTrue(plp.isPublisherAdded_SucessfullMessageDisplayed());
         log.info("test case executed");
         Thread.sleep(2000);
-        plp.clickOnSelectNumberOfPublisherDisplayed();
-        plp.selectNumberOfRecords("50");
+      //  plp.clickOnSelectNumberOfPublisherDisplayed();
+      //  plp.selectNumberOfRecords("20");
         Assert.assertTrue(plp.isPublisherIdDisplayed(pubId));
 
     }
-
     @Test(priority = 2,dataProviderClass=Dataprovider_Component.DataProviderClass.class,dataProvider = "AdvDomainDetails")
     public void testAddAdvertiserDomain(String advDomain) throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the add Advertiser domain test case");
+        log.info("Executing the add Advertiser domain test case");
         extenttest = extentreport.startTest("add advertiser domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC2" + " add advertiser domain");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -89,7 +91,7 @@ public class ScenerioPublisherTest extends BaseClass {
     @Test(priority =3,alwaysRun =true)
     public void testAddAdCategory() throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the add category test case");
+        log.info("Executing the add category test case");
         extenttest = extentreport.startTest("add ad category");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC3" + " add ad category");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -122,7 +124,7 @@ public class ScenerioPublisherTest extends BaseClass {
     @Test(priority =4, alwaysRun =true)
     public void testAddCreativeId() throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the add crative id test case");
+        log.info("Executing the add crative id test case");
         extenttest = extentreport.startTest("add creative id");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC4" + " add creative id");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -152,7 +154,7 @@ public class ScenerioPublisherTest extends BaseClass {
     @Test(priority = 5)
     public void testDeleteAdvertiserDomain() throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the delete advertiser domain test case");
+        log.info("Executing the delete advertiser domain test case");
         extenttest = extentreport.startTest("delete advertiser domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC5" + " delete advertiser domain");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -181,7 +183,7 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testDeleteAdCategory() throws InterruptedException, IOException
     {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the delete ad category test case");
+        log.info("Executing the delete ad category test case");
         extenttest = extentreport.startTest("delete ad category");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC6" + " delete ad category");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -209,7 +211,7 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testDeleteCreativeId() throws InterruptedException, IOException
     {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the delete creative id test case");
+        log.info("Executing the delete creative id test case");
         extenttest = extentreport.startTest("delete creative id");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC7" + " delete creative id");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -233,7 +235,7 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testAddPublisherWithNoPubId(String pubId) throws InterruptedException, IOException
     {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the add publisher without pubid test case");
+        log.info("Executing the add publisher without pubid test case");
         extenttest = extentreport.startTest("add publisher without pubid");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC8" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -242,6 +244,9 @@ public class ScenerioPublisherTest extends BaseClass {
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
         app.enterPubId(pubId);
+        app.clickOnSelectPartner();
+        Thread.sleep(1000);
+        app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         app.clickOnSaveButton();
         Assert.assertEquals(app.getErrorMessageForPubId(),"Publisher Id is a compulsory and Alphanumeric field");
@@ -254,7 +259,7 @@ public class ScenerioPublisherTest extends BaseClass {
     {
 
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the add publisher with with invalid email");
+        log.info("Executing the add publisher with with invalid email");
         extenttest = extentreport.startTest("add publisher with  invalid email");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC9" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -263,6 +268,9 @@ public class ScenerioPublisherTest extends BaseClass {
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
         app.enterEmail(email);
+        app.clickOnSelectPartner();
+        Thread.sleep(1000);
+        app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         Assert.assertEquals(app.getErrorMessageForEmail(),"Entered value is not a proper email");
         Thread.sleep(1000);
@@ -273,7 +281,7 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testInvalidEmailIdServerValidation(String email)throws InterruptedException, IOException
     {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the add publisher with with invalid email");
+        log.info("Executing the add publisher with with invalid email");
         extenttest = extentreport.startTest("add publisher with invalid email");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC10" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -283,6 +291,9 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
         app.enterPubId("123");
         app.enterEmail(email);
+        app.clickOnSelectPartner();
+        Thread.sleep(1000);
+        app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         Thread.sleep(1000);
         String message=app.getServersideMessage();
@@ -294,7 +305,7 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testDomainFieldValidation(String domain)  throws InterruptedException, IOException
     {
         driver.navigate().to(publisherListUrl);
-        log.info("Excuting the add publisher with with invalid domain");
+        log.info("Executing the add publisher with with invalid domain");
         extenttest = extentreport.startTest("add publisher with invalid domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC11" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
@@ -304,6 +315,9 @@ public class ScenerioPublisherTest extends BaseClass {
         Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
         app.enterPubId("123");
         app.enterDomain(domain);
+        app.clickOnSelectPartner();
+        Thread.sleep(1000);
+        app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         Thread.sleep(1000);
         Assert.assertEquals(app.getErrorMessageForDomain(),"Entered value is not a proper domain");
@@ -316,7 +330,7 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testAddValidBidder(String bidderId ,String bidderName)  throws InterruptedException, IOException
     {
         Response response = deleteBidderApi(bidderId);
-        log.info("Excuting the add valid bidder");
+        log.info("Executing the add valid bidder");
         extenttest = extentreport.startTest("Excuting the add valid bidder");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC12" + " add bidder");
         driver.navigate().to(bidderListUrl);
@@ -353,7 +367,7 @@ public class ScenerioPublisherTest extends BaseClass {
     @Test(priority = 13,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "BidderDetails")
     public void testEditBidder(String bidderId,String bidderName ) throws InterruptedException, IOException
     {
-        log.info("Excuting the edit  bidder");
+        log.info("Executing the edit  bidder");
         extenttest = extentreport.startTest("Excuting the edit bidder");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC13" + " edit bidder");
         driver.navigate().to(bidderListUrl);
@@ -372,7 +386,7 @@ public class ScenerioPublisherTest extends BaseClass {
     public void testAddFeatureMapping(String featureName,String data) throws InterruptedException, IOException {
         //to delete existing entry present in feature mapping for bidder 1
         deleteFeatureMappingData("1");
-        log.info("Excuting the add feature mapping");
+        log.info("Executing the add feature mapping");
         extenttest = extentreport.startTest("Excuting the add feature mapping");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC14" + " add feature mapping");
         driver.navigate().to(featureMappingUrl);
@@ -399,7 +413,7 @@ public class ScenerioPublisherTest extends BaseClass {
     @Test(priority= 15)
     public void testEditFeatureMapping() throws InterruptedException, IOException {
         String editData="{\"ALL\":100}";
-        log.info("Excuting the edit feature mapping");
+        log.info("Executing the edit feature mapping");
         extenttest = extentreport.startTest("Excuting the edit feature mapping");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC15" + " edit feature mapping");
         driver.navigate().to(featureMappingUrl);
@@ -416,7 +430,7 @@ public class ScenerioPublisherTest extends BaseClass {
     @Test(priority=16,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "invalidFeatureMappingDetails")
     public void testInvalidAddFeatureMapping(String featureName,String data) throws InterruptedException,IOException
     {
-        log.info("Excuting the add  feature mapping with invalid data");
+        log.info("Executing the add  feature mapping with invalid data");
         extenttest = extentreport.startTest("Excuting the add feature mapping");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC16" + " add feature mapping");
         driver.navigate().to(featureMappingUrl);

@@ -20,6 +20,7 @@ public class DataProviderClass {
         data[0][5] = "testLastName";
         data[0][6] = "maps.google.com";
         data[0][7] = "category1 , category 2";
+       // data[0][8] = "AAX (8PR6YK195)";
 
         //2nd row
         /*data[1][0] = "poiuy";

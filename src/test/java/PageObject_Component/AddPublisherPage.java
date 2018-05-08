@@ -1,16 +1,23 @@
 package PageObject_Component;
 
 import Generic_Component.BaseClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 /**
  * Created by rohit on 8/2/18.
  */
 public class AddPublisherPage extends BaseClass {
 
+    String selectOptionXpath="//*[text()='text1']";
+
+    @FindBy(xpath = "//div[@class='Select-placeholder']")
+    public List<WebElement> selectPartner;
 
     @FindBy(xpath = "//div[@class='list-item header']/h2")
     public WebElement newPublisher;
@@ -105,6 +112,28 @@ public class AddPublisherPage extends BaseClass {
     public void enterName(String text)
     {
         name.sendKeys(text);
+    }
+
+    /**
+     * to click on select partner
+     */
+    public void clickOnSelectPartner()
+    {
+        selectPartner.get(0).click();
+    }
+
+    /**
+     * to select the bidder from the list
+     * @param name
+     */
+    public void selectOption(String ...name)
+    {
+        for (String name1: name) {
+            String selectOption = selectOptionXpath.replace("text1", name1);
+            WebElement element = driver.findElement(By.xpath(selectOption));
+            explicitWait(element, 3);
+            element.click();
+        }
     }
 
     /**
