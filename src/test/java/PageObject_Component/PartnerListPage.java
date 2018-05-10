@@ -18,6 +18,12 @@ public class PartnerListPage extends BaseClass {
     String selectOptionXpath="//*[text()='text1']";
     String preferenceXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/following::div[1]/a";
 
+    @FindBy(xpath = "//div[@class='autocomplete active']")
+    public WebElement autoComplete;
+
+    @FindBy(id="search")
+    public WebElement partner;
+
     @FindBy(xpath = "//button[contains(text(),'Add New Partner')]")
     public WebElement addNewPartner;
 
@@ -155,5 +161,23 @@ public class PartnerListPage extends BaseClass {
         explicitWait(element,3);
         element.click();
     }
+
+    /**
+     * to enter domain in the add publisher page
+     * @param text
+     */
+    public void enterPartnerToSerach(String text)
+    {
+        partner.sendKeys(text);
+    }
+
+    /**
+     * to click on select exchange
+     */
+    public void clickOnAutoComplete()
+    {
+        autoComplete.click();
+    }
+
 
 }

@@ -5,18 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-/**
- * Created by rohit on 8/2/18.
- */
-public class PublisherListPage extends BaseClass{
 
-
+public class ExchangeListPage extends BaseClass {
     String deleteMessageXpath="//div[contains(text(),'text1')]";
     String advertiserDomainXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/parent::div/following::div[1]/a/button[contains(text(),'advertiser Domain')]";
     String advertiserCategoryXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/parent::div/following::div[1]/a/button[contains(text(),'ad Category')]";
@@ -28,23 +23,23 @@ public class PublisherListPage extends BaseClass{
     public WebElement autoComplete;
 
     @FindBy(id="search")
-    public WebElement publisher;
+    public WebElement exchange;
 
-    @FindBy(xpath = "//button[contains(text(),'Add New Publisher')]")
-    public WebElement addNewPublisher;
+    @FindBy(xpath = "//button[contains(text(),'Add Exchange')]")
+    public WebElement addNewExchange;
 
     @FindBy(xpath="//div[@class='Select-value']")
-    public WebElement selectNumberOfPublisherRecords;
+    public WebElement selectNumberOfExchangeRecords;
 
 
     @FindBy(xpath="//div[contains(text(),'Entry made successfully')]")
-    public  List<WebElement> sucessfullAddedMessage;
+    public List<WebElement> sucessfullAddedMessage;
 
     @FindBy(xpath="//div[@class='list-item']//span[@class='pub-id']")
-    public List<WebElement> allPublisherList;
+    public List<WebElement> allExchangeList;
 
 
-    public PublisherListPage(WebDriver driver)
+    public ExchangeListPage(WebDriver driver)
     {
         PageFactory.initElements(driver,this);
 
@@ -54,19 +49,19 @@ public class PublisherListPage extends BaseClass{
      * will check if add new publisher button is present or not
      * @return
      */
-    public boolean isAddNewPublisherButtonPresent()
+    public boolean isAddNewExchangeButtonPresent()
     {
 
-        return addNewPublisher.isDisplayed();
+        return addNewExchange.isDisplayed();
     }
 
     /**
      * To click on add new publisher button
      */
-    public void clickOnAddNewPublisher()
+    public void clickOnAddNewExchange()
     {
-        explicitWait(addNewPublisher,7);
-        addNewPublisher.click();
+        explicitWait(addNewExchange,5);
+        addNewExchange.click();
 
     }
 
@@ -74,51 +69,15 @@ public class PublisherListPage extends BaseClass{
      * will check if sucessfull message displayed after add publisher
      * @return
      */
-    public boolean isPublisherAdded_SucessfullMessageDisplayed()
+    public boolean isExchangeAdded_SucessfullMessageDisplayed()
     {
         int size = sucessfullAddedMessage.size();
         return size==1;
     }
-
-    /**
-     * will click on advertiser domain button corresponding to publisher id
-     * @param id
-     */
-    public void clickOnAdvertiserDomain(String id)
-    {
-        String advertiserButtonXpath=advertiserDomainXpath.replace("idValue", id);
-        WebElement element = driver.findElement(By.xpath(advertiserButtonXpath));
-        explicitWait(element,3);
-        element.click();
-    }
-
-    /**
-     * will click on ad category button corresponding to publisher id
-     * @param id
-     */
-    public void clickOnAdCategory(String id)
-    {
-        String advertiserButtonXpath=advertiserCategoryXpath.replace("idValue", id);
-        WebElement element = driver.findElement(By.xpath(advertiserButtonXpath));
-        explicitWait(element,3);
-        element.click();
-    }
-
-    /**
-     * will click on creative id corresponding to publisher id
-     * @param id
-     */
-    public void clickOnCreativeId(String id)
-    {
-        String advertiserButtonXpath=creativeIdXpath.replace("idValue", id);
-        WebElement element = driver.findElement(By.xpath(advertiserButtonXpath));
-        explicitWait(element,3);
-        element.click();
-    }
-    public void clickOnSelectNumberOfPublisherDisplayed()
+    public void clickOnSelectNumberOfExchangeDisplayed()
     {
         Actions action=new Actions(driver);
-        action.moveToElement(selectNumberOfPublisherRecords).click().build().perform();
+        action.moveToElement(selectNumberOfExchangeRecords).click().build().perform();
 
     }
 
@@ -139,11 +98,11 @@ public class PublisherListPage extends BaseClass{
      * @param pubId
      * @return
      */
-    public boolean isPublisherIdDisplayed(String pubId)
+    public boolean isExchangeIdDisplayed(String pubId)
     {
         boolean flag=false;
-        explicitWait(allPublisherList.get(0),3);
-        for (WebElement element:allPublisherList) {
+        explicitWait(allExchangeList.get(0),3);
+        for (WebElement element:allExchangeList) {
 
             String text = element.getText().replaceAll("[^A-Za-z0-9]", "");
             if (text.equalsIgnoreCase(pubId)) {
@@ -168,14 +127,16 @@ public class PublisherListPage extends BaseClass{
         element.click();
     }
 
+
     /**
-     * to search publisher in Publisher list page
+     * to enter domain in the add publisher page
      * @param text
      */
-    public void enterPublisherToSerach(String text)
+    public void enterExchangeToSerach(String text)
     {
-        publisher.sendKeys(text);
+        exchange.sendKeys(text);
     }
+
     /**
      * to click on select exchange
      */
@@ -183,9 +144,5 @@ public class PublisherListPage extends BaseClass{
     {
         autoComplete.click();
     }
+
 }
-
-
-
-
-
