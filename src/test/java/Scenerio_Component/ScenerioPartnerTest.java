@@ -41,9 +41,11 @@ public class ScenerioPartnerTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add valid partner", extenttest.addScreenCapture(captureScreenshot("tc1", "order_set1")));
         Assert.assertTrue(prtlp.isPartnerAdded_SucessfullMessageDisplayed());
         log.info("test case executed");
-        Thread.sleep(2000);
-        prtlp.clickOnSelectNumberOfPartnerDisplayed();
-        prtlp.selectNumberOfRecords("50");
+        Thread.sleep(5000);
+     //   prtlp.clickOnSelectNumberOfPartnerDisplayed();
+     //   prtlp.selectNumberOfRecords("50");
+        prtlp.enterPartnerToSerach("123");
+        prtlp.clickOnAutoComplete();
         Assert.assertTrue(prtlp.isPartnerIdDisplayed(ptrId));
 
     }
