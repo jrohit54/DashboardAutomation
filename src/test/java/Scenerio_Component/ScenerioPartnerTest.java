@@ -1,15 +1,20 @@
 package Scenerio_Component;
 
 import Generic_Component.BaseClass;
+import Generic_Component.CustomizeReport;
 import PageObject_Component.*;
 import com.jayway.restassured.response.Response;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-
+/**
+ * Created by Shilpy on 30/4/18.
+ */
+@Listeners(CustomizeReport.class)
 public class ScenerioPartnerTest extends BaseClass {
 
     public static Logger log = Logger.getLogger(ScenerioPartnerTest.class);

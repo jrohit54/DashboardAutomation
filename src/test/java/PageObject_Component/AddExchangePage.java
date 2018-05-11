@@ -58,8 +58,8 @@ public class AddExchangePage extends BaseClass{
     @FindBy(xpath="//header[@class='dashboard-header']/h1")
     public WebElement headerElement;
 
-    @FindBy(xpath="//input[@id='pubId']/parent::div/span[2]")
-    public WebElement pubIdErrorMessage;
+    @FindBy(xpath="//input[@id='id']/parent::div/span[2]")
+    public WebElement excIdErrorMessage;
 
     @FindBy(xpath="//input[@id='email']/parent::div/span[2]")
     public WebElement emailErrorMessage;
@@ -181,9 +181,9 @@ public class AddExchangePage extends BaseClass{
      * to get the error message for invalid pubid
      * @return
      */
-    public String getErrorMessageForPubId()
+    public String getErrorMessageForExcId()
     {
-        return pubIdErrorMessage.getText();
+        return excIdErrorMessage.getText();
     }
 
     /**
