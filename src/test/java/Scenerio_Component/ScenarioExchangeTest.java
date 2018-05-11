@@ -16,7 +16,10 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import com.jayway.restassured.response.Response;
 
-//import java.util.logging.Logger;
+/**
+ * Created by shilpy on 11/5/18.
+ */
+@Listeners(CustomizeReport.class)
 
 public class ScenarioExchangeTest extends BaseClass {
 
