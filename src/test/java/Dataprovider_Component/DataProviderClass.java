@@ -209,4 +209,38 @@ public class DataProviderClass {
 
         return data;
     }
+
+    @DataProvider(name = "InValidExchangeId")
+    public static Object[][] excIdInavlid() {
+        Object[][] data = new Object[1][8];
+
+        //1st row
+        data[0][0] = "abc";
+        data[0][1] = "TestExchange";
+       /* data[0][2] = "testemail@test.com";
+        data[0][3] = "testComanyName";
+        data[0][4] = "testFirstName";
+        data[0][5] = "testLastName";
+        data[0][6] = "test.exchange.com";
+        data[0][7] = "TEST";*/
+
+        return data;
+    }
+
+    @DataProvider(name = "InValidExchangeEmail")
+    public static Object[][] excEmailInavlid() {
+        Object[][] data = new Object[1][8];
+
+        //1st row
+        data[0][0] = "123";
+        data[0][1] = "TestExchange";
+        data[0][2] = "testemail";
+        data[0][3] = "testComanyName";
+        /*data[0][4] = "testFirstName";
+        data[0][5] = "testLastName";
+        data[0][6] = "test.exchange.com";
+        data[0][7] = "TEST";*/
+
+        return data;
+    }
 }

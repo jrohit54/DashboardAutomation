@@ -52,4 +52,43 @@ public class ScenarioExchangeTest extends BaseClass {
         Assert.assertTrue(elp.isExchangeIdDisplayed(excId));
 
     }
+
+    @Test(priority = 52,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "InValidExchangeId")
+    public void testAddInValidExchange(String excId, String name, String email, String compName, String fName, String lName, String compUrl, String type) throws InterruptedException, IOException{
+        driver.navigate().to(exchangeListUrl);
+        log.info("Executing Add Invalid Exchange Id Test Case");
+        extenttest = extentreport.startTest("invalid exchange id");
+        extenttest.log(LogStatus.PASS,"Executing Testcase " + "TC52" + "add exchange");
+        ExchangeListPage elp = new ExchangeListPage(driver);
+        Thread.sleep(1000);
+        elp.clickOnAddNewExchange();
+        AddExchangePage aep = new AddExchangePage(driver);
+        Assert.assertEquals(aep.getSubHeaderText(),"New Exchange");
+        aep.enterExcId(excId);
+        aep.enterName(name);
+        Assert.assertEquals(aep.getErrorMessageForExcId(),"Exchange Id should be a positive integer");
+        Thread.sleep(1000);
+        extenttest.log(LogStatus.PASS, "add exchange with excid", extenttest.addScreenCapture(captureScreenshot("tc52", "order_set52")));
+    }
+
+    @Test(priority = 53,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "InValidExchangeEmail")
+    public void testAddInValidEmailExchange(String excId, String name, String email, String compName, String fName, String lName, String compUrl, String type) throws InterruptedException, IOException{
+        driver.navigate().to(exchangeListUrl);
+        log.info("Executing Add Invalid Exchange Id Test Case");
+        extenttest = extentreport.startTest("invalid exchange id");
+        extenttest.log(LogStatus.PASS,"Executing Testcase " + "TC53" + "add exchange");
+        ExchangeListPage elp = new ExchangeListPage(driver);
+        Thread.sleep(1000);
+        elp.clickOnAddNewExchange();
+        AddExchangePage aep = new AddExchangePage(driver);
+        Assert.assertEquals(aep.getSubHeaderText(),"New Exchange");
+        aep.enterExcId(excId);
+        aep.enterName(name);
+        aep.enterEmail(email);
+        aep.enterCompanyName(compName);
+        Assert.assertEquals(aep.getErrorMessageForEmail(),"Entered value is not a proper email");
+        Thread.sleep(1000);
+        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc9", "order_set9")));
+
+    }
 }
