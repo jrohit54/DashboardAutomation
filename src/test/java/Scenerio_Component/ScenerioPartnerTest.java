@@ -1,15 +1,20 @@
 package Scenerio_Component;
 
 import Generic_Component.BaseClass;
+import Generic_Component.CustomizeReport;
 import PageObject_Component.*;
 import com.jayway.restassured.response.Response;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-
+/**
+ * Created by Shilpy on 30/4/18.
+ */
+@Listeners(CustomizeReport.class)
 public class ScenerioPartnerTest extends BaseClass {
 
     public static Logger log = Logger.getLogger(ScenerioPartnerTest.class);
@@ -41,9 +46,11 @@ public class ScenerioPartnerTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add valid partner", extenttest.addScreenCapture(captureScreenshot("tc1", "order_set1")));
         Assert.assertTrue(prtlp.isPartnerAdded_SucessfullMessageDisplayed());
         log.info("test case executed");
-        Thread.sleep(2000);
-        prtlp.clickOnSelectNumberOfPartnerDisplayed();
-        prtlp.selectNumberOfRecords("50");
+        Thread.sleep(5000);
+     //   prtlp.clickOnSelectNumberOfPartnerDisplayed();
+     //   prtlp.selectNumberOfRecords("50");
+        prtlp.enterPartnerToSerach("123");
+        prtlp.clickOnAutoComplete();
         Assert.assertTrue(prtlp.isPartnerIdDisplayed(ptrId));
 
     }

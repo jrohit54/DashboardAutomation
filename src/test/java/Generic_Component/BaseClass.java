@@ -36,6 +36,7 @@ public class BaseClass {
     public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
     public static String featureMappingUrl="http://10.6.33.131:8088/featuremapping";
     public  static String partnerListUrl="http://10.6.33.131:8088/partner/list";
+    public static String exchangeListUrl="http://10.6.33.131:8088/exchange/list";
     public static WebDriver driver;
     public static ExtentReports extentreport;
     public static ExtentTest extenttest;
@@ -187,5 +188,21 @@ public class BaseClass {
         return response;
     }
 
+
+    /**
+     * to delete an publisher using the delete api
+     * @param excid
+     * @return
+     */
+    public Response deleteAdvertiserApi(String excid)
+    {
+        RestAssured.baseURI=baserUri;
+        Response response = RestAssured.given()
+                .when()
+                .contentType((ContentType.JSON))
+                .delete("/advertisers/" + excid);
+
+        return response;
+    }
 
 }
