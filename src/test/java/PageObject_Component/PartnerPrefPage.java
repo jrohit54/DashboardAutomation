@@ -19,8 +19,8 @@ public class PartnerPrefPage extends BaseClass {
 
 
 
-   // @FindBy(xpath="//header[@class='dashboard-header']/h1")
-   // public WebElement headerElement;
+    @FindBy(xpath="//header[@class='dashboard-header']/h1")
+    public WebElement headerElement;
 
     @FindBy(xpath="//span[contains(text(),'Advertiser Domain')]")
     public WebElement advDomainTab;
@@ -82,11 +82,11 @@ public class PartnerPrefPage extends BaseClass {
      * to get the header text
      * @return
      */
-   /* public String getHeaderText()
+    public String getHeaderText()
     {
         explicitWait(headerElement,3);
         return headerElement.getText();
-    }*/
+    }
 
     /**
      * will check if advertiser domain tab is present

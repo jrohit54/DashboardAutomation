@@ -19,10 +19,10 @@ public class ScenerioPartnerTest extends BaseClass {
 
     public static Logger log = Logger.getLogger(ScenerioPartnerTest.class);
 
-    @Test(priority = 33,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
+    @Test(priority = 1,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
     public void testAddValidPartner(String ptrId, String name, String parentId, String email, String pymtModeId, String ptrApiKey, String ptrPaswd, String dfltTmpltId) throws InterruptedException, IOException {
 
-        Response response = deletePartnerApi(ptrId);http://tree.mn/rohit.jai/mowX-dashboard-automation/merge_requests/new?merge_request%5Bsource_branch%5D=dashboard_partner
+        Response response = deletePartnerApi(ptrId);
         Assert.assertEquals(response.statusCode(),200);
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add partner test case");
@@ -47,15 +47,15 @@ public class ScenerioPartnerTest extends BaseClass {
         Assert.assertTrue(prtlp.isPartnerAdded_SucessfullMessageDisplayed());
         log.info("test case executed");
         Thread.sleep(5000);
-     //   prtlp.clickOnSelectNumberOfPartnerDisplayed();
-     //   prtlp.selectNumberOfRecords("50");
+        prtlp.clickOnSelectNumberOfPartnerDisplayed();
+        prtlp.selectNumberOfRecords("50");
         prtlp.enterPartnerToSerach("123");
         prtlp.clickOnAutoComplete();
         Assert.assertTrue(prtlp.isPartnerIdDisplayed(ptrId));
 
     }
 
-    @Test(priority = 34,dataProviderClass=Dataprovider_Component.DataProviderClass.class,dataProvider = "AdvDomainDetails")
+    @Test(priority = 2,dataProviderClass=Dataprovider_Component.DataProviderClass.class,dataProvider = "AdvDomainDetails")
     public void testAddAdvertiserDomain(String advDomain) throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Excuting the add Advertiser domain test case for partner");
@@ -65,7 +65,7 @@ public class ScenerioPartnerTest extends BaseClass {
         ptrlp.clickOnPreference("TEST123");
         Thread.sleep(2000);
         PartnerPrefPage prefPage = new PartnerPrefPage(driver);
-      //  Assert.assertEquals(prefPage.getHeaderText(), "preference");
+        Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
         Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
         Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
         Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
@@ -85,7 +85,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority =35,alwaysRun =true)
+    @Test(priority =3,alwaysRun =true)
     public void testAddAdCategory() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add category test case for Partner");
@@ -94,7 +94,7 @@ public class ScenerioPartnerTest extends BaseClass {
         PartnerListPage ptrlp = new PartnerListPage(driver);
         ptrlp.clickOnPreference("TEST123");
         PartnerPrefPage prefPage = new PartnerPrefPage(driver);
-        //Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
+        Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
         Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
         Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
         Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
@@ -115,7 +115,7 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
 
     }
-    @Test(priority =36, alwaysRun =true)
+    @Test(priority =4, alwaysRun =true)
     public void testAddCreativeId() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add creative id test case for Partner");
@@ -124,7 +124,7 @@ public class ScenerioPartnerTest extends BaseClass {
         PartnerListPage ptrlp = new PartnerListPage(driver);
         ptrlp.clickOnPreference("TEST123");
         PartnerPrefPage prefPage = new PartnerPrefPage(driver);
-       // Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
         Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
         Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
         Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
@@ -146,7 +146,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority =37, alwaysRun =true)
+    @Test(priority =5, alwaysRun =true)
     public void testAddAttributeId() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add attribute id test case for Partner");
@@ -155,7 +155,7 @@ public class ScenerioPartnerTest extends BaseClass {
         PartnerListPage ptrlp = new PartnerListPage(driver);
         ptrlp.clickOnPreference("TEST123");
         PartnerPrefPage prefPage = new PartnerPrefPage(driver);
-        // Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
         Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
         Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
         Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
@@ -177,7 +177,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority = 38)
+    @Test(priority = 6)
     public void testDeleteAdvertiserDomain() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the delete advertiser domain test case for Partner");
@@ -186,7 +186,7 @@ public class ScenerioPartnerTest extends BaseClass {
         PartnerListPage ptrlp = new PartnerListPage(driver);
         ptrlp.clickOnPreference("TEST123");
         PartnerPrefPage prefPage = new PartnerPrefPage(driver);
-        //Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("http://maps.google.com");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         Thread.sleep(1000);
@@ -205,7 +205,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority= 39)
+    @Test(priority= 7)
     public void testDeleteAdCategoty() throws InterruptedException, IOException
     {
         driver.navigate().to(partnerListUrl);
@@ -218,7 +218,7 @@ public class ScenerioPartnerTest extends BaseClass {
         Thread.sleep(2000);
         prefPage.clickOnAdCategoryTab();
         Thread.sleep(2000);
-        //Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("IAB1");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         Thread.sleep(1000);
@@ -233,7 +233,7 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
     }
 
-    @Test(priority= 40)
+    @Test(priority= 8)
     public void testDeleteCreativeId() throws InterruptedException, IOException
     {
         driver.navigate().to(partnerListUrl);
@@ -245,7 +245,7 @@ public class ScenerioPartnerTest extends BaseClass {
         PartnerPrefPage prefPage = new PartnerPrefPage(driver);
         Thread.sleep(1000);
         prefPage.clickOnCreativeIdTab();
-        //Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("6322312");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         Thread.sleep(3000);
@@ -257,7 +257,7 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
     }
 
-    @Test(priority= 41)
+    @Test(priority= 9)
     public void testDeleteAttribute() throws InterruptedException, IOException
     {
         driver.navigate().to(partnerListUrl);
@@ -270,7 +270,7 @@ public class ScenerioPartnerTest extends BaseClass {
         Thread.sleep(2000);
         prefPage.clickOnAdAttributeTab();
         Thread.sleep(2000);
-        //Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        Assert.assertEquals(prefPage.getHeaderText(), "Partner Preference");
         prefPage.clickOnDeleteIconContainsAllProviders("1");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         Thread.sleep(1000);
