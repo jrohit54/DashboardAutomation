@@ -22,7 +22,7 @@ public class ScenerioFeatureMappingTest  extends BaseClass {
         deleteFeatureMappingData("1");
         log.info("Executing the add feature mapping");
         extenttest = extentreport.startTest("Excuting the add feature mapping");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC14" + " add feature mapping");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC1" + " add feature mapping");
         driver.navigate().to(featureMappingUrl);
         Thread.sleep(1000);
         FeatureMappingPage featurePage=new FeatureMappingPage(driver);
@@ -41,7 +41,7 @@ public class ScenerioFeatureMappingTest  extends BaseClass {
         Thread.sleep(3000);
         Assert.assertTrue(featurePage.isFeatureNameDisplayed("1",featureName));
         Assert.assertTrue(featurePage.isFeatureDataDisplayed("1",data));
-        extenttest.log(LogStatus.PASS, "add feature mapping", extenttest.addScreenCapture(captureScreenshot("tc14", "order_set14")));
+        extenttest.log(LogStatus.PASS, "add feature mapping", extenttest.addScreenCapture(captureScreenshot("tc1", "order_set1")));
     }
 
     @Test(priority= 2)
@@ -49,7 +49,7 @@ public class ScenerioFeatureMappingTest  extends BaseClass {
         String editData="{\"ALL\":100}";
         log.info("Executing the edit feature mapping");
         extenttest = extentreport.startTest("Excuting the edit feature mapping");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC15" + " edit feature mapping");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC2" + " edit feature mapping");
         driver.navigate().to(featureMappingUrl);
         Thread.sleep(1000);
         FeatureMappingPage featurePage=new FeatureMappingPage(driver);
@@ -58,7 +58,7 @@ public class ScenerioFeatureMappingTest  extends BaseClass {
         featurePage.clickOnEditSaveButton();
         Thread.sleep(3000);
         Assert.assertTrue(featurePage.isFeatureDataDisplayed("1",editData));
-        extenttest.log(LogStatus.PASS, "add feature mapping", extenttest.addScreenCapture(captureScreenshot("tc15", "order_set15")));
+        extenttest.log(LogStatus.PASS, "add feature mapping", extenttest.addScreenCapture(captureScreenshot("tc2", "order_set2")));
     }
 
     @Test(priority=3,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "invalidFeatureMappingDetails")
@@ -66,7 +66,7 @@ public class ScenerioFeatureMappingTest  extends BaseClass {
     {
         log.info("Executing the add  feature mapping with invalid data");
         extenttest = extentreport.startTest("Excuting the add feature mapping");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC16" + " add feature mapping");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC3" + " add feature mapping");
         driver.navigate().to(featureMappingUrl);
         Thread.sleep(1000);
         FeatureMappingPage featurePage=new FeatureMappingPage(driver);
@@ -84,7 +84,7 @@ public class ScenerioFeatureMappingTest  extends BaseClass {
         featurePage.clickOnSaveButton();
         Thread.sleep(1000);
         Assert.assertEquals(featurePage.getDataErrorTest(),"Value does not satisfy the feature Validations");
-        extenttest.log(LogStatus.PASS, "add invalid feature mapping", extenttest.addScreenCapture(captureScreenshot("tc16", "order_set16")));
+        extenttest.log(LogStatus.PASS, "add invalid feature mapping", extenttest.addScreenCapture(captureScreenshot("tc3", "order_set3")));
     }
 
 }
