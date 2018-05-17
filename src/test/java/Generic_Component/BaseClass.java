@@ -77,6 +77,18 @@ public class BaseClass {
     }
 
     /**
+     * for wait
+     * @param durationInMilliSeconds
+     */
+    public void waitFor(int durationInMilliSeconds) {
+        try {
+            Thread.sleep(durationInMilliSeconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+    /**
      * To launch the browser
      * also initialise the extent report
      */
