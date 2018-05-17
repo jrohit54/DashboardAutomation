@@ -19,6 +19,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import com.sun.javafx.PlatformUtil;
 
 
 import java.io.File;
@@ -85,9 +86,10 @@ public class BaseClass {
         SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
         String str2=df.format(date);
         extentreport= new ExtentReports(System.getProperty("user.dir")+"/reports/"+"admin_dashboard"+"-"+str2+".html",false);
-        if(System.getProperty("os.name").contains("Windows")) {
+       /* if(System.getProperty("os.name").contains("Windows")) {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\chromedriver.exe");
-        }
+        }*/
+        setDriverPath();
         driver=new ChromeDriver();
         driver.get(publisherListUrl);
         driver.manage().window().maximize();
@@ -203,6 +205,18 @@ public class BaseClass {
                 .delete("/advertisers/" + excid);
 
         return response;
+    }
+
+    private static void setDriverPath() {
+        if (PlatformUtil.isMac()) {
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chromedriver");
+        }
+        if (PlatformUtil.isWindows()) {
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chromedriver.exe");
+        }
+        if (PlatformUtil.isLinux()) {
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chromedriver_linux");
+        }
     }
 
 }
