@@ -27,7 +27,7 @@ public class ScenerioPartnerTest extends BaseClass {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add partner test case");
         extenttest = extentreport.startTest("add partner");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC33" + " add partner");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC1" + " add partner");
         PartnerListPage prtlp = new PartnerListPage(driver);
         waitFor(1000);
         prtlp.clickOnAddNewPartner();
@@ -46,22 +46,22 @@ public class ScenerioPartnerTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add valid partner", extenttest.addScreenCapture(captureScreenshot("tc1", "order_set1")));
         Assert.assertTrue(prtlp.isPartnerAdded_SucessfullMessageDisplayed());
         log.info("test case executed");
-        waitFor(5000);
+        waitFor(3000);
         prtlp.clickOnSelectNumberOfPartnerDisplayed();
         prtlp.selectNumberOfRecords("50");
-        prtlp.enterPartnerToSerach("123");
+        prtlp.enterPartnerToSerach("TEST123");
         prtlp.clickOnAutoComplete();
         Assert.assertTrue(prtlp.isPartnerIdDisplayed(ptrId));
     }
 
-    @Test(priority = 2,dependsOnMethods = "testAddValidPartner")
+    @Test(priority = 2)
     public void testEditPartner() throws InterruptedException, IOException
     {
 
         driver.navigate().to(partnerListUrl);
         log.info("Executing the edit partner test case");
         extenttest = extentreport.startTest("edit partner");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC33" + " add partner");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC2" + " edit partner");
         PartnerListPage prtlp = new PartnerListPage(driver);
         prtlp.clickOnPartnerEditIcon("TEST123");
         waitFor(1000);
@@ -302,6 +302,39 @@ public class ScenerioPartnerTest extends BaseClass {
         waitFor(1000);
         extenttest.log(LogStatus.PASS, "delete advertiser category", extenttest.addScreenCapture(captureScreenshot("tc10", "order_set10.1")));
         log.info("test case executed");
+    }
+
+    @Test(priority =11,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
+    public void testAddPartnerWithoutEmailId(String ptrId, String name, String parentId, String email, String pymtModeId, String ptrApiKey, String ptrPaswd, String dfltTmpltId) throws InterruptedException, IOException {
+
+        Response response = deletePartnerApi(ptrId);
+        Assert.assertEquals(response.statusCode(),200);
+        driver.navigate().to(partnerListUrl);
+        log.info("Executing the add partner test case");
+        extenttest = extentreport.startTest("add partner");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "Tc11" + " add partner without email id");
+        PartnerListPage prtlp = new PartnerListPage(driver);
+        waitFor(1000);
+        prtlp.clickOnAddNewPartner();
+        AddPartnerPage app = new AddPartnerPage(driver);
+        app.enterPtrId(ptrId);
+        app.enterName(name);
+        app.enterparentId(parentId);
+        app.enterPaymentModeId(pymtModeId);
+        app.enterPartnerApiId(ptrApiKey);
+        app.enterPassword(ptrPaswd);
+        app.enterTemplateId(dfltTmpltId);
+        app.clickOnSaveButton();
+        waitFor(1000);
+        extenttest.log(LogStatus.PASS, "add valid partner without emailId", extenttest.addScreenCapture(captureScreenshot("tc11", "order_se11")));
+        Assert.assertTrue(prtlp.isPartnerAdded_SucessfullMessageDisplayed());
+        log.info("test case executed");
+        waitFor(3000);
+        prtlp.clickOnSelectNumberOfPartnerDisplayed();
+        prtlp.selectNumberOfRecords("50");
+        prtlp.enterPartnerToSerach("123");
+        prtlp.clickOnAutoComplete();
+        Assert.assertTrue(prtlp.isPartnerIdDisplayed(ptrId));
     }
 
 }
