@@ -17,8 +17,8 @@ public class BidderPrefPage extends BaseClass {
 
     String selectOptionXpath = "//*[text()='text1']";
     String sizeElementXpath = "//label[@class='custom-check-inline' and text()='size']/span";
-    String deleteIconXpath="//div[@class='label-wrap ']/label[contains(text(),'size')]/parent::div/following::div//i[@class='ico-delete1']";
-    String textXpath="//span[text()='text1']";
+    String deleteIconXpath = "//div[@class='label-wrap ']/label[contains(text(),'size')]/parent::div/following::div//i[@class='ico-delete1']";
+    String textXpath = "//span[text()='text1']";
 
     @FindBy(xpath = "//button[text()='Add Size']")
     public WebElement sizeElement;
@@ -35,52 +35,52 @@ public class BidderPrefPage extends BaseClass {
     @FindBy(xpath = "//div[@class='label-wrap ']/label")
     public List<WebElement> allSizeData;
 
-    @FindBy(xpath="//button[text()='Delete']")
+    @FindBy(xpath = "//button[text()='Delete']")
     public WebElement deleteButtonElement;
 
-    @FindBy(xpath="//div[@class='tab']/span[text()='Publisher Domain']")
+    @FindBy(xpath = "//div[@class='tab']/span[text()='Publisher Domain']")
     public WebElement pubDomainElement;
 
-    @FindBy(xpath="//button[text()='Add Domain Mapping']")
+    @FindBy(xpath = "//button[text()='Add Domain Mapping']")
     public WebElement addDomainButtonElement;
 
-    @FindBy(xpath="//textarea[@id='formControlsTextarea']")
+    @FindBy(xpath = "//textarea[@id='formControlsTextarea']")
     public WebElement textFieldElement;
 
-    @FindBy(xpath="//div[@class='tab']/span[text()='Tag ID']")
+    @FindBy(xpath = "//div[@class='tab']/span[text()='Tag ID']")
     public WebElement tagIdTabElement;
 
-    @FindBy(xpath="//button[text()='Add Tag ID']")
+    @FindBy(xpath = "//button[text()='Add Tag ID']")
     public WebElement addTagIdButtonElement;
 
-    @FindBy(xpath="//div[@class='tab']/span[text()='Publisher SLD']")
+    @FindBy(xpath = "//div[@class='tab']/span[text()='Publisher SLD']")
     public WebElement pubSLDTabElement;
 
-    @FindBy(xpath="//button[text()='Add Publisher SLD']")
+    @FindBy(xpath = "//button[text()='Add Publisher SLD']")
     public WebElement addPubSLDButtonElement;
 
-    @FindBy(xpath="//div[@class='tab']/span[text()='Device Type']")
+    @FindBy(xpath = "//div[@class='tab']/span[text()='Device Type']")
     public WebElement deviceTypeTabElement;
 
     @FindBy(xpath = "//button[text()='Add Device Type']")
     public WebElement addDeviceTypeButtonElement;
 
-    @FindBy(xpath="//div[@class='tab']/span[text()='Country']")
+    @FindBy(xpath = "//div[@class='tab']/span[text()='Country']")
     public WebElement countryTabElement;
 
-    @FindBy(xpath="//button[text()='Add Country']")
+    @FindBy(xpath = "//button[text()='Add Country']")
     public WebElement addCountryButton;
 
-    @FindBy(xpath="//div[@class='tab']/span[text()='Operating System']")
+    @FindBy(xpath = "//div[@class='tab']/span[text()='Operating System']")
     public WebElement operatingSystemTabElement;
 
-    @FindBy(xpath="//button[text()='Add Operating System']")
+    @FindBy(xpath = "//button[text()='Add Operating System']")
     public WebElement addOperatingSystemButton;
 
-    @FindBy(xpath="//div[@class='tab']/span[text()='Gender']")
+    @FindBy(xpath = "//div[@class='tab']/span[text()='Gender']")
     public WebElement genderTabElement;
 
-    @FindBy(xpath="//button[text()='Add Gender']")
+    @FindBy(xpath = "//button[text()='Add Gender']")
     public WebElement addGenderButtonElement;
 
     public BidderPrefPage(WebDriver driver) {
@@ -150,13 +150,13 @@ public class BidderPrefPage extends BaseClass {
 
     /**
      * To validate if size is present in list
+     *
      * @param size
      * @return
      */
-    public boolean isDataDisplayed(String size)
-    {
-        boolean flag=false;
-        for (WebElement element:allSizeData) {
+    public boolean isDataDisplayed(String size) {
+        boolean flag = false;
+        for (WebElement element : allSizeData) {
 
             String text = element.getText();
             if (text.equals(size)) {
@@ -183,13 +183,11 @@ public class BidderPrefPage extends BaseClass {
     /**
      * To validate if text is displayed or not
      */
-    public boolean isMessageDisplayed(String message)
-    {
-        boolean flag=false;
+    public boolean isMessageDisplayed(String message) {
+        boolean flag = false;
         String newXpath = textXpath.replace("text1", message);
-        if(driver.findElements(By.xpath(newXpath)).size()>0)
-        {
-            flag=true;
+        if (driver.findElements(By.xpath(newXpath)).size() > 0) {
+            flag = true;
         }
         return flag;
     }
@@ -197,37 +195,33 @@ public class BidderPrefPage extends BaseClass {
     /**
      * To click on delete button in confirmation popup
      */
-     public void clickOnDeleteConfirmationButton()
-     {
-         explicitWait(deleteButtonElement,2);
-         deleteButtonElement.click();
+    public void clickOnDeleteConfirmationButton() {
+        explicitWait(deleteButtonElement, 2);
+        deleteButtonElement.click();
 
-     }
+    }
 
     /**
      * To click on publisher domain tab in bidder preference
      */
-    public void clickOnPublisherDomainTab()
-    {
-        explicitWait(pubDomainElement,2);
+    public void clickOnPublisherDomainTab() {
+        explicitWait(pubDomainElement, 2);
         pubDomainElement.click();
     }
 
     /**
      * To click on add domain mapping button
      */
-    public void clickOnAddDomainMappingButton()
-    {
-        explicitWait(addDomainButtonElement,1);
+    public void clickOnAddDomainMappingButton() {
+        explicitWait(addDomainButtonElement, 1);
         addDomainButtonElement.click();
     }
 
     /**
      * To enter text in textfield
      */
-    public void enterText(String text)
-    {
-        explicitWait(textFieldElement,2);
+    public void enterText(String text) {
+        explicitWait(textFieldElement, 2);
         textFieldElement.sendKeys(text);
 
     }
@@ -235,97 +229,90 @@ public class BidderPrefPage extends BaseClass {
     /**
      * To click on tag id tab in bidder preference
      */
-    public void clickOnTagIdTab()
-    {
-        explicitWait(tagIdTabElement,2);
+    public void clickOnTagIdTab() {
+        explicitWait(tagIdTabElement, 2);
         tagIdTabElement.click();
     }
 
     /**
      * To click on add tag id button
      */
-     public void clickOnAddTagIdButton()
-     {
-         explicitWait(addTagIdButtonElement,2);
-         addTagIdButtonElement.click();
-     }
+    public void clickOnAddTagIdButton() {
+        explicitWait(addTagIdButtonElement, 2);
+        addTagIdButtonElement.click();
+    }
 
     /**
      * To click on publisher SLD tab in Bidder Preference
      */
-     public void clickOnPublisherSLDTab()
-     {
-         explicitWait(pubSLDTabElement,2);
-         pubSLDTabElement.click();
-     }
+    public void clickOnPublisherSLDTab() {
+        explicitWait(pubSLDTabElement, 2);
+        pubSLDTabElement.click();
+    }
+
     /**
      * To click on add publisher SLD button
      */
-     public void clickOnAddPublisherSLDButton()
-     {
-         explicitWait(addPubSLDButtonElement,2);
-         addPubSLDButtonElement.click();
+    public void clickOnAddPublisherSLDButton() {
+        explicitWait(addPubSLDButtonElement, 2);
+        addPubSLDButtonElement.click();
 
-     }
+    }
 
     /**
      * To click on device type tab in Bidder Preference
      */
-    public void clickOnDeviceTypeTab()
-    {
-        explicitWait(deviceTypeTabElement,2);
+    public void clickOnDeviceTypeTab() {
+        explicitWait(deviceTypeTabElement, 2);
         deviceTypeTabElement.click();
     }
 
     /**
      * To click on add device type button
      */
-    public void clickOnAddDeviceTypeButton()
-    {
-        explicitWait(addDeviceTypeButtonElement,2);
+    public void clickOnAddDeviceTypeButton() {
+        explicitWait(addDeviceTypeButtonElement, 2);
         addDeviceTypeButtonElement.click();
     }
 
     /**
      * To click on country tab in bidder preference
      */
-    public void clickOnCountryTab()
-    {
-        explicitWait(countryTabElement,2);
-        countryTabElement.click();;
+    public void clickOnCountryTab() {
+        explicitWait(countryTabElement, 2);
+        countryTabElement.click();
+        ;
     }
 
     /**
      * To click on add country button
      */
-    public void clickOnAddCoutryButton()
-    {
-        explicitWait(addCountryButton,2);
+    public void clickOnAddCoutryButton() {
+        explicitWait(addCountryButton, 2);
         addCountryButton.click();
     }
+
     /**
      * To click on Operating System tab in bidder preference
      */
-    public void clickOnOperatingSystemTab()
-    {
-        explicitWait(operatingSystemTabElement,2);
+    public void clickOnOperatingSystemTab() {
+        explicitWait(operatingSystemTabElement, 2);
         operatingSystemTabElement.click();
     }
+
     /**
      * To click on add operating system button
      */
-    public void clickOnAddOperatingSystemButton()
-    {
-        explicitWait(addOperatingSystemButton,2);
+    public void clickOnAddOperatingSystemButton() {
+        explicitWait(addOperatingSystemButton, 2);
         addOperatingSystemButton.click();
     }
 
     /**
      * To click on Gender Tab in bidder preference
      */
-    public void clickOnGenderTab()
-    {
-        explicitWait(genderTabElement,2);
+    public void clickOnGenderTab() {
+        explicitWait(genderTabElement, 2);
         genderTabElement.click();
 
     }
@@ -333,9 +320,8 @@ public class BidderPrefPage extends BaseClass {
     /**
      * To click on add gender button
      */
-    public void clickOnAddGenderButton()
-    {
-        explicitWait(addGenderButtonElement,2);
+    public void clickOnAddGenderButton() {
+        explicitWait(addGenderButtonElement, 2);
         addGenderButtonElement.click();
     }
 }
