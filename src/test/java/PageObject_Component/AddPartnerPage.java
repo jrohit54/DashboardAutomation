@@ -43,7 +43,7 @@ public class AddPartnerPage extends BaseClass{
     @FindBy(id="defaultTemplateId")
     public WebElement dfltTmpltId;
 
-    @FindBy(xpath="//button[@type=\'submit\']")
+    @FindBy(xpath="//button[@type='submit']")
     public WebElement saveButton;
 
     @FindBy(xpath = "//button[contains(text(),'Cancel')][@name='button']")
@@ -104,6 +104,7 @@ public class AddPartnerPage extends BaseClass{
      */
     public void enterparentId(String text)
     {
+        parentId.clear();
         parentId.sendKeys(text);
     }
     /**

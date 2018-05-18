@@ -11,12 +11,10 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class PartnerListPage extends BaseClass {
-    //   String deleteMessageXpath="//div[contains(text(),'text1')]";
-    //   String advertiserDomainXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/parent::div/following::div[1]/a/button[contains(text(),'advertiser Domain')]";
-    // String advertiserCategoryXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/parent::div/following::div[1]/a/button[contains(text(),'ad Category')]";
-    //   String creativeIdXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/parent::div/following::div[1]/a/button[contains(text(),'Creative id')]";
     String selectOptionXpath="//*[text()='text1']";
     String preferenceXpath="//div[@class='list-item']//div/span[contains(@class, 'pub-id') and text() = 'idValue']/parent::div/following::div[1]/a";
+    String editIconXpath="//span[@class='pub-id' and text()='partnerId']/parent::div/parent::div/parent::div/div[2]//a[2]";
+    String parentIdXpath="//span[@class='pub-id' and text()='partnerId']/parent::div/parent::div/div[3]/div/span[text()='Parent ID']/following::span[1]";
 
     @FindBy(xpath = "//div[@class='autocomplete active']")
     public WebElement autoComplete;
@@ -179,5 +177,28 @@ public class PartnerListPage extends BaseClass {
         autoComplete.click();
     }
 
+
+    /**
+     * to click on the partner edit icon
+     * @param partnerId
+     */
+    public void clickOnPartnerEditIcon(String partnerId)
+    {
+        String newXpath = editIconXpath.replace("partnerId", partnerId);
+        WebElement element = driver.findElement(By.xpath(newXpath));
+        element.click();
+    }
+
+    /**
+     * to get the parent id in list page
+     * @param partnerId
+     */
+    public String getParentIdForPartner(String partnerId)
+    {
+        String newXpath = parentIdXpath.replace("partnerId", partnerId);
+        WebElement element = driver.findElement(By.xpath(newXpath));
+        explicitWait(element,2);
+        return element.getText();
+    }
 
 }
