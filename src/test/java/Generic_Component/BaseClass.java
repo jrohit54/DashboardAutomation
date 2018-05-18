@@ -19,7 +19,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import com.sun.javafx.PlatformUtil;
+
 
 
 import java.io.File;
@@ -220,13 +220,15 @@ public class BaseClass {
     }
 
     private static void setDriverPath() {
-        if (PlatformUtil.isMac()) {
+        String osNameMatch=System.getProperty("os.name").toLowerCase();
+
+        if (osNameMatch.contains("mac os")) {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chromedriver");
         }
-        if (PlatformUtil.isWindows()) {
+        if (osNameMatch.contains("windows")) {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chromedriver.exe");
         }
-        if (PlatformUtil.isLinux()) {
+        if (osNameMatch.contains("linux")) {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chromedriver_linux");
         }
     }
