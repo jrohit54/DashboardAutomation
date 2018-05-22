@@ -33,9 +33,6 @@ public class PublisherPrefPage extends BaseClass {
     @FindBy(xpath = "//span[contains(text(),'Creative ID')]")
     public WebElement creativeIdTab;
 
-    @FindBy(xpath = "//span[contains(text(),'Attribute')]")
-    public WebElement attributeTab;
-
     @FindBy(xpath = "//input[@id='search'][@placeholder='Search by Domain Names']")
     public WebElement domainSearchField;
 
@@ -71,6 +68,13 @@ public class PublisherPrefPage extends BaseClass {
 
     @FindBy(xpath = "//section[@class='body-wrap']//button[contains(text(),'Delete')]")
     public WebElement deleteButton;
+
+    @FindBy(xpath = "//span[contains(text(),'Attribute')]")
+    public WebElement attributeTab;
+
+    @FindBy(xpath = "//button[@class='btn' and text()='Add Attribute']")
+    public WebElement addAttributeIdButton;
+
 
     public PublisherPrefPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -208,15 +212,16 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isAdvDomainDisplayed(String domain) {
         boolean flag = false;
-        explicitWait(listDomains.get(0), 3);
-        for (WebElement element : listDomains) {
+        if (listDomains.size() > 0) {
+            for (WebElement element : listDomains) {
 
-            String text = element.getText();
-            if (text.equals(domain)) {
-                flag = true;
-                return flag;
+                String text = element.getText();
+                if (text.equals(domain)) {
+                    flag = true;
+                    return flag;
+                }
+
             }
-
         }
         return flag;
     }
@@ -255,15 +260,16 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isCategoryDisplayed(String category) {
         boolean flag = false;
-        explicitWait(listDomains.get(0), 3);
-        for (WebElement element : listDomains) {
+        if (listDomains.size() > 0) {
+            for (WebElement element : listDomains) {
 
-            String text = element.getText();
-            if (text.contains(category)) {
-                flag = true;
-                return flag;
+                String text = element.getText();
+                if (text.contains(category)) {
+                    flag = true;
+                    return flag;
+                }
+
             }
-
         }
         return flag;
     }
@@ -285,15 +291,16 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isCreativeIdDisplayed(String crid) {
         boolean flag = false;
-        explicitWait(listDomains.get(1), 3);
-        for (WebElement element : listDomains) {
+        if (listDomains.size() > 0) {
+            for (WebElement element : listDomains) {
 
-            String text = element.getText();
-            if (text.equals(crid)) {
-                flag = true;
-                return flag;
+                String text = element.getText();
+                if (text.equals(crid)) {
+                    flag = true;
+                    return flag;
+                }
+
             }
-
         }
         return flag;
     }
@@ -365,5 +372,43 @@ public class PublisherPrefPage extends BaseClass {
         element.click();
     }
 
+    /**
+     * To click on ad category menu tab
+     */
+    public void clickOnAdAttributeTab() {
+        explicitWait(attributeTab, 5);
+        attributeTab.click();
+    }
+
+    /**
+     * To click on add attribute id button under attribute id tab
+     */
+    public void clickOnAddAttributeIdButton() {
+        explicitWait(addAttributeIdButton, 5);
+        addAttributeIdButton.click();
+
+    }
+
+    /**
+     * To verify if ad category is being  displayed once sucessfully added
+     *
+     * @param attribute
+     * @return
+     */
+    public boolean isAttributeDisplayed(String attribute) {
+        boolean flag = false;
+        if (listDomains.size() > 0) {
+            for (WebElement element : listDomains) {
+
+                String text = element.getText();
+                if (text.contains(attribute)) {
+                    flag = true;
+                    return flag;
+                }
+
+            }
+        }
+        return flag;
+    }
 
 }
