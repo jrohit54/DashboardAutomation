@@ -124,10 +124,10 @@ public class ScenerioPartnerTest extends BaseClass {
         prefPage.clickOnAddCategoryButton();
         prefPage.clickOnSelectProvider();
         prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
-        Thread.sleep(1000);
+        waitFor(1000);
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
-        Thread.sleep(1000);
+        waitFor(1000);
         prefPage.enterDomainField("IAB1,IAB2,IAB3");
         prefPage.clickOnSaveButton();
         waitFor(2000);
