@@ -417,7 +417,7 @@ public class ScenerioBidderTest extends BaseClass {
         prefPage.clickOnDeleteIcon("FEMALE");
         Assert.assertTrue(prefPage.isMessageDisplayed("Delete Gender: FEMALE"));
         prefPage.clickOnDeleteConfirmationButton();
-        waitFor(1000);
+        waitFor(2000);
         Assert.assertFalse(prefPage.isDataDisplayed("FEMALE"));
         extenttest.log(LogStatus.PASS, "delete bidder preference Gender", extenttest.addScreenCapture(captureScreenshot("tc18", "order_set18")));
     }
