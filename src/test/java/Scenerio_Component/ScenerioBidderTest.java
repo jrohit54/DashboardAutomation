@@ -386,10 +386,10 @@ public class ScenerioBidderTest extends BaseClass {
         waitFor(1000);
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
+        waitFor(1000);
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
         prefPage.clickOnGenderTab();
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnAddGenderButton();
         prefPage.clickOnSelectPublisherSelectOption();
         prefPage.selectOption("testName (12345)");
@@ -411,7 +411,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnGenderTab();
         waitFor(1000);
         prefPage.clickOnDeleteIcon("FEMALE");

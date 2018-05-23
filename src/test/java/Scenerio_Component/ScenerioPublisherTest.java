@@ -340,7 +340,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher with  invalid email");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC11" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(), "New Publisher");
