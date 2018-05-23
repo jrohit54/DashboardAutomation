@@ -469,7 +469,7 @@ public class ScenerioBidderTest extends BaseClass {
         Assert.assertEquals(pmpDeal.getValidationMessage(),"Entered value does not satisfy validation");
         pmpDeal.enterTargetValue("10x20");
         pmpDeal.clickOnSaveTargetData();
-        waitFor(1000);
+        waitFor(2000);
         Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","IMP_SIZE"));
         Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","10x20"));
         extenttest.log(LogStatus.PASS, "add pmp deal target", extenttest.addScreenCapture(captureScreenshot("tc20", "order_set20")));

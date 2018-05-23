@@ -68,7 +68,7 @@ public class ScenerioFeatureMappingTest  extends BaseClass {
         extenttest = extentreport.startTest("Excuting the add feature mapping");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC3" + " add feature mapping");
         driver.navigate().to(featureMappingUrl);
-        waitFor(1000);
+        waitFor(2000);
         FeatureMappingPage featurePage=new FeatureMappingPage(driver);
         featurePage.clickOnAddFeatureMapping();
         Assert.assertEquals(featurePage.getHeaderText(),"Add New Feature Mapping");
