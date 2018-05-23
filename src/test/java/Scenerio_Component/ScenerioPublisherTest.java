@@ -10,7 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
+
 import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import com.jayway.restassured.response.Response;
 
@@ -24,11 +26,11 @@ public class ScenerioPublisherTest extends BaseClass
 
     public static Logger log = Logger.getLogger(ScenerioPublisherTest.class);
 
-    @Test(priority = 1,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PublisherDetails")
+    @Test(priority = 1, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "PublisherDetails")
     public void testAddValidPublisher(String pubId, String email, String name, String compName, String fName, String lName, String domName, String catName) throws InterruptedException, IOException {
 
         Response response = deletePublisherApi(pubId);
-        Assert.assertEquals(response.statusCode(),200);
+        Assert.assertEquals(response.statusCode(), 200);
         driver.navigate().to(publisherListUrl);
         log.info("Excuting the add publisher test case");
         extenttest = extentreport.startTest("add publisher");
@@ -46,7 +48,7 @@ public class ScenerioPublisherTest extends BaseClass
         app.enterDomain(domName);
         app.enterCategory(catName);
         app.clickOnSelectPartner();
-        waitFor(1000);
+        waitFor(200);
         app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         waitFor(1000);
@@ -59,7 +61,8 @@ public class ScenerioPublisherTest extends BaseClass
         Assert.assertTrue(plp.isPublisherIdDisplayed(pubId));
 
     }
-    @Test(priority = 2,dataProviderClass=Dataprovider_Component.DataProviderClass.class,dataProvider = "AdvDomainDetails")
+
+    @Test(priority = 2, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "AdvDomainDetails")
     public void testAddAdvertiserDomain(String advDomain) throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the add Advertiser domain test case");
@@ -77,7 +80,7 @@ public class ScenerioPublisherTest extends BaseClass
         prefPage.clickOnAddDomainMapping();
         Assert.assertEquals(prefPage.getPublisherNameInSelectOption(), "testName (12345)");
         prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
+        prefPage.selectOption("Appnexus* (2)", "YBNCA (A) (4)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField(advDomain);
@@ -89,7 +92,7 @@ public class ScenerioPublisherTest extends BaseClass
 
     }
 
-    @Test(priority =3,alwaysRun =true)
+    @Test(priority = 3, alwaysRun = true)
     public void testAddAdCategory() throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the add category test case");
@@ -108,12 +111,12 @@ public class ScenerioPublisherTest extends BaseClass
         waitFor(2000);
         prefPage.clickOnAddCategoryButton();
         prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
+        prefPage.selectOption("Appnexus* (2)", "YBNCA (A) (4)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
-        prefPage.enterDomainField("IAB1,IAB2,IAB3");
+        prefPage.enterDomainField("IAB1,IAB2");
         prefPage.clickOnSaveButton();
-        waitFor(2000);
+        waitFor(3000);
         extenttest.log(LogStatus.PASS, "add ad category", extenttest.addScreenCapture(captureScreenshot("tc3", "order_set3")));
         Assert.assertTrue(prefPage.isCategoryDisplayed("IAB1"));
         log.info("test case executed");
@@ -122,7 +125,7 @@ public class ScenerioPublisherTest extends BaseClass
     }
 
 
-    @Test(priority =4, alwaysRun =true)
+    @Test(priority = 4)
     public void testAddCreativeId() throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the add crative id test case");
@@ -152,37 +155,74 @@ public class ScenerioPublisherTest extends BaseClass
         log.info("test case executed");
 
     }
+
     @Test(priority = 5)
-    public void testDeleteAdvertiserDomain() throws InterruptedException, IOException {
+    public void testAddAttribute() throws InterruptedException, IOException {
+
         driver.navigate().to(publisherListUrl);
-        log.info("Executing the delete advertiser domain test case");
-        extenttest = extentreport.startTest("delete advertiser domain");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC5" + " delete advertiser domain");
+        log.info("Executing the add attribute id test case for Publisher");
+        extenttest = extentreport.startTest("add attribute id for Publisher");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC5" + " add attribute id for Publisher");
         PublisherListPage plp = new PublisherListPage(driver);
         plp.clickOnPreference("12345");
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
-        prefPage.clickOnDeleteIconContainsAllProviders("http://maps.google.com");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
-        extenttest.log(LogStatus.PASS, "delete advertiser domain", extenttest.addScreenCapture(captureScreenshot("tc5", "order_set5")));
-        Assert.assertTrue(prefPage.isAdvDomainDeleteMessageDisplayed("http://maps.google.com"));
-        Assert.assertFalse(prefPage.isAdvDomainDisplayed("http://maps.google.com"));
-        prefPage.clickOnProvidersLink("maps.google.com");
-        prefPage.clickOnDeleteIconWithProviderName("maps.google.com","YBNCA (A)");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
-        prefPage.clickOnDeleteIconWithProviderName("maps.google.com","Appnexus");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
-        extenttest.log(LogStatus.PASS, "delete advertiser domain", extenttest.addScreenCapture(captureScreenshot("tc5", "order_set5.1")));
+        Assert.assertTrue(prefPage.isAdvertiserDomainTabDisplayed());
+        Assert.assertTrue(prefPage.isAdCategoryTabDisplayed());
+        Assert.assertTrue(prefPage.isCreativeIdTabDisplayed());
+        Assert.assertTrue(prefPage.isAttributeTabDisplayed());
+        waitFor(2000);
+        prefPage.clickOnAdAttributeTab();
+        waitFor(2000);
+        prefPage.clickOnAddAttributeIdButton();
+        prefPage.clickOnSelectProvider();
+        prefPage.selectOption("Appnexus* (2)", "YBNCA (A) (4)");
+        prefPage.clickOnSelectPreference();
+        prefPage.selectPreference("Whitelist");
+        prefPage.enterDomainField("1,2");
+        prefPage.clickOnSaveButton();
+        waitFor(2000);
+        extenttest.log(LogStatus.PASS, "add ad attribute id for Publisher", extenttest.addScreenCapture(captureScreenshot("tc5", "order_set5")));
+        Assert.assertTrue(prefPage.isAttributeDisplayed("1"));
+        log.info("test case executed");
+    }
+
+
+    @Test(priority = 6)
+    public void testDeleteAdvertiserDomain() throws InterruptedException, IOException {
+        driver.navigate().to(publisherListUrl);
+        log.info("Executing the delete advertiser domain test case");
+        extenttest = extentreport.startTest("delete advertiser domain");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC6" + " delete advertiser domain");
+        PublisherListPage plp = new PublisherListPage(driver);
+        plp.clickOnPreference("12345");
+        PublisherPrefPage prefPage = new PublisherPrefPage(driver);
+        Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        if (prefPage.isAdvDomainDisplayed("http://maps.google.com")) {
+            prefPage.clickOnDeleteIconContainsAllProviders("http://maps.google.com");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(1000);
+            extenttest.log(LogStatus.PASS, "delete advertiser domain", extenttest.addScreenCapture(captureScreenshot("tc6", "order_set6")));
+            Assert.assertTrue(prefPage.isAdvDomainDeleteMessageDisplayed("http://maps.google.com"));
+            Assert.assertFalse(prefPage.isAdvDomainDisplayed("http://maps.google.com"));
+        }
+
+        if (prefPage.isAdvDomainDisplayed("maps.google.com")) {
+            prefPage.clickOnProvidersLink("maps.google.com");
+            prefPage.clickOnDeleteIconWithProviderName("maps.google.com", "YBNCA (A)");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(1000);
+            prefPage.clickOnDeleteIconWithProviderName("maps.google.com", "Appnexus");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(1000);
+        }
+        extenttest.log(LogStatus.PASS, "delete advertiser domain", extenttest.addScreenCapture(captureScreenshot("tc6", "order_set6.1")));
         log.info("test case executed");
 
     }
 
-    @Test(priority= 6)
-    public void testDeleteAdCategory() throws InterruptedException, IOException
-    {
+    @Test(priority = 7)
+    public void testDeleteAdCategory() throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the delete ad category test case");
         extenttest = extentreport.startTest("delete ad category");
@@ -194,141 +234,171 @@ public class ScenerioPublisherTest extends BaseClass
         prefPage.clickOnAdCategoryTab();
         waitFor(2000);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
-        prefPage.clickOnDeleteIconContainsAllProviders("IAB1");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
-        extenttest.log(LogStatus.PASS, "delete ad category", extenttest.addScreenCapture(captureScreenshot("tc6", "order_set6")));
-        prefPage.clickOnDeleteIconContainsAllProviders("IAB2");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
-        prefPage.clickOnDeleteIconContainsAllProviders("IAB3");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
-        extenttest.log(LogStatus.PASS, "delete advertiser category", extenttest.addScreenCapture(captureScreenshot("tc6", "order_set6.1")));
+        if (prefPage.isCategoryDisplayed("IAB1")) {
+            prefPage.clickOnDeleteIconContainsAllProviders("IAB1");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(2000);
+            Assert.assertFalse(prefPage.isCategoryDisplayed("IAB1"));
+            extenttest.log(LogStatus.PASS, "delete ad category", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7")));
+        }
+
+        if (prefPage.isCategoryDisplayed("IAB2")) {
+            prefPage.clickOnDeleteIconContainsAllProviders("IAB2");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(1000);
+        }
+        extenttest.log(LogStatus.PASS, "delete advertiser category", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7.1")));
         log.info("test case executed");
     }
 
-    @Test(priority= 7)
-    public void testDeleteCreativeId() throws InterruptedException, IOException
-    {
+    @Test(priority = 8)
+    public void testDeleteCreativeId() throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the delete creative id test case");
         extenttest = extentreport.startTest("delete creative id");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC7" + " delete creative id");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC8" + " delete creative id");
         PublisherListPage plp = new PublisherListPage(driver);
         plp.clickOnPreference("12345");
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
         waitFor(1000);
         prefPage.clickOnCreativeIdTab();
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
-        prefPage.clickOnDeleteIconContainsAllProviders("6322312");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
-        extenttest.log(LogStatus.PASS, "delete creative id", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7")));
-        prefPage.clickOnDeleteIconContainsAllProviders("6112312");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
-        extenttest.log(LogStatus.PASS, "delete creative id", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7.1")));
+        if (prefPage.isCreativeIdDisplayed("6322312")) {
+            prefPage.clickOnDeleteIconContainsAllProviders("6322312");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(1000);
+            Assert.assertFalse(prefPage.isCreativeIdDisplayed("6322312"));
+            extenttest.log(LogStatus.PASS, "delete creative id", extenttest.addScreenCapture(captureScreenshot("tc8", "order_set8")));
+        }
+        if (prefPage.isCreativeIdDisplayed("6112312")) {
+            prefPage.clickOnDeleteIconContainsAllProviders("6112312");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(1000);
+            Assert.assertFalse(prefPage.isCreativeIdDisplayed("6112312"));
+        }
+        extenttest.log(LogStatus.PASS, "delete creative id", extenttest.addScreenCapture(captureScreenshot("tc8", "order_set8.1")));
         log.info("test case executed");
     }
 
-    @Test(priority = 8,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "InvalidPubId")
-    public void testAddPublisherWithNoPubId(String pubId) throws InterruptedException, IOException
-    {
+    @Test(priority = 9)
+    public void testDeleteAttribute() throws InterruptedException, IOException {
+        driver.navigate().to(publisherListUrl);
+        log.info("Executing the delete attribute test case for Publisher");
+        extenttest = extentreport.startTest("delete attribute for Publisher");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC9" + " delete attribute for Publisher");
+        PublisherListPage plp = new PublisherListPage(driver);
+        plp.clickOnPreference("12345");
+        PublisherPrefPage prefPage = new PublisherPrefPage(driver);
+        waitFor(2000);
+        prefPage.clickOnAdAttributeTab();
+        waitFor(2000);
+        Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        if(prefPage.isAttributeDisplayed("1")) {
+            prefPage.clickOnDeleteIconContainsAllProviders("1");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(1000);
+            extenttest.log(LogStatus.PASS, "delete attribute", extenttest.addScreenCapture(captureScreenshot("tc9", "order_set9")));
+            Assert.assertFalse(prefPage.isAttributeDisplayed("1"));
+        }
+        if(prefPage.isAttributeDisplayed("2")) {
+            prefPage.clickOnDeleteIconContainsAllProviders("2");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(2000);
+            Assert.assertFalse(prefPage.isAttributeDisplayed("2"));
+        }
+        extenttest.log(LogStatus.PASS, "delete advertiser category", extenttest.addScreenCapture(captureScreenshot("tc10", "order_set10.1")));
+        log.info("test case executed");
+    }
+
+    @Test(priority = 10, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "InvalidPubId")
+    public void testAddPublisherWithNoPubId(String pubId) throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the add publisher without pubid test case");
         extenttest = extentreport.startTest("add publisher without pubid");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC8" + " add publisher");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC10" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
-        Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
+        Assert.assertEquals(app.getSubHeaderText(), "New Publisher");
         app.enterPubId(pubId);
         app.clickOnSelectPartner();
-        waitFor(1000);
+        waitFor(200);
         app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         app.clickOnSaveButton();
-        Assert.assertEquals(app.getErrorMessageForPubId(),"Publisher Id is a compulsory and Alphanumeric field");
+        Assert.assertEquals(app.getErrorMessageForPubId(), "Publisher Id is a compulsory and Alphanumeric field");
         waitFor(1000);
-        extenttest.log(LogStatus.PASS, "add publisher without pubid", extenttest.addScreenCapture(captureScreenshot("tc8", "order_set8")));
+        extenttest.log(LogStatus.PASS, "add publisher without pubid", extenttest.addScreenCapture(captureScreenshot("tc10", "order_set10")));
     }
 
-    @Test(priority = 9,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "InvalidEmailAddressPart1")
-    public void testInvaildEmailIdFieldValidation(String email) throws InterruptedException, IOException
-    {
+
+    @Test(priority = 11, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "InvalidEmailAddressPart1")
+    public void testInvaildEmailIdFieldValidation(String email) throws InterruptedException, IOException {
 
         driver.navigate().to(publisherListUrl);
         log.info("Executing the add publisher with with invalid email");
         extenttest = extentreport.startTest("add publisher with  invalid email");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC9" + " add publisher");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC11" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(3000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
-        Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
+        Assert.assertEquals(app.getSubHeaderText(), "New Publisher");
         app.enterEmail(email);
-        app.clickOnSelectPartner();
-        waitFor(1000);
-        app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
-        Assert.assertEquals(app.getErrorMessageForEmail(),"Entered value is not a proper email");
+        Assert.assertEquals(app.getErrorMessageForEmail(), "Entered value is not a proper email");
         waitFor(1000);
-        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc9", "order_set9")));
+        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc11", "order_set11")));
 
     }
-    @Test(priority=10,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "InvalidEmailAddressPart2")
-    public void testInvalidEmailIdServerValidation(String email)throws InterruptedException, IOException
-    {
+
+    @Test(priority = 12, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "InvalidEmailAddressPart2")
+    public void testInvalidEmailIdServerValidation(String email) throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the add publisher with with invalid email");
         extenttest = extentreport.startTest("add publisher with invalid email");
-        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC10" + " add publisher");
+        extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC12" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
-        Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
+        Assert.assertEquals(app.getSubHeaderText(), "New Publisher");
         app.enterPubId("123");
         app.enterEmail(email);
         app.clickOnSelectPartner();
-        waitFor(1000);
+        waitFor(200);
         app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         waitFor(1000);
-        String message=app.getServersideMessage();
+        String message = app.getServersideMessage();
         Assert.assertTrue(message.contains("Validation failed for classes"));
-        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc10", "order_set10")));
+        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc12", "order_set12")));
     }
 
-    @Test(priority = 11,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "InvalidDomain")
-    public void testDomainFieldValidation(String domain)  throws InterruptedException, IOException
-    {
+    @Test(priority = 13, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "InvalidDomain")
+    public void testDomainFieldValidation(String domain) throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the add publisher with with invalid domain");
         extenttest = extentreport.startTest("add publisher with invalid domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC11" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(3000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
-        Assert.assertEquals(app.getSubHeaderText(),"New Publisher");
+        Assert.assertEquals(app.getSubHeaderText(), "New Publisher");
         app.enterPubId("123");
         app.enterDomain(domain);
         app.clickOnSelectPartner();
-        waitFor(1000);
+        waitFor(200);
         app.selectOption("AAX (8PR6YK195)");
         app.clickOnSaveButton();
         waitFor(1000);
-        Assert.assertEquals(app.getErrorMessageForDomain(),"Entered value is not a proper domain");
-        String message=app.getValidationFailedMessage();
+        Assert.assertEquals(app.getErrorMessageForDomain(), "Entered value is not a proper domain");
+        String message = app.getValidationFailedMessage();
         Assert.assertTrue(message.contains("Some validations are failing"));
-        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc11", "order_set11")));
+        extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
-
-
-
 
 
 }
