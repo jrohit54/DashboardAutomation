@@ -236,7 +236,7 @@ public class ScenerioPublisherTest extends BaseClass {
         if (prefPage.isCategoryDisplayed("IAB1")) {
             prefPage.clickOnDeleteIconContainsAllProviders("IAB1");
             prefPage.clickOnDeleteButtonInConfirmPopup();
-            waitFor(1000);
+            waitFor(2000);
             Assert.assertFalse(prefPage.isCategoryDisplayed("IAB1"));
             extenttest.log(LogStatus.PASS, "delete ad category", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7")));
         }

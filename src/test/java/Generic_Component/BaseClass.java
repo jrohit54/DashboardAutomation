@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 /**
  * Created by rohit on 8/2/18.
@@ -76,6 +77,16 @@ public class BaseClass {
         wait.until(ExpectedConditions.visibilityOf(ele)).isDisplayed();
     }
 
+    /**
+     * to explicit wait for element to be displayed
+     * @param ele
+     * @param t
+     */
+    public void explicitWaitForAllElements(List<WebElement> ele, long t)
+    {
+        WebDriverWait wait=new WebDriverWait(driver,t);
+        wait.until(ExpectedConditions.visibilityOfAllElements(ele));
+    }
     /**
      * for wait
      * @param durationInMilliSeconds

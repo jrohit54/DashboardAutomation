@@ -212,6 +212,7 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isAdvDomainDisplayed(String domain) {
         boolean flag = false;
+        explicitWaitForAllElements(listDomains,3);
         if (listDomains.size() > 0) {
             for (WebElement element : listDomains) {
 
@@ -260,6 +261,7 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isCategoryDisplayed(String category) {
         boolean flag = false;
+        explicitWaitForAllElements(listDomains,3);
         if (listDomains.size() > 0) {
             for (WebElement element : listDomains) {
 
@@ -291,6 +293,7 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isCreativeIdDisplayed(String crid) {
         boolean flag = false;
+        explicitWaitForAllElements(listDomains,3);
         if (listDomains.size() > 0) {
             for (WebElement element : listDomains) {
 
@@ -397,6 +400,7 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isAttributeDisplayed(String attribute) {
         boolean flag = false;
+        explicitWaitForAllElements(listDomains,3);
         if (listDomains.size() > 0) {
             for (WebElement element : listDomains) {
 
