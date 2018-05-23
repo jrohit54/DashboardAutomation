@@ -102,7 +102,7 @@ public class BaseClass {
         driver=new ChromeDriver();
         driver.get(publisherListUrl);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
         FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"/reports/"));

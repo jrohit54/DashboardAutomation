@@ -115,7 +115,7 @@ public class ScenerioPublisherTest extends BaseClass {
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField("IAB1,IAB2");
         prefPage.clickOnSaveButton();
-        waitFor(2000);
+        waitFor(3000);
         extenttest.log(LogStatus.PASS, "add ad category", extenttest.addScreenCapture(captureScreenshot("tc3", "order_set3")));
         Assert.assertTrue(prefPage.isCategoryDisplayed("IAB1"));
         log.info("test case executed");
