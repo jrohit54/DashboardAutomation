@@ -128,7 +128,7 @@ public class ScenerioPartnerTest extends BaseClass {
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         Thread.sleep(1000);
-        prefPage.enterDomainField("IAB1,IAB2,IAB3");
+        prefPage.enterDomainField("IAB1,IAB2");
         prefPage.clickOnSaveButton();
         waitFor(2000);
         extenttest.log(LogStatus.PASS, "add ad creative id for Partner", extenttest.addScreenCapture(captureScreenshot("tc4", "order_set4")));
@@ -189,7 +189,7 @@ public class ScenerioPartnerTest extends BaseClass {
         prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
-        prefPage.enterDomainField("1,2,3");
+        prefPage.enterDomainField("1,2");
         prefPage.clickOnSaveButton();
         waitFor(2000);
         extenttest.log(LogStatus.PASS, "add ad attribute id for Partner", extenttest.addScreenCapture(captureScreenshot("tc6", "order_set6")));
@@ -247,9 +247,7 @@ public class ScenerioPartnerTest extends BaseClass {
         prefPage.clickOnDeleteIconContainsAllProviders("IAB2");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         waitFor(1000);
-        prefPage.clickOnDeleteIconContainsAllProviders("IAB3");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
+        Assert.assertFalse(prefPage.isCategoryDisplayed("IAB1"));
         extenttest.log(LogStatus.PASS, "delete advertiser category", extenttest.addScreenCapture(captureScreenshot("tc8", "order_set8.1")));
         log.info("test case executed");
     }
@@ -274,6 +272,7 @@ public class ScenerioPartnerTest extends BaseClass {
         prefPage.clickOnDeleteIconContainsAllProviders("6112312");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         waitFor(1000);
+        Assert.assertTrue(prefPage.isCreativeIdDisplayed("6112312"));
         extenttest.log(LogStatus.PASS, "delete creative id", extenttest.addScreenCapture(captureScreenshot("tc9", "order_set9.1")));
         log.info("test case executed");
     }
@@ -299,9 +298,7 @@ public class ScenerioPartnerTest extends BaseClass {
         prefPage.clickOnDeleteIconContainsAllProviders("2");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         waitFor(1000);
-        prefPage.clickOnDeleteIconContainsAllProviders("3");
-        prefPage.clickOnDeleteButtonInConfirmPopup();
-        waitFor(1000);
+        Assert.assertFalse(prefPage.isAttributeDisplayed("1"));
         extenttest.log(LogStatus.PASS, "delete advertiser category", extenttest.addScreenCapture(captureScreenshot("tc10", "order_set10.1")));
         log.info("test case executed");
     }
