@@ -237,7 +237,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderPrefPage prefPage=new BidderPrefPage(driver);
         waitFor(2000);
         prefPage.clickOnPublisherSLDTab();
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnDeleteIcon("forbes");
         Assert.assertTrue(prefPage.isMessageDisplayed("Delete Publisher SLD: forbes"));
         prefPage.clickOnDeleteConfirmationButton();
@@ -323,7 +323,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(2000);
+        waitFor(3000);
         prefPage.clickOnCountryTab();
         waitFor(1000);
         prefPage.clickOnDeleteIcon("AX");
