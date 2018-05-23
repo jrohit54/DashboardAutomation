@@ -302,7 +302,7 @@ public class ScenerioPublisherTest extends BaseClass {
         if(prefPage.isAttributeDisplayed("2")) {
             prefPage.clickOnDeleteIconContainsAllProviders("2");
             prefPage.clickOnDeleteButtonInConfirmPopup();
-            waitFor(1000);
+            waitFor(2000);
             Assert.assertFalse(prefPage.isAttributeDisplayed("2"));
         }
         extenttest.log(LogStatus.PASS, "delete advertiser category", extenttest.addScreenCapture(captureScreenshot("tc10", "order_set10.1")));
@@ -316,7 +316,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher without pubid");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC10" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(), "New Publisher");
@@ -359,7 +359,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher with invalid email");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC12" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(), "New Publisher");
@@ -382,7 +382,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher with invalid domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC11" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         Assert.assertEquals(app.getSubHeaderText(), "New Publisher");
