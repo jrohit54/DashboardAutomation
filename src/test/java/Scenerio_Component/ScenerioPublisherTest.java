@@ -19,7 +19,8 @@ import com.jayway.restassured.response.Response;
  * Created by rohit on 8/2/18.
  */
 @Listeners(CustomizeReport.class)
-public class ScenerioPublisherTest extends BaseClass {
+public class ScenerioPublisherTest extends BaseClass
+{
 
     public static Logger log = Logger.getLogger(ScenerioPublisherTest.class);
 
