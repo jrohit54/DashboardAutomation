@@ -272,7 +272,7 @@ public class ScenerioPartnerTest extends BaseClass {
         prefPage.clickOnDeleteIconContainsAllProviders("6112312");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         waitFor(1000);
-        Assert.assertTrue(prefPage.isCreativeIdDisplayed("6112312"));
+        Assert.assertFalse(prefPage.isCreativeIdDisplayed("6112312"));
         extenttest.log(LogStatus.PASS, "delete creative id", extenttest.addScreenCapture(captureScreenshot("tc9", "order_set9.1")));
         log.info("test case executed");
     }
