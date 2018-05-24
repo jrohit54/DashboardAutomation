@@ -19,7 +19,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     public static Logger log = Logger.getLogger(ScenerioPartnerTest.class);
 
-    @Test(priority = 1,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
+    @Test(dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
     public void testAddValidPartner(String ptrId, String name, String parentId, String email, String pymtModeId, String ptrApiKey, String ptrPaswd, String dfltTmpltId) throws InterruptedException, IOException {
 
         Response response = deletePartnerApi(ptrId);
@@ -54,7 +54,7 @@ public class ScenerioPartnerTest extends BaseClass {
         Assert.assertTrue(prtlp.isPartnerIdDisplayed(ptrId));
     }
 
-    @Test(priority = 2)
+    @Test(dependsOnMethods = "testAddValidPartner")
     public void testEditPartner() throws InterruptedException, IOException
     {
 
@@ -74,7 +74,7 @@ public class ScenerioPartnerTest extends BaseClass {
         Assert.assertEquals(prtlp.getParentIdForPartner("TEST123"),"123");
     }
 
-    @Test(priority = 3,dataProviderClass=Dataprovider_Component.DataProviderClass.class,dataProvider = "AdvDomainDetails")
+    @Test(dependsOnMethods = "testAddValidPartner", dataProviderClass=Dataprovider_Component.DataProviderClass.class,dataProvider = "AdvDomainDetails")
     public void testAddAdvertiserDomain(String advDomain) throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Excuting the add Advertiser domain test case for partner");
@@ -104,7 +104,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority =4,alwaysRun =true)
+    @Test(dependsOnMethods = "testAddValidPartner")
     public void testAddAdCategory() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add category test case for Partner");
@@ -136,7 +136,7 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
 
     }
-    @Test(priority =5, alwaysRun =true)
+    @Test(dependsOnMethods = "testAddValidPartner")
     public void testAddCreativeId() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add creative id test case for Partner");
@@ -167,7 +167,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority =6, alwaysRun =true)
+    @Test(dependsOnMethods = "testAddValidPartner")
     public void testAddAttributeId() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add attribute id test case for Partner");
@@ -198,7 +198,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority = 7)
+    @Test(dependsOnMethods = "testAddAdvertiserDomain")
     public void testDeleteAdvertiserDomain() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the delete advertiser domain test case for Partner");
@@ -227,7 +227,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority= 8)
+    @Test(dependsOnMethods = "testAddAdCategory")
     public void testDeleteAdCategoty() throws InterruptedException, IOException
     {
         driver.navigate().to(partnerListUrl);
@@ -255,7 +255,7 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
     }
 
-    @Test(priority= 9)
+    @Test(dependsOnMethods = "testAddCreativeId")
     public void testDeleteCreativeId() throws InterruptedException, IOException
     {
         driver.navigate().to(partnerListUrl);
@@ -279,7 +279,7 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
     }
 
-    @Test(priority= 10)
+    @Test(dependsOnMethods = "testAddAttributeId")
     public void testDeleteAttribute() throws InterruptedException, IOException
     {
         driver.navigate().to(partnerListUrl);
@@ -307,7 +307,7 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
     }
 
-    @Test(priority =11,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
+    @Test(dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
     public void testAddPartnerWithoutEmailId(String ptrId, String name, String parentId, String email, String pymtModeId, String ptrApiKey, String ptrPaswd, String dfltTmpltId) throws InterruptedException, IOException {
 
         Response response = deletePartnerApi(ptrId);
