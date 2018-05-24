@@ -76,17 +76,6 @@ public class BaseClass {
         WebDriverWait wait=new WebDriverWait(driver,t);
         wait.until(ExpectedConditions.visibilityOf(ele)).isDisplayed();
     }
-
-    /**
-     * to explicit wait for element to be displayed
-     * @param ele
-     * @param t
-     */
-    public void explicitWaitForAllElements(List<WebElement> ele, long t)
-    {
-        WebDriverWait wait=new WebDriverWait(driver,t);
-        wait.until(ExpectedConditions.visibilityOfAllElements(ele));
-    }
     /**
      * for wait
      * @param durationInMilliSeconds
