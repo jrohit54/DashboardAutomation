@@ -203,6 +203,7 @@ public class ScenerioPublisherTest extends BaseClass {
             waitFor(1000);
             extenttest.log(LogStatus.PASS, "delete advertiser domain", extenttest.addScreenCapture(captureScreenshot("tc6", "order_set6")));
             Assert.assertTrue(prefPage.isAdvDomainDeleteMessageDisplayed("http://maps.google.com"));
+            waitFor(1000);
             Assert.assertFalse(prefPage.isAdvDomainDisplayed("http://maps.google.com"));
         }
 
