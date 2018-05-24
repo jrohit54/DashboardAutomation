@@ -35,7 +35,7 @@ public class ScenerioPublisherTest extends BaseClass {
         extenttest = extentreport.startTest("add publisher");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC1" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         plp.clickOnAddNewPublisher();
         AddPublisherPage app = new AddPublisherPage(driver);
         app.enterPubId(pubId);
@@ -91,7 +91,7 @@ public class ScenerioPublisherTest extends BaseClass {
 
     }
 
-    @Test(dependsOnMethods = "testAddValidPublisher", alwaysRun = true)
+    @Test(dependsOnMethods = "testAddValidPublisher")
     public void testAddAdCategory() throws InterruptedException, IOException {
         driver.navigate().to(publisherListUrl);
         log.info("Executing the add category test case");
