@@ -36,7 +36,7 @@ public class PublisherPrefPage extends BaseClass {
     @FindBy(xpath = "//input[@id='search'][@placeholder='Search by Domain Names']")
     public WebElement domainSearchField;
 
-    @FindBy(xpath = "//button[contains(text(),'Add Domain Mapping')]")
+    @FindBy(xpath = "//button[text()='Add Domain Mapping']")
     public WebElement addDomainMappingButton;
 
     @FindBy(xpath = "//button[contains(text(),'Remove Multiple')]")

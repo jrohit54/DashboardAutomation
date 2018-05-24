@@ -213,7 +213,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on add domain mapping button
      */
     public void clickOnAddDomainMappingButton() {
-        explicitWait(addDomainButtonElement, 1);
+        explicitWait(addDomainButtonElement, 3);
         addDomainButtonElement.click();
     }
 

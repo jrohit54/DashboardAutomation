@@ -127,7 +127,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderPrefPage prefPage=new BidderPrefPage(driver);
         waitFor(2000);
         prefPage.clickOnPublisherDomainTab();
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnAddDomainMappingButton();
         prefPage.clickOnSelectPublisherSelectOption();
         prefPage.selectOption("testName (12345)");
