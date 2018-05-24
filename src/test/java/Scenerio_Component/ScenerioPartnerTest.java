@@ -1,3 +1,4 @@
+
 package Scenerio_Component;
 
 import Generic_Component.BaseClass;
@@ -11,19 +12,23 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+
+
 /**
  * Created by Shilpy on 30/4/18.
  */
+
+
 @Listeners(CustomizeReport.class)
 public class ScenerioPartnerTest extends BaseClass {
 
     public static Logger log = Logger.getLogger(ScenerioPartnerTest.class);
 
-    @Test(priority = 1,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
+    @Test(priority = 1, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "PartnerDetails")
     public void testAddValidPartner(String ptrId, String name, String parentId, String email, String pymtModeId, String ptrApiKey, String ptrPaswd, String dfltTmpltId) throws InterruptedException, IOException {
 
         Response response = deletePartnerApi(ptrId);
-        Assert.assertEquals(response.statusCode(),200);
+        Assert.assertEquals(response.statusCode(), 200);
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add partner test case");
         extenttest = extentreport.startTest("add partner");
@@ -55,8 +60,7 @@ public class ScenerioPartnerTest extends BaseClass {
     }
 
     @Test(priority = 2)
-    public void testEditPartner() throws InterruptedException, IOException
-    {
+    public void testEditPartner() throws InterruptedException, IOException {
 
         driver.navigate().to(partnerListUrl);
         log.info("Executing the edit partner test case");
@@ -71,10 +75,10 @@ public class ScenerioPartnerTest extends BaseClass {
         waitFor(2000);
         extenttest.log(LogStatus.PASS, "edit  partner entry", extenttest.addScreenCapture(captureScreenshot("tc2", "order_set2")));
         prtlp = new PartnerListPage(driver);
-        Assert.assertEquals(prtlp.getParentIdForPartner("TEST123"),"123");
+        Assert.assertEquals(prtlp.getParentIdForPartner("TEST123"), "123");
     }
 
-    @Test(priority = 3,dataProviderClass=Dataprovider_Component.DataProviderClass.class,dataProvider = "AdvDomainDetails")
+    @Test(priority = 3, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "AdvDomainDetails")
     public void testAddAdvertiserDomain(String advDomain) throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Excuting the add Advertiser domain test case for partner");
@@ -92,7 +96,7 @@ public class ScenerioPartnerTest extends BaseClass {
         prefPage.clickOnAddDomainMapping();
         Assert.assertEquals(prefPage.getPartnerNameInSelectOption(), "TESTPARTNER (TEST123)");
         prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
+        prefPage.selectOption("Appnexus* (2)", "YBNCA (A) (4)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Blacklist");
         prefPage.enterDomainField(advDomain);
@@ -104,7 +108,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority =4,alwaysRun =true)
+    @Test(priority = 4, alwaysRun = true)
     public void testAddAdCategory() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add category test case for Partner");
@@ -123,7 +127,7 @@ public class ScenerioPartnerTest extends BaseClass {
         waitFor(2000);
         prefPage.clickOnAddCategoryButton();
         prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
+        prefPage.selectOption("Appnexus* (2)", "YBNCA (A) (4)");
         waitFor(1000);
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
@@ -136,7 +140,8 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
 
     }
-    @Test(priority =5, alwaysRun =true)
+
+    @Test(priority = 5, alwaysRun = true)
     public void testAddCreativeId() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add creative id test case for Partner");
@@ -167,7 +172,7 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority =6, alwaysRun =true)
+    @Test(priority = 6, alwaysRun = true)
     public void testAddAttributeId() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add attribute id test case for Partner");
@@ -186,7 +191,7 @@ public class ScenerioPartnerTest extends BaseClass {
         waitFor(2000);
         prefPage.clickOnAddAttributeIdButton();
         prefPage.clickOnSelectProvider();
-        prefPage.selectOption("Appnexus* (2)","YBNCA (A) (4)");
+        prefPage.selectOption("Appnexus* (2)", "YBNCA (A) (4)");
         prefPage.clickOnSelectPreference();
         prefPage.selectPreference("Whitelist");
         prefPage.enterDomainField("1,2,3");
@@ -216,10 +221,10 @@ public class ScenerioPartnerTest extends BaseClass {
         waitFor(1000);
         Assert.assertFalse(prefPage.isAdvDomainDisplayed("http://maps.google.com"));
         prefPage.clickOnProvidersLink("maps.google.com");
-        prefPage.clickOnDeleteIconWithProviderName("maps.google.com","YBNCA (A)");
+        prefPage.clickOnDeleteIconWithProviderName("maps.google.com", "YBNCA (A)");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         waitFor(1000);
-        prefPage.clickOnDeleteIconWithProviderName("maps.google.com","Appnexus");
+        prefPage.clickOnDeleteIconWithProviderName("maps.google.com", "Appnexus");
         prefPage.clickOnDeleteButtonInConfirmPopup();
         waitFor(1000);
         extenttest.log(LogStatus.PASS, "delete advertiser domain", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7.1")));
@@ -227,9 +232,8 @@ public class ScenerioPartnerTest extends BaseClass {
 
     }
 
-    @Test(priority= 8)
-    public void testDeleteAdCategoty() throws InterruptedException, IOException
-    {
+    @Test(priority = 8)
+    public void testDeleteAdCategoty() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the delete ad category test case for Partner");
         extenttest = extentreport.startTest("delete ad category for Partner");
@@ -255,9 +259,8 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
     }
 
-    @Test(priority= 9)
-    public void testDeleteCreativeId() throws InterruptedException, IOException
-    {
+    @Test(priority = 9)
+    public void testDeleteCreativeId() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the delete creative id test case for Partner");
         extenttest = extentreport.startTest("delete creative id for Partner");
@@ -279,9 +282,8 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
     }
 
-    @Test(priority= 10)
-    public void testDeleteAttribute() throws InterruptedException, IOException
-    {
+    @Test(priority = 10)
+    public void testDeleteAttribute() throws InterruptedException, IOException {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the delete attribute test case for Partner");
         extenttest = extentreport.startTest("delete attribute for Partner");
@@ -307,11 +309,11 @@ public class ScenerioPartnerTest extends BaseClass {
         log.info("test case executed");
     }
 
-    @Test(priority =11,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "PartnerDetails")
+    @Test(priority = 11, dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "PartnerDetails")
     public void testAddPartnerWithoutEmailId(String ptrId, String name, String parentId, String email, String pymtModeId, String ptrApiKey, String ptrPaswd, String dfltTmpltId) throws InterruptedException, IOException {
 
         Response response = deletePartnerApi(ptrId);
-        Assert.assertEquals(response.statusCode(),200);
+        Assert.assertEquals(response.statusCode(), 200);
         driver.navigate().to(partnerListUrl);
         log.info("Executing the add partner test case");
         extenttest = extentreport.startTest("add partner");
@@ -341,3 +343,4 @@ public class ScenerioPartnerTest extends BaseClass {
     }
 
 }
+

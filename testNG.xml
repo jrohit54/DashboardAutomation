@@ -6,10 +6,10 @@
     <test name="Regression Testcases">
         <classes preserve-order="true">
             <class name="Scenerio_Component.ScenerioPublisherTest"></class>
-            <!--<class name="Scenerio_Component.ScenerioBidderTest"></class>
+            <class name="Scenerio_Component.ScenerioBidderTest"></class>
             <class name="Scenerio_Component.ScenarioExchangeTest"></class>
             <class name="Scenerio_Component.ScenerioPartnerTest"></class>
-            <class name="Scenerio_Component.ScenerioFeatureMappingTest"></class>-->
+            <class name="Scenerio_Component.ScenerioFeatureMappingTest"></class>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

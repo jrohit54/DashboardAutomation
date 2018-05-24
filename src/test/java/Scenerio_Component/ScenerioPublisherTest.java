@@ -28,8 +28,8 @@ public class ScenerioPublisherTest extends BaseClass {
     @Test(dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "PublisherDetails")
     public void testAddValidPublisher(String pubId, String email, String name, String compName, String fName, String lName, String domName, String catName) throws InterruptedException, IOException {
 
-        // Response response = deletePublisherApi(pubId);
-        // Assert.assertEquals(response.statusCode(), 200);
+        Response response = deletePublisherApi(pubId);
+        Assert.assertEquals(response.statusCode(), 200);
         driver.navigate().to(publisherListUrl);
         log.info("Excuting the add publisher test case");
         extenttest = extentreport.startTest("add publisher");

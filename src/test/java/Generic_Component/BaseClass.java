@@ -8,6 +8,7 @@ import com.jayway.restassured.response.Response;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.openxml4j.opc.internal.FileHelper;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -28,24 +29,33 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 /**
  * Created by rohit on 8/2/18.
  */
 public class BaseClass {
 
- /*  public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
+   /* public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
     public static String baserUri="http://10.6.33.131:8088/api";*/
-    public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
+   /* public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
     public static String featureMappingUrl="http://10.6.33.131:8088/featuremapping";
     public  static String partnerListUrl="http://10.6.33.131:8088/partner/list";
     public static String exchangeListUrl="http://10.6.33.131:8088/exchange/list";
     public  static String publisherListUrl="http://mowx-admin.srv.media.net:8088/publisher/list";
-    public static String baserUri="http://mowx-admin.srv.media.net:8088/bidder/api";
+    public static String baserUri="http://mowx-admin.srv.media.net:8088/bidder/api";*/
     public static WebDriver driver;
     public static ExtentReports extentreport;
     public static ExtentTest extenttest;
     public static Logger log = Logger.getLogger(BaseClass.class);
+    public static String endpoint;
+    public static String bidderListUrl;
+    public static String publisherListUrl;
+    public static String featureMappingUrl;
+    public static String partnerListUrl;
+    public static String exchangeListUrl;
+    public static String baserUri;
+
 
 
     /**
@@ -97,29 +107,34 @@ public class BaseClass {
      */
     @BeforeSuite
     public static void extentReport() throws IOException {
+        //to read from the end point from property file
+        Properties properties = new Properties();
+        properties.load(FileHelper.class.getClassLoader().getResourceAsStream("config.properties"));
+        endpoint=properties.getProperty("endpoint");
+        publisherListUrl=endpoint+"publisher/list";
+        bidderListUrl=endpoint+"bidder/list";
+        featureMappingUrl=endpoint+"featuremapping";
+        partnerListUrl=endpoint+"partner/list";
+        exchangeListUrl=endpoint+"exchange/list";
+        baserUri=endpoint+"api";
+
+        //for extent report configuration
         Date date= new Date();
         SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
         String str2=df.format(date);
         extentreport= new ExtentReports(System.getProperty("user.dir")+"/reports/"+"admin_dashboard"+"-"+str2+".html",false);
+        //to set the driver path
         setDriverPath();
         driver=new ChromeDriver();
+
         driver.get(publisherListUrl);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-
         FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"/reports/"));
         LoginPage page = new LoginPage(driver);
-        waitFor(5000);
         if (page.isSignInWithGoogleDisplayed()) {
-            page.clickOnSignInWithGoogle();
-            waitFor(5000);
-            page.enterEmailField("rohit.jai@media.net");
-            page.clickOnNextButton();
-            waitFor(3000);
-            page.enterPasswordField("Smiles@321");
-            page.clickOnNextButton();
-            waitFor(25000);
+          doLogin();
         }
     }
 
@@ -141,9 +156,8 @@ public class BaseClass {
      */
     public Response deletePublisherApi(String pubid)
     {
-        RestAssured.baseURI=baserUri;
+        RestAssured.baseURI=this.baserUri;
         Response response = RestAssured.given()
-                .header("Referer","http://mowx-admin.srv.media.net:8088/publisher/add")
                 .when()
                 .contentType((ContentType.JSON))
                 .delete("/publishers/" + pubid);
@@ -243,6 +257,19 @@ public class BaseClass {
         if (osNameMatch.contains("linux")) {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chromedriver_linux");
         }
+    }
+
+    public static void  doLogin()
+    {
+        LoginPage page = new LoginPage(driver);
+        page.clickOnSignInWithGoogle();
+        waitFor(5000);
+        page.enterEmailField("rohit.jai@media.net");
+        page.clickOnNextButton();
+        waitFor(3000);
+        page.enterPasswordField("Smiles@321");
+        page.clickOnNextButton();
+        waitFor(20000);
     }
 
 }

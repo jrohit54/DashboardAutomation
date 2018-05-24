@@ -38,6 +38,22 @@
                     </properties>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0-alpha-2</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>write-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <outputFile>${project.build.outputDirectory}/config.properties</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -135,9 +151,26 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/properties-maven-plugin -->
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>properties-maven-plugin</artifactId>
+            <version>1.0-alpha-2</version>
+        </dependency>
 
     </dependencies>
-
-
+    <profiles>
+        <profile>
+            <id>staging</id>
+            <properties>
+                <endpoint>http://10.6.33.131:8088/</endpoint>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <endpoint>http://mowx-admin.srv.media.net:8088/</endpoint>
+            </properties>
+        </profile>
+    </profiles>
 </project>
