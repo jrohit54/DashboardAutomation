@@ -36,7 +36,7 @@ public class PublisherPrefPage extends BaseClass {
     @FindBy(xpath = "//input[@id='search'][@placeholder='Search by Domain Names']")
     public WebElement domainSearchField;
 
-    @FindBy(xpath = "//button[contains(text(),'Add Domain Mapping')]")
+    @FindBy(xpath = "//button[text()='Add Domain Mapping']")
     public WebElement addDomainMappingButton;
 
     @FindBy(xpath = "//button[contains(text(),'Remove Multiple')]")
@@ -212,7 +212,6 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isAdvDomainDisplayed(String domain) {
         boolean flag = false;
-        explicitWaitForAllElements(listDomains,3);
         if (listDomains.size() > 0) {
             for (WebElement element : listDomains) {
 
@@ -261,7 +260,6 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isCategoryDisplayed(String category) {
         boolean flag = false;
-        explicitWaitForAllElements(listDomains,3);
         if (listDomains.size() > 0) {
             for (WebElement element : listDomains) {
 
@@ -293,7 +291,6 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isCreativeIdDisplayed(String crid) {
         boolean flag = false;
-        explicitWaitForAllElements(listDomains,3);
         if (listDomains.size() > 0) {
             for (WebElement element : listDomains) {
 
@@ -355,7 +352,7 @@ public class PublisherPrefPage extends BaseClass {
 
         String newXpath = providerXpath.replace("domainName", domain);
         WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element, 2);
+        explicitWait(element, 3);
         element.click();
         ;
     }
@@ -371,7 +368,7 @@ public class PublisherPrefPage extends BaseClass {
 
         String newXpath = deleteDomainWithProviderXpath.replace("domainName", domainName).replace("providerName", providerName);
         WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element, 2);
+        explicitWait(element, 3);
         element.click();
     }
 
@@ -400,7 +397,6 @@ public class PublisherPrefPage extends BaseClass {
      */
     public boolean isAttributeDisplayed(String attribute) {
         boolean flag = false;
-        explicitWaitForAllElements(listDomains,3);
         if (listDomains.size() > 0) {
             for (WebElement element : listDomains) {
 

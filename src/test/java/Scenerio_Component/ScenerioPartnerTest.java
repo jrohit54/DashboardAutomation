@@ -213,6 +213,7 @@ public class ScenerioPartnerTest extends BaseClass {
         waitFor(1000);
         extenttest.log(LogStatus.PASS, "delete advertiser domain for Partner", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7")));
         Assert.assertTrue(prefPage.isAdvDomainDeleteMessageDisplayed("http://maps.google.com"));
+        waitFor(1000);
         Assert.assertFalse(prefPage.isAdvDomainDisplayed("http://maps.google.com"));
         prefPage.clickOnProvidersLink("maps.google.com");
         prefPage.clickOnDeleteIconWithProviderName("maps.google.com","YBNCA (A)");

@@ -157,7 +157,7 @@ public class PartnerListPage extends BaseClass {
     public String getParentIdForPartner(String partnerId) {
         String newXpath = parentIdXpath.replace("partnerId", partnerId);
         WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element, 2);
+        explicitWait(element, 3);
         return element.getText();
     }
 

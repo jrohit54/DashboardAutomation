@@ -30,7 +30,7 @@ public class PublisherListPage extends BaseClass {
     @FindBy(id = "search")
     public WebElement publisher;
 
-    @FindBy(xpath = "//button[contains(text(),'Add New Publisher')]")
+    @FindBy(xpath = "//button[text()='Add New Publisher']")
     public WebElement addNewPublisher;
 
     @FindBy(xpath = "//div[@class='Select-value']")
@@ -63,7 +63,7 @@ public class PublisherListPage extends BaseClass {
      * To click on add new publisher button
      */
     public void clickOnAddNewPublisher() {
-        explicitWait(addNewPublisher, 7);
+        explicitWait(addNewPublisher, 5);
         addNewPublisher.click();
 
     }
