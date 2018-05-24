@@ -352,7 +352,7 @@ public class PublisherPrefPage extends BaseClass {
 
         String newXpath = providerXpath.replace("domainName", domain);
         WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element, 2);
+        explicitWait(element, 3);
         element.click();
         ;
     }
@@ -368,7 +368,7 @@ public class PublisherPrefPage extends BaseClass {
 
         String newXpath = deleteDomainWithProviderXpath.replace("domainName", domainName).replace("providerName", providerName);
         WebElement element = driver.findElement(By.xpath(newXpath));
-        explicitWait(element, 2);
+        explicitWait(element, 3);
         element.click();
     }
 

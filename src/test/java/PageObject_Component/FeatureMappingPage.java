@@ -58,7 +58,7 @@ public class FeatureMappingPage extends BaseClass {
      * to click on add feature mapping button
      */
     public void clickOnAddFeatureMapping() {
-        explicitWait(addFeatureButton, 2);
+        explicitWait(addFeatureButton, 3);
         addFeatureButton.click();
     }
 
@@ -211,7 +211,7 @@ public class FeatureMappingPage extends BaseClass {
      *
      */
     public String getDataErrorTest() {
-        explicitWait(dataErrorMessageElement, 1);
+        explicitWait(dataErrorMessageElement, 3);
         return dataErrorMessageElement.getText();
     }
 }

@@ -91,7 +91,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on add size button
      */
     public void clickOnAddSize() {
-        explicitWait(sizeElement, 2);
+        explicitWait(sizeElement, 3);
         sizeElement.click();
     }
 
@@ -99,7 +99,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on select publisher select option
      */
     public void clickOnSelectPublisherSelectOption() {
-        explicitWait(allSelectPublisherElement, 1);
+        explicitWait(allSelectPublisherElement, 3);
         allSelectPublisherElement.click();
     }
 
@@ -122,7 +122,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on select preference select option
      */
     public void clickOnPrefereceSelectOption() {
-        explicitWait(prefSelectOptionElement, 1);
+        explicitWait(prefSelectOptionElement, 3);
         prefSelectOptionElement.click();
 
     }
@@ -144,7 +144,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on save button
      */
     public void clickOnSaveButton() {
-        explicitWait(saveElement, 2);
+        explicitWait(saveElement, 3);
         saveElement.click();
     }
 
@@ -196,7 +196,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on delete button in confirmation popup
      */
     public void clickOnDeleteConfirmationButton() {
-        explicitWait(deleteButtonElement, 2);
+        explicitWait(deleteButtonElement, 3);
         deleteButtonElement.click();
 
     }
@@ -205,7 +205,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on publisher domain tab in bidder preference
      */
     public void clickOnPublisherDomainTab() {
-        explicitWait(pubDomainElement, 2);
+        explicitWait(pubDomainElement, 3);
         pubDomainElement.click();
     }
 
@@ -221,7 +221,7 @@ public class BidderPrefPage extends BaseClass {
      * To enter text in textfield
      */
     public void enterText(String text) {
-        explicitWait(textFieldElement, 2);
+        explicitWait(textFieldElement, 3);
         textFieldElement.sendKeys(text);
 
     }
@@ -230,7 +230,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on tag id tab in bidder preference
      */
     public void clickOnTagIdTab() {
-        explicitWait(tagIdTabElement, 2);
+        explicitWait(tagIdTabElement, 3);
         tagIdTabElement.click();
     }
 
@@ -238,7 +238,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on add tag id button
      */
     public void clickOnAddTagIdButton() {
-        explicitWait(addTagIdButtonElement, 2);
+        explicitWait(addTagIdButtonElement, 3);
         addTagIdButtonElement.click();
     }
 
@@ -246,7 +246,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on publisher SLD tab in Bidder Preference
      */
     public void clickOnPublisherSLDTab() {
-        explicitWait(pubSLDTabElement, 2);
+        explicitWait(pubSLDTabElement, 3);
         pubSLDTabElement.click();
     }
 
@@ -254,7 +254,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on add publisher SLD button
      */
     public void clickOnAddPublisherSLDButton() {
-        explicitWait(addPubSLDButtonElement, 2);
+        explicitWait(addPubSLDButtonElement, 3);
         addPubSLDButtonElement.click();
 
     }
@@ -263,7 +263,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on device type tab in Bidder Preference
      */
     public void clickOnDeviceTypeTab() {
-        explicitWait(deviceTypeTabElement, 2);
+        explicitWait(deviceTypeTabElement, 3);
         deviceTypeTabElement.click();
     }
 
@@ -271,7 +271,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on add device type button
      */
     public void clickOnAddDeviceTypeButton() {
-        explicitWait(addDeviceTypeButtonElement, 2);
+        explicitWait(addDeviceTypeButtonElement, 3);
         addDeviceTypeButtonElement.click();
     }
 
@@ -279,7 +279,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on country tab in bidder preference
      */
     public void clickOnCountryTab() {
-        explicitWait(countryTabElement, 2);
+        explicitWait(countryTabElement, 3);
         countryTabElement.click();
         ;
     }
@@ -288,7 +288,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on add country button
      */
     public void clickOnAddCoutryButton() {
-        explicitWait(addCountryButton, 2);
+        explicitWait(addCountryButton, 3);
         addCountryButton.click();
     }
 
@@ -296,7 +296,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on Operating System tab in bidder preference
      */
     public void clickOnOperatingSystemTab() {
-        explicitWait(operatingSystemTabElement, 2);
+        explicitWait(operatingSystemTabElement, 3);
         operatingSystemTabElement.click();
     }
 
@@ -304,7 +304,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on add operating system button
      */
     public void clickOnAddOperatingSystemButton() {
-        explicitWait(addOperatingSystemButton, 2);
+        explicitWait(addOperatingSystemButton, 3);
         addOperatingSystemButton.click();
     }
 
@@ -312,7 +312,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on Gender Tab in bidder preference
      */
     public void clickOnGenderTab() {
-        explicitWait(genderTabElement, 2);
+        explicitWait(genderTabElement, 3);
         genderTabElement.click();
 
     }
@@ -321,7 +321,7 @@ public class BidderPrefPage extends BaseClass {
      * To click on add gender button
      */
     public void clickOnAddGenderButton() {
-        explicitWait(addGenderButtonElement, 2);
+        explicitWait(addGenderButtonElement, 3);
         addGenderButtonElement.click();
     }
 }

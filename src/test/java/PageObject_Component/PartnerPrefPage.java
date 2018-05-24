@@ -196,7 +196,7 @@ public class PartnerPrefPage extends BaseClass {
      * like advertiser domain, ad category ,creative id etc
      */
     public void clickOnSaveButton() {
-        explicitWait(saveButton, 2);
+        explicitWait(saveButton, 3);
         saveButton.click();
     }
 
@@ -208,15 +208,16 @@ public class PartnerPrefPage extends BaseClass {
      */
     public boolean isAdvDomainDisplayed(String domain) {
         boolean flag = false;
-        explicitWait(listDomains.get(0), 3);
-        for (WebElement element : listDomains) {
+        if (listDomains.size() > 0) {
+            for (WebElement element : listDomains) {
 
-            String text = element.getText();
-            if (text.equals(domain)) {
-                flag = true;
-                return flag;
+                String text = element.getText();
+                if (text.equals(domain)) {
+                    flag = true;
+                    return flag;
+                }
+
             }
-
         }
         return flag;
     }
@@ -263,7 +264,7 @@ public class PartnerPrefPage extends BaseClass {
      */
     public boolean isCategoryDisplayed(String category) {
         boolean flag = false;
-        explicitWait(listDomains.get(0), 3);
+        if (listDomains.size() > 0) {
         for (WebElement element : listDomains) {
 
             String text = element.getText();
@@ -271,6 +272,7 @@ public class PartnerPrefPage extends BaseClass {
                 flag = true;
                 return flag;
             }
+        }
 
         }
         return flag;
@@ -284,7 +286,7 @@ public class PartnerPrefPage extends BaseClass {
      */
     public boolean isAttributeDisplayed(String attribute) {
         boolean flag = false;
-        explicitWait(listDomains.get(0), 3);
+        if (listDomains.size() > 0) {
         for (WebElement element : listDomains) {
 
             String text = element.getText();
@@ -292,7 +294,7 @@ public class PartnerPrefPage extends BaseClass {
                 flag = true;
                 return flag;
             }
-
+        }
         }
         return flag;
     }
@@ -323,7 +325,7 @@ public class PartnerPrefPage extends BaseClass {
      */
     public boolean isCreativeIdDisplayed(String crid) {
         boolean flag = false;
-        explicitWait(listDomains.get(1), 3);
+        if (listDomains.size() > 0) {
         for (WebElement element : listDomains) {
 
             String text = element.getText();
@@ -332,6 +334,7 @@ public class PartnerPrefPage extends BaseClass {
                 return flag;
             }
 
+        }
         }
         return flag;
     }

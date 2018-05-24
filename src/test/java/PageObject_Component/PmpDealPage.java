@@ -68,7 +68,7 @@ public class PmpDealPage extends BaseClass {
      * To click on "Add Deal button in pmp deal"
      */
     public void clickOnPmpDealButton() {
-        explicitWait(addDealElement, 2);
+        explicitWait(addDealElement, 3);
         addDealElement.click();
     }
 
@@ -78,7 +78,7 @@ public class PmpDealPage extends BaseClass {
      * @param dealId
      */
     public void enterDealId(String dealId) {
-        explicitWait(dealIdElement, 1);
+        explicitWait(dealIdElement, 3);
         dealIdElement.sendKeys(dealId);
 
     }
@@ -99,7 +99,7 @@ public class PmpDealPage extends BaseClass {
      * To click on publisher id select option
      */
     public void clickOnSelectPublisherId() {
-        explicitWait(publisherIdElement, 2);
+        explicitWait(publisherIdElement, 3);
         publisherIdElement.click();
     }
 
@@ -124,7 +124,7 @@ public class PmpDealPage extends BaseClass {
      * @param text
      */
     public void enterBidFloor(String text) {
-        explicitWait(bidFloorElement, 2);
+        explicitWait(bidFloorElement, 3);
         bidFloorElement.sendKeys(text);
     }
 
@@ -134,7 +134,7 @@ public class PmpDealPage extends BaseClass {
      * @param text
      */
     public void enterBidFloorCurrency(String text) {
-        explicitWait(currencyElement, 2);
+        explicitWait(currencyElement, 3);
         currencyElement.sendKeys(text);
     }
 
@@ -142,7 +142,7 @@ public class PmpDealPage extends BaseClass {
      * To click on save button in add new deal page
      */
     public void clickOnSaveButton() {
-        explicitWait(saveElement, 2);
+        explicitWait(saveElement, 3);
         saveElement.click();
     }
 
@@ -196,7 +196,7 @@ public class PmpDealPage extends BaseClass {
      * To click on select target select option
      */
     public void clickOnSelectTargetOption() {
-        explicitWait(selectTargetElement, 2);
+        explicitWait(selectTargetElement, 3);
         selectTargetElement.click();
     }
 
@@ -206,7 +206,7 @@ public class PmpDealPage extends BaseClass {
      * @param data
      */
     public void enterTargetValue(String data) {
-        explicitWait(valueElement, 2);
+        explicitWait(valueElement, 3);
         valueElement.clear();
         valueElement.sendKeys(data);
     }
