@@ -1,6 +1,7 @@
 package Generic_Component;
 
 
+import PageObject_Component.LoginPage;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
@@ -33,12 +34,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseClass {
 
-    public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
-    public static String baserUri="http://10.6.33.131:8088/api";
+ /*  public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
+    public static String baserUri="http://10.6.33.131:8088/api";*/
     public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
     public static String featureMappingUrl="http://10.6.33.131:8088/featuremapping";
     public  static String partnerListUrl="http://10.6.33.131:8088/partner/list";
     public static String exchangeListUrl="http://10.6.33.131:8088/exchange/list";
+    public  static String publisherListUrl="http://mowx-admin.srv.media.net:8088/publisher/list";
+    public static String baserUri="http://mowx-admin.srv.media.net:8088/bidder/api";
     public static WebDriver driver;
     public static ExtentReports extentreport;
     public static ExtentTest extenttest;
@@ -80,7 +83,7 @@ public class BaseClass {
      * for wait
      * @param durationInMilliSeconds
      */
-    public void waitFor(int durationInMilliSeconds) {
+    public static void waitFor(int durationInMilliSeconds) {
         try {
             Thread.sleep(durationInMilliSeconds);
         } catch (InterruptedException e) {
@@ -106,7 +109,18 @@ public class BaseClass {
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
         FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"/reports/"));
-
+        LoginPage page = new LoginPage(driver);
+        waitFor(5000);
+        if (page.isSignInWithGoogleDisplayed()) {
+            page.clickOnSignInWithGoogle();
+            waitFor(5000);
+            page.enterEmailField("rohit.jai@media.net");
+            page.clickOnNextButton();
+            waitFor(3000);
+            page.enterPasswordField("Smiles@321");
+            page.clickOnNextButton();
+            waitFor(25000);
+        }
     }
 
     /**
@@ -129,6 +143,7 @@ public class BaseClass {
     {
         RestAssured.baseURI=baserUri;
         Response response = RestAssured.given()
+                .header("Referer","http://mowx-admin.srv.media.net:8088/publisher/add")
                 .when()
                 .contentType((ContentType.JSON))
                 .delete("/publishers/" + pubid);
