@@ -80,7 +80,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest = extentreport.startTest("Executing the add bidder preference size");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC3" + " add bidder preference size");
         driver.navigate().to(bidderListUrl);
-        waitFor(1000);
+        waitFor(2000);
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
@@ -107,7 +107,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnDeleteIcon("70x70");
         Assert.assertTrue(prefPage.isMessageDisplayed("Delete Size: 70x70"));
         prefPage.clickOnDeleteConfirmationButton();
@@ -125,7 +125,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnPublisherDomainTab();
         waitFor(1000);
         prefPage.clickOnAddDomainMappingButton();
@@ -149,7 +149,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnPublisherDomainTab();;
         prefPage.clickOnDeleteIcon("http://maps.google.com");
         Assert.assertTrue(prefPage.isMessageDisplayed("Delete Domain: http://maps.google.com"));
@@ -168,7 +168,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnTagIdTab();
         waitFor(1000);
         prefPage.clickOnAddTagIdButton();
@@ -192,7 +192,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnTagIdTab();
         prefPage.clickOnDeleteIcon("10528367");
         Assert.assertTrue(prefPage.isMessageDisplayed("Delete Tag ID: 10528367"));
@@ -211,7 +211,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnPublisherSLDTab();
         waitFor(1000);
         prefPage.clickOnAddPublisherSLDButton();
@@ -235,9 +235,9 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnPublisherSLDTab();
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnDeleteIcon("forbes");
         Assert.assertTrue(prefPage.isMessageDisplayed("Delete Publisher SLD: forbes"));
         prefPage.clickOnDeleteConfirmationButton();
@@ -255,7 +255,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnDeviceTypeTab();
         waitFor(1000);
         prefPage.clickOnAddDeviceTypeButton();
@@ -279,7 +279,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnDeviceTypeTab();
         waitFor(1000);
         prefPage.clickOnDeleteIcon("MOBILE_TABLET");
@@ -299,7 +299,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnCountryTab();
         waitFor(1000);
         prefPage.clickOnAddCoutryButton();
@@ -323,7 +323,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(3000);
         prefPage.clickOnCountryTab();
         waitFor(1000);
         prefPage.clickOnDeleteIcon("AX");
@@ -343,7 +343,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnOperatingSystemTab();
         waitFor(1000);
         prefPage.clickOnAddOperatingSystemButton();
@@ -367,7 +367,7 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnOperatingSystemTab();
         waitFor(1000);
         prefPage.clickOnDeleteIcon("Android");
@@ -386,10 +386,10 @@ public class ScenerioBidderTest extends BaseClass {
         waitFor(1000);
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
+        waitFor(2000);
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
         prefPage.clickOnGenderTab();
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnAddGenderButton();
         prefPage.clickOnSelectPublisherSelectOption();
         prefPage.selectOption("testName (12345)");
@@ -411,13 +411,13 @@ public class ScenerioBidderTest extends BaseClass {
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnPreference("1");
         BidderPrefPage prefPage=new BidderPrefPage(driver);
-        waitFor(1000);
+        waitFor(2000);
         prefPage.clickOnGenderTab();
         waitFor(1000);
         prefPage.clickOnDeleteIcon("FEMALE");
         Assert.assertTrue(prefPage.isMessageDisplayed("Delete Gender: FEMALE"));
         prefPage.clickOnDeleteConfirmationButton();
-        waitFor(1000);
+        waitFor(2000);
         Assert.assertFalse(prefPage.isDataDisplayed("FEMALE"));
         extenttest.log(LogStatus.PASS, "delete bidder preference Gender", extenttest.addScreenCapture(captureScreenshot("tc18", "order_set18")));
     }
@@ -469,7 +469,7 @@ public class ScenerioBidderTest extends BaseClass {
         Assert.assertEquals(pmpDeal.getValidationMessage(),"Entered value does not satisfy validation");
         pmpDeal.enterTargetValue("10x20");
         pmpDeal.clickOnSaveTargetData();
-        waitFor(1000);
+        waitFor(2000);
         Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","IMP_SIZE"));
         Assert.assertTrue(pmpDeal.isPmpdealTargetDetailsDisplayed("testDeal","10x20"));
         extenttest.log(LogStatus.PASS, "add pmp deal target", extenttest.addScreenCapture(captureScreenshot("tc20", "order_set20")));
