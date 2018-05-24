@@ -16,7 +16,7 @@ import java.io.IOException;
 @Listeners(CustomizeReport.class)
 public class ScenerioFeatureMappingTest  extends BaseClass {
 
-    @Test(priority = 1,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "validFeatureMappingDelatils",dependsOnMethods = "ScenerioBidderTest.testAddValidBidder")
+    @Test(priority = 1,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "validFeatureMappingDelatils")
     public void testAddFeatureMapping(String featureName,String data) throws InterruptedException, IOException {
         //to delete existing entry present in feature mapping for bidder 1
         deleteFeatureMappingData("1");
