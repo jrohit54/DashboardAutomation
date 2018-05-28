@@ -33,12 +33,19 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseClass {
 
-    public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
+   /* public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
     public static String baserUri="http://10.6.33.131:8088/api";
     public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
     public static String featureMappingUrl="http://10.6.33.131:8088/featuremapping";
     public  static String partnerListUrl="http://10.6.33.131:8088/partner/list";
-    public static String exchangeListUrl="http://10.6.33.131:8088/exchange/list";
+    public static String exchangeListUrl="http://10.6.33.131:8088/exchange/list";*/
+
+    public  static String publisherListUrl="http://mowx-staging.srv.media.net:8088/publisher/list";
+    public static String baserUri="http://mowx-staging.srv.media.net:8088/api";
+    public static String bidderListUrl="http://mowx-staging.srv.media.net:8088/bidder/list";
+    public static String featureMappingUrl="http://mowx-staging.srv.media.net:8088/featuremapping";
+    public  static String partnerListUrl="http://mowx-staging.srv.media.net:8088/partner/list";
+    public static String exchangeListUrl="http://mowx-staging.srv.media.net:8088/exchange/list";
     public static WebDriver driver;
     public static ExtentReports extentreport;
     public static ExtentTest extenttest;
