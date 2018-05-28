@@ -293,14 +293,14 @@ public class ScenerioPublisherTest extends BaseClass
         prefPage.clickOnAdAttributeTab();
         waitFor(2000);
         Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
-        if (prefPage.isAttributeDisplayed("1")) {
+        if (prefPage.isAttributeDisplayed("1 (Audio Ad (Auto-Play))")) {
             prefPage.clickOnDeleteIconContainsAllProviders("1");
             prefPage.clickOnDeleteButtonInConfirmPopup();
             waitFor(1000);
             extenttest.log(LogStatus.PASS, "delete attribute", extenttest.addScreenCapture(captureScreenshot("tc9", "order_set9")));
-            Assert.assertFalse(prefPage.isAttributeDisplayed("1"));
+            Assert.assertFalse(prefPage.isAttributeDisplayed("1 (Audio Ad (Auto-Play))"));
         }
-        if (prefPage.isAttributeDisplayed("2")) {
+        if (prefPage.isAttributeDisplayed("2 (Audio Ad (User Initiated))")) {
             prefPage.clickOnDeleteIconContainsAllProviders("2");
             prefPage.clickOnDeleteButtonInConfirmPopup();
         }
