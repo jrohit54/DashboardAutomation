@@ -140,7 +140,7 @@ public class DataProviderClass {
         data[2][0]="FULL_URL";
         data[2][1]="snapdeal.com";
 
-        data[3][0]="FULL_URL";
+        data[3][0]="ENABLE_BID_CHAINING";
         data[3][1]="test.com";
         return data;
 
