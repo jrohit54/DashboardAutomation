@@ -39,6 +39,7 @@ public class ScenerioPublisherTest extends BaseClass
         log.info("verify that the publisher id not present in the DB");
         driver.navigate().to(publisherListUrl);
         log.info("Excuting the add publisher test case");
+        log.info("launched the url "+publisherListUrl);
         extenttest = extentreport.startTest("add publisher");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC1" + " add publisher");
         PublisherListPage plp = new PublisherListPage(driver);
