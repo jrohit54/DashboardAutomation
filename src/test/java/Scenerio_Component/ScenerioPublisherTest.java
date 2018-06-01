@@ -412,7 +412,7 @@ public class ScenerioPublisherTest extends BaseClass
         Assert.assertTrue(message.contains("Some validations are failing"));
         extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
-    @Test()
+    @Test(dependsOnMethods = "testAddValidPublisher")
     public void testADdomainEntryWithSpaceInDBVarification() throws  SQLException
     {
         log.info("Executing the add ad domain with space in DB and verify in the UI");
