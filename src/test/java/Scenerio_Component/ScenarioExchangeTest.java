@@ -1,13 +1,8 @@
 package Scenerio_Component;
 
 import Generic_Component.BaseClass;
-import org.testng.annotations.DataProvider;
-import Generic_Component.BaseClass;
 import Generic_Component.CustomizeReport;
-import Generic_Component.DBConnection;
 import PageObject_Component.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;

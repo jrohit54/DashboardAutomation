@@ -24,6 +24,7 @@ import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -33,22 +34,22 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseClass {
 
-   /* public  static String publisherListUrl="http://10.6.33.131:8088/publisher/list";
-    public static String baserUri="http://10.6.33.131:8088/api";
-    public static String bidderListUrl="http://10.6.33.131:8088/bidder/list";
-    public static String featureMappingUrl="http://10.6.33.131:8088/featuremapping";
-    public  static String partnerListUrl="http://10.6.33.131:8088/partner/list";
-    public static String exchangeListUrl="http://10.6.33.131:8088/exchange/list";*/
-
-    public  static String publisherListUrl="http://mowx-staging.srv.media.net:8088/publisher/list";
-    public static String baserUri="http://mowx-staging.srv.media.net:8088/api";
-    public static String bidderListUrl="http://mowx-staging.srv.media.net:8088/bidder/list";
-    public static String featureMappingUrl="http://mowx-staging.srv.media.net:8088/featuremapping";
-    public  static String partnerListUrl="http://mowx-staging.srv.media.net:8088/partner/list";
-    public static String exchangeListUrl="http://mowx-staging.srv.media.net:8088/exchange/list";
+    public static String endPoint="http://mowx-staging.srv.media.net:8088/";
+    public  static String publisherListUrl=endPoint+"publisher/list";
+    public static String baserUri=endPoint+"api";
+    public static String bidderListUrl=endPoint+"bidder/list";
+    public static String featureMappingUrl=endPoint+"featuremapping";
+    public  static String partnerListUrl=endPoint+"partner/list";
+    public static String exchangeListUrl=endPoint+"exchange/list";
+    public static String databaseURL = "jdbc:mysql://10.6.33.132:3306/mowgli_adminDashboard";
+    public static String user = "root";
+    public static String password = "videoads";
     public static WebDriver driver;
     public static ExtentReports extentreport;
     public static ExtentTest extenttest;
+    public static Connection connection;
+    public static Statement statement;
+    public static ResultSet rs;
     public static Logger log = Logger.getLogger(BaseClass.class);
 
 
@@ -113,6 +114,7 @@ public class BaseClass {
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
         FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"/reports/"));
+        setUp();
 
     }
 
@@ -125,6 +127,7 @@ public class BaseClass {
         driver.quit();
         extentreport.endTest(extenttest);
         extentreport.flush();
+        closeConnection();
     }
 
     /**
@@ -236,5 +239,33 @@ public class BaseClass {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/chromedriver_linux");
         }
     }
+    public static void setUp()  {
+
+        connection = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("Connecting to Database...");
+            connection = DriverManager.getConnection(databaseURL, user, password);
+            if (connection != null) {
+                System.out.println("Connected to the Database...");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void closeConnection() {
+        if (connection != null) {
+            try {
+                System.out.println("Closing Database Connection...");
+                connection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
 
 }
