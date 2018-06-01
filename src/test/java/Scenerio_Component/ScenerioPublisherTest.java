@@ -3,12 +3,14 @@ package Scenerio_Component;
 import Generic_Component.BaseClass;
 import Generic_Component.CustomizeReport;
 import PageObject_Component.*;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
@@ -410,14 +412,44 @@ public class ScenerioPublisherTest extends BaseClass
         Assert.assertTrue(message.contains("Some validations are failing"));
         extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
-    //@Test()
-    public void testADdomainEntryWithSpaceInDBVarification()
+    @Test()
+    public void testADdomainEntryWithSpaceInDBVarification() throws  SQLException
     {
         log.info("Executing the add ad domain with space in DB and verify in the UI");
+        String query="insert into publisher_entity_preference(supply_entity,supply_id,demand_entity,demand_id,targetProperty,value,preference) values (?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1,"PUBLISHER");
+        preparedStatement.setString(2,"12345");
+        preparedStatement.setString(3,"BIDDER");
+        preparedStatement.setString(4,"ALL");
+        preparedStatement.setString(5,"AD_DOMAIN");
+        preparedStatement.setString(6,"     aaaaaa.com");
+        preparedStatement.setString(7,"BLACK_LIST");
 
+        try {
+             preparedStatement.execute();
+        }
+        catch (MySQLIntegrityConstraintViolationException e)
+        {
 
-
-
+            log.info("Got the exception while entry in the DB");
+        }
+        PublisherListPage plp = new PublisherListPage(driver);
+        plp.clickOnPreference("12345");
+        waitFor(3000);
+        PublisherPrefPage prefPage = new PublisherPrefPage(driver);
+        Assert.assertEquals(prefPage.getHeaderText(), "Publisher Preference");
+        prefPage.enterSeachTextInPublisherPref("aaaaaa.com");
+        waitFor(1000);
+        prefPage.clickOnAutoComplete();
+        if (prefPage.isAdvDomainDisplayed("aaaaaa.com")) {
+            prefPage.clickOnDeleteIconContainsAllProviders("aaaaaa.com");
+            prefPage.clickOnDeleteButtonInConfirmPopup();
+            waitFor(1000);
+            Assert.assertTrue(prefPage.isAdvDomainDeleteMessageDisplayed("aaaaaa.com"));
+            waitFor(1000);
+            Assert.assertFalse(prefPage.isAdvDomainDisplayed("aaaaaa.com"));
+        }
 
     }
 

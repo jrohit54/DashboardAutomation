@@ -75,6 +75,8 @@ public class PublisherPrefPage extends BaseClass {
     @FindBy(xpath = "//button[@class='btn' and text()='Add Attribute']")
     public WebElement addAttributeIdButton;
 
+    @FindBy(xpath = "//div[@class='autocomplete active']")
+    public WebElement autoComplete;
 
     public PublisherPrefPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -410,5 +412,22 @@ public class PublisherPrefPage extends BaseClass {
         }
         return flag;
     }
+
+    /**
+     * To enter text in search field
+     */
+    public void enterSeachTextInPublisherPref(String text)
+    {
+        explicitWait(domainSearchField,3);
+        domainSearchField.sendKeys(text);
+    }
+
+    /**
+     * to click on select exchange
+     */
+    public void clickOnAutoComplete() {
+        autoComplete.click();
+    }
+
 
 }
