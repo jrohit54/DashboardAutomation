@@ -2,16 +2,14 @@ package Scenerio_Component;
 
 import Generic_Component.BaseClass;
 import Generic_Component.CustomizeReport;
-import Generic_Component.DBConnection;
 import PageObject_Component.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.LogStatus;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 import com.jayway.restassured.response.Response;
@@ -27,10 +25,18 @@ public class ScenerioPublisherTest extends BaseClass
     public static Logger log = Logger.getLogger(ScenerioPublisherTest.class);
 
     @Test(dataProviderClass = Dataprovider_Component.DataProviderClass.class, dataProvider = "PublisherDetails")
-    public void testAddValidPublisher(String pubId, String email, String name, String compName, String fName, String lName, String domName, String catName) throws InterruptedException, IOException {
+    public void testAddValidPublisher(String pubId, String email, String name, String compName, String fName, String lName, String domName, String catName) throws InterruptedException, IOException,SQLException {
 
         Response response = deletePublisherApi(pubId);
         Assert.assertEquals(response.statusCode(), 200);
+        String query="select count(*) from publishers where pubId= '"+pubId+"'";
+        statement=connection.createStatement();
+        rs=statement.executeQuery(query);
+        while(rs.next()) {
+           final int count=rs.getInt(1);
+           Assert.assertEquals(count,0,"count not matching in the data base");
+        }
+        log.info("verify that the publisher id not present in the DB");
         driver.navigate().to(publisherListUrl);
         log.info("Excuting the add publisher test case");
         extenttest = extentreport.startTest("add publisher");
@@ -54,11 +60,18 @@ public class ScenerioPublisherTest extends BaseClass
         waitFor(1000);
         extenttest.log(LogStatus.PASS, "add valid publisher", extenttest.addScreenCapture(captureScreenshot("tc1", "order_set1")));
         Assert.assertTrue(plp.isPublisherAdded_SucessfullMessageDisplayed());
-        log.info("test case executed");
         waitFor(2000);
         plp.enterPublisherToSerach("12345");
         plp.clickOnAutoComplete();
         Assert.assertTrue(plp.isPublisherIdDisplayed(pubId));
+        statement=connection.createStatement();
+        rs=statement.executeQuery(query);
+        while(rs.next()) {
+            final int count=rs.getInt(1);
+            Assert.assertEquals(count,1,"count is matching in the data base");
+        }
+        log.info("verify that the publisher id is present in the DB");
+        log.info("test case executed");
 
     }
 
@@ -397,6 +410,15 @@ public class ScenerioPublisherTest extends BaseClass
         Assert.assertTrue(message.contains("Some validations are failing"));
         extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
+    //@Test()
+    public void testADdomainEntryWithSpaceInDBVarification()
+    {
+        log.info("Executing the add ad domain with space in DB and verify in the UI");
 
+
+
+
+
+    }
 
 }

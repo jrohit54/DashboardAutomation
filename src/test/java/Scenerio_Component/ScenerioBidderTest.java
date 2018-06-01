@@ -17,7 +17,7 @@ import java.io.IOException;
 public class ScenerioBidderTest extends BaseClass {
 
 
-    @Test(priority = 1,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "BidderDetails")
+    @Test(dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "BidderDetails")
     public void testAddValidBidder(String bidderId ,String bidderName)  throws InterruptedException, IOException
     {
         Response response = deleteBidderApi(bidderId);
@@ -28,7 +28,7 @@ public class ScenerioBidderTest extends BaseClass {
         waitFor(1000);
         BidderListPage blp=new BidderListPage(driver);
         blp.clickOnAddNewBidderButton();
-        Assert.assertEquals(blp.getHeaderText(), "Add New Bidder");
+        Assert.assertEquals(blp.getHeaderText(), "Add Bidder");
         blp.enterBidderId(bidderId);
         blp.enterBidderName(bidderName);
         blp.clickOnAdFormatSelectOption();
@@ -55,7 +55,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add valid bidder", extenttest.addScreenCapture(captureScreenshot("tc1", "order_set1")));
     }
 
-    @Test(priority = 2,dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "BidderDetails")
+    @Test(dependsOnMethods = "testAddValidBidder",dataProviderClass =Dataprovider_Component.DataProviderClass.class,dataProvider = "BidderDetails")
     public void testEditBidder(String bidderId,String bidderName ) throws InterruptedException, IOException
     {
         log.info("Executing the edit  bidder");
@@ -74,7 +74,7 @@ public class ScenerioBidderTest extends BaseClass {
     }
 
 
-    @Test(priority = 3)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddBidderPreferenceSize() throws InterruptedException,IOException
     {
         extenttest = extentreport.startTest("Executing the add bidder preference size");
@@ -97,7 +97,7 @@ public class ScenerioBidderTest extends BaseClass {
 
     }
 
-    @Test(priority = 4)
+    @Test(dependsOnMethods = "testAddBidderPreferenceSize")
     public void testDeletePreferenceSize() throws InterruptedException,IOException
     {
         extenttest = extentreport.startTest("Excuting the delete bidder preference size");
@@ -116,7 +116,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference size", extenttest.addScreenCapture(captureScreenshot("tc4", "order_set4")));
     }
 
-    @Test(priority = 5)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddBidderPreferencePubliserDomian() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the add bidder preference publisher domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC5" + " add bidder preference publisher domain");
@@ -140,7 +140,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference publisher domain", extenttest.addScreenCapture(captureScreenshot("tc5", "order_set5")));
     }
 
-    @Test(priority = 6)
+    @Test(dependsOnMethods = "testAddBidderPreferencePubliserDomian")
     public void testDeleteBidderPreferencePublisherDomain() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference publisher domain");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC6" + " delete bidder preference publisher domain");
@@ -159,7 +159,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference publisher domain", extenttest.addScreenCapture(captureScreenshot("tc6", "order_set6")));
     }
 
-    @Test(priority = 7)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddBidderPreferenceTagID() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the add bidder preference tag id");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC7" + " add bidder preference tag id ");
@@ -183,7 +183,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference tag id", extenttest.addScreenCapture(captureScreenshot("tc7", "order_set7")));
     }
 
-    @Test(priority = 8)
+    @Test(dependsOnMethods = "testAddBidderPreferenceTagID")
     public void testDeleteBidderPreferenceTagId() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference Tag id");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC8" + " delete bidder preference Tag id");
@@ -202,7 +202,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference tag id", extenttest.addScreenCapture(captureScreenshot("tc8", "order_set8")));
     }
 
-    @Test(priority = 9)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddBidderPreferencePubSLD() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the add bidder preference publisher SLD");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC9" + " add bidder preference publisher SLD");
@@ -226,7 +226,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference publisher SLD", extenttest.addScreenCapture(captureScreenshot("tc9", "order_set9")));
     }
 
-    @Test(priority =10)
+    @Test(dependsOnMethods = "testAddBidderPreferencePubSLD")
     public void testDeleteBidderPreferencePubSLD() throws InterruptedException,IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference Publisher SLD");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC10" + " delete bidder preference Publisher SLD");
@@ -246,7 +246,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference Publisher SLd", extenttest.addScreenCapture(captureScreenshot("tc10", "order_set10")));
     }
 
-    @Test(priority = 11)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddBidderPreferenceDeviceType() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the add bidder preference Device Type");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC11" + " add bidder preference Device Type");
@@ -270,7 +270,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference Device Type", extenttest.addScreenCapture(captureScreenshot("tc11", "order_set11")));
     }
 
-    @Test(priority =12)
+    @Test(dependsOnMethods = "testAddBidderPreferenceDeviceType")
     public void testDeleteBidderPreferenceDeviceType() throws InterruptedException,IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference Publisher Device Type");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC12" + " delete bidder preference Device Type");
@@ -290,7 +290,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference Publisher Device Type", extenttest.addScreenCapture(captureScreenshot("tc12", "order_set12")));
     }
 
-    @Test(priority =13)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddBidderPreferenceCountry() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the add bidder preference Country");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC13" + " add bidder preference Country");
@@ -314,7 +314,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference  Country", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
 
-    @Test(priority =14)
+    @Test(dependsOnMethods = "testAddBidderPreferenceCountry")
     public void testDeleteBidderPreferenceCountry() throws InterruptedException,IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference Publisher Country");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC14" + " delete bidder preference Country");
@@ -334,7 +334,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference Country", extenttest.addScreenCapture(captureScreenshot("tc14", "order_set14")));
     }
 
-    @Test(priority =15)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddBidderPreferenceOperatingSystem() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the add bidder preference Operating System");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC15" + " add bidder preference Operating System");
@@ -358,7 +358,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference  Operating System", extenttest.addScreenCapture(captureScreenshot("tc15", "order_set15")));
     }
 
-    @Test(priority =16)
+    @Test(dependsOnMethods = "testAddBidderPreferenceOperatingSystem")
     public void testDeleteBidderPreferenceOperatingSystem() throws InterruptedException,IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference  Operating System");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC16" + " delete bidder preference Operating System");
@@ -378,7 +378,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference operating system", extenttest.addScreenCapture(captureScreenshot("tc16", "order_set16")));
     }
 
-    @Test(priority =17)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddBidderPreferenceGender() throws InterruptedException, IOException {
         extenttest = extentreport.startTest("Excuting the add bidder preference Gender");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC17" + " add bidder preference Gender");
@@ -402,7 +402,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference  Gender", extenttest.addScreenCapture(captureScreenshot("tc17", "order_set17")));
     }
 
-    @Test(priority =18)
+    @Test(dependsOnMethods = "testAddBidderPreferenceGender")
     public void testDeleteBidderPreferenceGender() throws InterruptedException,IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference  Gender");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC18" + " delete bidder preference Gender");
@@ -422,7 +422,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "delete bidder preference Gender", extenttest.addScreenCapture(captureScreenshot("tc18", "order_set18")));
     }
 
-    @Test(priority=19)
+    @Test(dependsOnMethods = "testAddValidBidder")
     public void testAddPmpDeal() throws InterruptedException,IOException
     {    deletePmpDealData("1");
         log.info("Excuting the add  valid pmp deal");
@@ -449,7 +449,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add valid pmp deal", extenttest.addScreenCapture(captureScreenshot("tc19", "order_set19")));
     }
 
-    @Test(priority=20)
+    @Test(dependsOnMethods = "testAddPmpDeal")
     public void testPmpDealTarget() throws InterruptedException,IOException
     {
         log.info("Excuting the add  pmp deal target");
