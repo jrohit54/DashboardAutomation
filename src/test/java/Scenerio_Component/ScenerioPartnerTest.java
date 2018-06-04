@@ -228,7 +228,7 @@ public class ScenerioPartnerTest extends BaseClass {
     }
 
     @Test(dependsOnMethods = "testAddAdCategory")
-    public void testDeleteAdCategoty() throws InterruptedException, IOException
+    public void testDeleteAdCategory() throws InterruptedException, IOException
     {
         driver.navigate().to(partnerListUrl);
         log.info("Executing the delete ad category test case for Partner");

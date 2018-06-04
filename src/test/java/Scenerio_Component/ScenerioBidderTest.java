@@ -314,7 +314,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference  Country", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
 
-    @Test(dependsOnMethods = "testAddBidderPreferenceCountry")
+    @Test//(dependsOnMethods = "testAddBidderPreferenceCountry")
     public void testDeleteBidderPreferenceCountry() throws InterruptedException,IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference Publisher Country");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC14" + " delete bidder preference Country");
@@ -329,7 +329,7 @@ public class ScenerioBidderTest extends BaseClass {
         prefPage.clickOnDeleteIcon("AX");
         Assert.assertTrue(prefPage.isMessageDisplayed("Delete Country: AX"));
         prefPage.clickOnDeleteConfirmationButton();
-        waitFor(1000);
+        waitFor(2000);
         Assert.assertFalse(prefPage.isDataDisplayed("AX (Aland Islands)"));
         extenttest.log(LogStatus.PASS, "delete bidder preference Country", extenttest.addScreenCapture(captureScreenshot("tc14", "order_set14")));
     }

@@ -413,7 +413,7 @@ public class ScenerioPublisherTest extends BaseClass
         extenttest.log(LogStatus.PASS, "add publisher with invalid email", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
     @Test(dependsOnMethods = "testAddValidPublisher")
-    public void testADdomainEntryWithSpaceInDBVarification() throws  SQLException
+    public void testADdomainWithSpaceInDBAndVerifyUI() throws  SQLException
     {
         log.info("Executing the add ad domain with space in DB and verify in the UI");
         String query="insert into publisher_entity_preference(supply_entity,supply_id,demand_entity,demand_id,targetProperty,value,preference) values (?,?,?,?,?,?,?)";

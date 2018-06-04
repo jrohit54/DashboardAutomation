@@ -35,6 +35,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseClass {
 
     public static String endPoint="http://mowx-staging.srv.media.net:8088/";
+    //public static String endPoint="http://localhost:8088/";
     public  static String publisherListUrl=endPoint+"publisher/list";
     public static String baserUri=endPoint+"api";
     public static String bidderListUrl=endPoint+"bidder/list";
@@ -42,6 +43,7 @@ public class BaseClass {
     public  static String partnerListUrl=endPoint+"partner/list";
     public static String exchangeListUrl=endPoint+"exchange/list";
     public static String databaseURL = "jdbc:mysql://10.6.33.132:3306/mowgli_adminDashboard";
+    //public static String databaseURL = "jdbc:mysql://localhost:3306/mowgli_adminDashboard";
     public static String user = "root";
     public static String password = "videoads";
     public static WebDriver driver;
