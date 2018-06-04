@@ -434,7 +434,9 @@ public class ScenerioPublisherTest extends BaseClass
 
             log.info("Got the exception while entry in the DB");
         }
+        driver.navigate().to(publisherListUrl);
         PublisherListPage plp = new PublisherListPage(driver);
+        waitFor(2000);
         plp.clickOnPreference("12345");
         waitFor(3000);
         PublisherPrefPage prefPage = new PublisherPrefPage(driver);
