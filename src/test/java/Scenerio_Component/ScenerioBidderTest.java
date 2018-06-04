@@ -314,7 +314,7 @@ public class ScenerioBidderTest extends BaseClass {
         extenttest.log(LogStatus.PASS, "add bidder preference  Country", extenttest.addScreenCapture(captureScreenshot("tc13", "order_set13")));
     }
 
-    @Test//(dependsOnMethods = "testAddBidderPreferenceCountry")
+    @Test(dependsOnMethods = "testAddBidderPreferenceCountry")
     public void testDeleteBidderPreferenceCountry() throws InterruptedException,IOException {
         extenttest = extentreport.startTest("Excuting the delete bidder preference Publisher Country");
         extenttest.log(LogStatus.PASS, "Executing the Testcase  " + "TC14" + " delete bidder preference Country");
