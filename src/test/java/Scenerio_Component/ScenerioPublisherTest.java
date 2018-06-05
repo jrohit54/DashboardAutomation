@@ -416,15 +416,9 @@ public class ScenerioPublisherTest extends BaseClass
     public void testADdomainWithSpaceInDBAndVerifyUI() throws  SQLException
     {
         log.info("Executing the add ad domain with space in DB and verify in the UI");
-        String query="insert into publisher_entity_preference(supply_entity,supply_id,demand_entity,demand_id,targetProperty,value,preference) values (?,?,?,?,?,?,?)";
+        String query="insert into publisher_entity_preference(supply_entity,supply_id,demand_entity,demand_id,targetProperty,value,preference) values ('PUBLISHER','12345','BIDDER','ALL','AD_DOMAIN','     aaaaaa.com','BLACK_LIST')";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1,"PUBLISHER");
-        preparedStatement.setString(2,"12345");
-        preparedStatement.setString(3,"BIDDER");
-        preparedStatement.setString(4,"ALL");
-        preparedStatement.setString(5,"AD_DOMAIN");
-        preparedStatement.setString(6,"     aaaaaa.com");
-        preparedStatement.setString(7,"BLACK_LIST");
+
 
         try {
              preparedStatement.execute();
