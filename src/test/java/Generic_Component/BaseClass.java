@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
@@ -112,16 +113,16 @@ public class BaseClass {
     @BeforeSuite
     public static void extentReport() throws IOException {
         //for the java script error
-        DesiredCapabilities capabilities=DesiredCapabilities.chrome();
+        ChromeOptions options = new ChromeOptions();
         LoggingPreferences loggingPreferences=new LoggingPreferences();
         loggingPreferences.enable(LogType.BROWSER, Level.ALL);
-        capabilities.setCapability(CapabilityType.LOGGING_PREFS,loggingPreferences);
+        options.setCapability(CapabilityType.LOGGING_PREFS,loggingPreferences);
         Date date= new Date();
         SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
         String str2=df.format(date);
         extentreport= new ExtentReports(System.getProperty("user.dir")+"/reports/"+"admin_dashboard"+"-"+str2+".html",false);
         setDriverPath();
-        driver=new ChromeDriver(capabilities);
+        driver=new ChromeDriver(options);
         driver.get(publisherListUrl);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
