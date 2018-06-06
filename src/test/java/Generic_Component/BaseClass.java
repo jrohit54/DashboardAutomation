@@ -13,6 +13,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
@@ -20,15 +26,16 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+
+import static org.apache.log4j.Level.ALL;
+
 /**
  * Created by rohit on 8/2/18.
  */
@@ -104,12 +111,17 @@ public class BaseClass {
      */
     @BeforeSuite
     public static void extentReport() throws IOException {
+        //for the java script error
+        DesiredCapabilities capabilities=DesiredCapabilities.chrome();
+        LoggingPreferences loggingPreferences=new LoggingPreferences();
+        loggingPreferences.enable(LogType.BROWSER, Level.ALL);
+        capabilities.setCapability(CapabilityType.LOGGING_PREFS,loggingPreferences);
         Date date= new Date();
         SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
         String str2=df.format(date);
         extentreport= new ExtentReports(System.getProperty("user.dir")+"/reports/"+"admin_dashboard"+"-"+str2+".html",false);
         setDriverPath();
-        driver=new ChromeDriver();
+        driver=new ChromeDriver(capabilities);
         driver.get(publisherListUrl);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
@@ -267,6 +279,20 @@ public class BaseClass {
                 ex.printStackTrace();
             }
         }
+    }
+
+
+    public void extractJSLogsInfo()
+    {
+        LogEntries logEntries=driver.manage().logs().get(LogType.BROWSER);
+        for(LogEntry entry: logEntries)
+        {
+            Date date= new Date();
+            SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+            String str2=df.format(date);
+            log.info(str2+entry.getTimestamp()+" "+entry.getLevel()+" "+entry.getMessage());
+        }
+
     }
 
 
